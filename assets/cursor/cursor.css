@@ -1,0 +1,158 @@
+/* 全站自定义鼠标：默认 / 可点击 / 按下。热点均为 16 16。
+   图片路径相对本文件所在目录（assets/cursor/）。 */
+:root{
+  --cursor-default-1x:url("cursor_default.png");
+  --cursor-default-2x:url("cursor_default@2x.png");
+  --cursor-link-1x:url("cursor_link.png");
+  --cursor-link-2x:url("cursor_link@2x.png");
+  --cursor-press-1x:url("cursor_press.png");
+  --cursor-press-2x:url("cursor_press@2x.png");
+
+  /* 第一行：32×32 单图兜底 */
+  --cursor-default:var(--cursor-default-1x) 16 16, auto;
+  --cursor-link:var(--cursor-link-1x) 16 16, pointer;
+  --cursor-press:var(--cursor-press-1x) 16 16, pointer;
+}
+/* 第二行：高清屏 image-set（2x 图按 2x 分辨率声明，显示大小仍为 32×32）。
+   用 @supports 包住：不支持的浏览器整段跳过，保留上面的 32×32 版。 */
+@supports (cursor:image-set(url("cursor_default.png") 1x, url("cursor_default@2x.png") 2x) 16 16, auto){
+  :root{
+    --cursor-default:image-set(var(--cursor-default-1x) 1x, var(--cursor-default-2x) 2x) 16 16, auto;
+    --cursor-link:image-set(var(--cursor-link-1x) 1x, var(--cursor-link-2x) 2x) 16 16, pointer;
+    --cursor-press:image-set(var(--cursor-press-1x) 1x, var(--cursor-press-2x) 2x) 16 16, pointer;
+  }
+}
+
+@media (hover:hover) and (pointer:fine){
+  /* 1. 默认 */
+  html,body{cursor:var(--cursor-default)}
+
+  /* 2. 可点击（:root 重复三次只为提高优先级，盖过 index.html 里的 cursor:pointer，不改原规则） */
+  :root:root:root :where(
+    a,button,summary,label[for],[role="button"],[role="link"],
+    .prow,.col,.sk,
+    .acv-row,.acv-style-toggle,
+    .ip-bubble-hit,
+    .cs-arrow,.cs-desc,.cs-tag[href]
+  ){cursor:var(--cursor-link)}
+
+  /* 3. 按下 */
+  :root:root:root :where(
+    a,button,summary,label[for],[role="button"],[role="link"],
+    .prow,.col,.sk,
+    .acv-row,.acv-style-toggle,
+    .ip-bubble-hit,
+    .cs-arrow,.cs-desc,.cs-tag[href]
+  ):active{cursor:var(--cursor-press)}
+
+  /* 保留原有行为：已展开的能力格为默认鼠标；列表预览自带指针提示时隐藏鼠标 */
+  :root:root:root:root:root .skills.open .sk.active{cursor:var(--cursor-default)}
+  :root:root:root:root:root .plist--preview .prow.has-preview-cursor,
+  :root:root:root:root:root .plist--preview .prow.has-preview-cursor *{cursor:none}
+
+  /* 5. 文本输入与可选中文字保持系统默认 */
+  :root:root:root:root:root :where(input:not([type="button"]):not([type="submit"]):not([type="reset"]):not([type="checkbox"]):not([type="radio"]),textarea,[contenteditable="true"]){cursor:text}
+  :root:root:root:root:root :where(select){cursor:auto}
+  :root:root:root:root:root .wechat-id{cursor:text}
+}
+
+/* ===== My Style 展开区：羽毛球鼠标（默认 / 悬停 / 按下），热点 16 16 =====
+   展开状态 = .ip-hero.is-open，容器 = .acv-ip-collapse。收起后和展开区以外沿用全站规则。 */
+:root{
+  --cursor-mystyle-1x:url("cursor_mystyle.png");
+  --cursor-mystyle-2x:url("cursor_mystyle@2x.png");
+  --cursor-mystyle-hover-1x:url("cursor_mystyle_hover.png");
+  --cursor-mystyle-hover-2x:url("cursor_mystyle_hover@2x.png");
+  --cursor-mystyle-press-1x:url("cursor_mystyle_press.png");
+  --cursor-mystyle-press-2x:url("cursor_mystyle_press@2x.png");
+
+  --cursor-mystyle:var(--cursor-mystyle-1x) 16 16, auto;
+  --cursor-mystyle-hover:var(--cursor-mystyle-hover-1x) 16 16, pointer;
+  --cursor-mystyle-press:var(--cursor-mystyle-press-1x) 16 16, pointer;
+}
+@supports (cursor:image-set(url("cursor_mystyle.png") 1x, url("cursor_mystyle@2x.png") 2x) 16 16, auto){
+  :root{
+    --cursor-mystyle:image-set(var(--cursor-mystyle-1x) 1x, var(--cursor-mystyle-2x) 2x) 16 16, auto;
+    --cursor-mystyle-hover:image-set(var(--cursor-mystyle-hover-1x) 1x, var(--cursor-mystyle-hover-2x) 2x) 16 16, pointer;
+    --cursor-mystyle-press:image-set(var(--cursor-mystyle-press-1x) 1x, var(--cursor-mystyle-press-2x) 2x) 16 16, pointer;
+  }
+}
+@media (hover:hover) and (pointer:fine){
+  /* 1. 展开区容器及内部空白处 */
+  :root:root:root .ip-hero.is-open,
+  :root:root:root .ip-hero.is-open .acv-ip-collapse{cursor:var(--cursor-mystyle)}
+
+  /* 1b. 全宽范围：气泡层是 pointer-events:none，空白处会穿透到页面，所以在展开时铺一条只负责显示鼠标的透明带。
+     挂在 My Style 标题前面的 .rule 上（DOM 顺序在标题和展开区之前，层级在它们之下，不挡任何点击）。
+     范围：左右到视口两边；上到 My Style 标题顶部；下到展开区（IP）底部。
+     高度 = 标题高度 + 32px 间距 + 展开区高度 × 缩放（桌面 1.2，900px 以下为 1），index.html 里这些数值变了要同步。 */
+  #page-inner > .rule:has(~ .ip-hero.is-open)::after{
+    content:"";position:absolute;
+    /* .rule 自身是 position:relative，伪元素按它定位而不是按页面容器；
+       所以向左右各伸出一个视口宽，保证盖到页面两边（多出的部分被 body 的 overflow-x:hidden 裁掉） */
+    left:-100vw;width:calc(200vw + 100%);
+    margin-top:30px;
+    height:calc(clamp(34px,6vw,64px) * 1.1064 + 32px + min(460px,78vw) * .75 * 1.2);
+    pointer-events:auto;background:none;
+    cursor:var(--cursor-mystyle);
+  }
+  @media (max-width:900px){
+    #page-inner > .rule:has(~ .ip-hero.is-open)::after{height:calc(clamp(34px,6vw,64px) * 1.1064 + 32px + min(460px,78vw) * .75)}
+  }
+
+  /* 1c. 展开时 My Style 标题悬停/按下也用羽毛球 */
+  :root:root:root:root .acv-style-toggle[aria-expanded="true"]{cursor:var(--cursor-mystyle-hover)}
+  :root:root:root:root .acv-style-toggle[aria-expanded="true"]:active{cursor:var(--cursor-mystyle-press)}
+
+  /* 2. 展开区内可点击元素（优先级高于全站可点击/按下规则，不用 !important） */
+  :root:root:root .ip-hero.is-open .acv-ip-collapse :where(
+    a,button,summary,label[for],[role="button"],[role="link"],.ip-bubble-hit
+  ){cursor:var(--cursor-mystyle-hover)}
+
+  /* 3. 按下 */
+  :root:root:root .ip-hero.is-open .acv-ip-collapse :where(
+    a,button,summary,label[for],[role="button"],[role="link"],.ip-bubble-hit
+  ):active{cursor:var(--cursor-mystyle-press)}
+}
+
+/* ===== 会转向的羽毛球鼠标（assets/cursor/cursor-shuttle.js）=====
+   脚本初始化成功 → <html> 有 cursor-shuttle-ready；鼠标在 My Style 展开区范围内 → 再加 cursor-shuttle-active。
+   只有 active 时才隐藏系统鼠标，由脚本画的羽毛球代替；脚本没运行时上面的三张 PNG 规则照常生效。
+   :is(#_,*) 只为把优先级提到高于上面所有鼠标规则，不匹配任何额外元素。 */
+@media (hover:hover) and (pointer:fine){
+  html.cursor-shuttle-ready.cursor-shuttle-active:root:root:root,
+  html.cursor-shuttle-ready.cursor-shuttle-active:root:root:root :is(#_,*),
+  html.cursor-shuttle-ready.cursor-shuttle-active:root:root:root :is(#_,*)::before,
+  html.cursor-shuttle-ready.cursor-shuttle-active:root:root:root :is(#_,*)::after{cursor:none}
+}
+
+/* ===== [MS-COLLECT] My Style 气泡收集进度（独立代码块，开始） =====
+   进度行由 cursor-shuttle.js 末尾的 MS-COLLECT 代码块插入到 #ip-hero 内，绝对定位在标题与展开区之间的空隙里，不占位。
+   #ip-hero 带 scale，字号和偏移都除以 --ip-scale 抵消。 */
+.ip-hero > .ms-collect{
+  position:absolute;left:50%;top:calc(-25px / var(--ip-scale,1));transform:translateX(-50%);z-index:13;
+  margin:0;padding:0;border:0;background:none;white-space:nowrap;
+  font-family:var(--mono,ui-monospace,Menlo,Consolas,monospace);
+  font-size:calc(11px / var(--ip-scale,1));line-height:1.4;letter-spacing:.04em;
+  color:var(--muted,#8d877c);opacity:1;
+}
+.ip-hero:not(.is-open) > .ms-collect{display:none}
+.ip-hero > .ms-collect:disabled{color:var(--muted,#8d877c)}
+.ip-hero > .ms-collect.is-done{color:var(--accent,#c2452d);cursor:pointer}
+.ip-hero > .ms-collect.is-done:hover{text-decoration:underline;text-underline-offset:3px}
+.ip-hero > .ms-collect.is-done:focus-visible{outline:1.5px solid var(--accent,#c2452d);outline-offset:3px}
+.ip-hero .ip-bubble.ms-seen .ip-bubble-icon-core,
+.ip-hero .ip-bubble.ms-seen.open .ip-bubble-icon-core{
+  background:transparent;box-shadow:inset 0 0 0 1.5px var(--accent,#c2452d);
+}
+.about-cv .acv-connect{scroll-margin-top:16px}
+/* ===== [MS-COLLECT] 结束 ===== */
+
+/* ===== [MS-RALLY] 羽毛球气泡「对拍」计数小字（独立代码块，开始） =====
+   小字由 cursor-shuttle.js 的 MS-RALLY 代码块挂在 body 上，fixed 定位，不参与气泡排位，不拦截点击。 */
+.ms-rally{
+  position:fixed;left:0;top:0;z-index:81;pointer-events:none;user-select:none;white-space:nowrap;
+  font-family:var(--mono,ui-monospace,Menlo,Consolas,monospace);font-size:12px;line-height:1;font-weight:600;letter-spacing:.02em;
+  color:var(--accent,#c2452d);
+}
+/* ===== [MS-RALLY] 结束 ===== */

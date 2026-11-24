@@ -1,0 +1,164 @@
+/* ============================================================
+ * character.css — 角色装备面板视觉重做（对齐目标效果图）
+ * 层级（由下到上）：.char-bg 背景层 → 立绘层(.char-stage) →
+ *   名字/重量(.char-meta) → 装备槽/武器条（交互，最上）。
+ * 背景/立绘/剪影三层全部 pointer-events:none，不参与拖拽命中；
+ * 命中仍由 drag.js 对 [data-slot] / .eq-item / .ws-grab 做矩形判定。
+ * 只追加与覆盖视觉，不改 id/class 命名、格子尺寸与 83 格布局。
+ * ============================================================ */
+
+/* ---------- 最底层：整窗背景（固定铺满、cover、叠 --bg 0.6–0.72 遮罩） ----------
+ * 已从角色面板内提升为整个应用的最底层背景；不拦截指针、不占布局。 */
+.char-bg{
+  position:fixed;inset:0;z-index:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(16,22,24,.66) 0%, rgba(16,22,24,.62) 45%, rgba(16,22,24,.72) 100%),
+    url("assets/bg/thumbs/bg.png") center/cover no-repeat,
+    var(--bg);
+}
+/* app-shell 本身抬到背景之上（z-index 已在 layout.css 为 1，这里保证层叠顺序） */
+.app-shell{position:relative;z-index:1;}
+/* 角色面板不再单独画背景（背景已是整窗层） */
+.char-panel{position:relative;background:transparent;}
+.char-body{position:relative;isolation:isolate;background:transparent;}
+/* 原图 2715×1448/1.25MB 已由 make_bg_thumb.js 派生为 1600×853/888KB，原图未改 */
+
+/* 内容层在背景/立绘之上（立绘 z-index:1，交互内容 z-index:2） */
+.char-body .equip-top{position:relative;z-index:2;}
+.char-body .figure-col{position:relative;z-index:2;}
+.char-body .weapon-strip{position:relative;z-index:3;}
+
+/* ---------- 立绘层：高约为角色装备区 85%，水平居中，脚部在底部附近并渐隐 ----------
+ * .char-figure 保留原占位（名字位置不变），去边框/背景，作为定位锚点；
+ * .char-stage 相对 .char-body 绝对下沉，整体等比（人物+手持武器共用 955×1368 画布，不改对位数值）。 */
+.char-body .char-figure{
+  border:0;background:none;overflow:visible;
+}
+/* 角色装备内容容器：确定高度 + 裁切，禁止 auto/scroll 滚动与横向溢出（覆盖 layout.css 的 overflow-y:auto） */
+.char-body{position:relative;overflow:hidden;min-width:0;}
+
+.char-body .char-stage{
+  position:absolute;
+  left:0;right:110px;top:6%;height:120%;   /* 与右侧装备槽列间空白区等高，水平居中 */
+  display:flex;justify-content:center;align-items:flex-end;
+  overflow:hidden;margin:0;
+  z-index:1;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,#000 80%,rgba(0,0,0,.5) 92%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 80%,rgba(0,0,0,.5) 92%,transparent 100%);
+}
+/* 立绘：按高度定大小、宽度不超出空白区，底部对齐完整显示头到脚 */
+.char-body .char-stage .char-base{
+  position:static;
+  height:100%;width:auto;max-width:100%;
+  object-fit:contain;object-position:center bottom;
+}
+/* 手持武器：与立绘同画布等比缩放、同盒居中，appearance.js 对位数值不动 */
+.char-body .char-stage .char-weapon{
+  position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;
+  height:100%;width:auto;max-width:100%;
+  object-fit:contain;object-position:center bottom;
+}
+/* 不支持容器查询时回退为等比高度；覆盖并线补丁里的容器查询，避免双重定位/尺寸 */
+@supports (container-type:size){
+  .char-body .char-figure{container-type:normal;}
+}
+.char-body .char-layer{pointer-events:none;}
+
+/* ---------- 名字 / 重量：深色渐变托底，正文不小于 13px ---------- */
+.char-meta{z-index:3;border-radius:var(--radius);}
+.char-name{
+  font-size:20px;letter-spacing:3px;color:var(--text);
+  text-shadow:0 2px 8px rgba(0,0,0,.85);
+}
+.char-weight{
+  font-size:13px;color:var(--text);
+  text-shadow:0 1px 6px rgba(0,0,0,.9);
+}
+
+/* ---------- 装备槽：深色实线玻璃框（去虚线、去“头盔·空”文字） ---------- */
+.eq-cell{
+  background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(0,0,0,.22)), var(--cell);
+  border:1px solid var(--line);
+  padding:5px;overflow:hidden;
+}
+/* 空槽剪影：内联 SVG，用 color 单色化 + opacity≈40%；资源本身不改色。
+ * 仅空槽渲染（有装备时 JS 不输出剪影）；z-index 低于物品缩略图与名称条。 */
+.slot-sil{
+  display:block;width:62%;height:62%;
+  color:var(--text-dim);opacity:.4;
+  pointer-events:none;z-index:0;
+}
+.slot-sil svg{width:100%;height:100%;display:block;}
+.eq-cell .eq-sil{width:62%;height:62%;}
+
+/* 有装备：物品占满玻璃框，底部 12px 名称条；品质边框保留；z 高于空槽剪影 */
+.eq-cell .eq-item{
+  position:relative;z-index:1;
+  padding:0;border:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.22)), var(--cell);
+}
+.eq-cell .eq-item .eq-img{position:absolute;inset:2px;width:100%;height:100%;object-fit:contain;}
+.eq-item .eq-name-bar{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  display:block;padding:9px 2px 2px;
+  font-size:12px;line-height:1.1;text-align:center;color:var(--text);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  background:linear-gradient(180deg, rgba(8,14,16,0) 0%, rgba(8,14,16,.8) 55%, rgba(8,14,16,.92) 100%);
+  pointer-events:none;
+}
+/* 无图文字回退仍居中可读 */
+.eq-cell .eq-item:not(.has-img){
+  font-size:10px;line-height:1.2;text-align:center;padding:3px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ---------- 武器条：半透明玻璃（盖住延伸下来的立绘） ---------- */
+.weapon-strip{
+  position:relative;z-index:3;
+  background:color-mix(in srgb, var(--panel) 68%, transparent);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  border:1px solid var(--line);
+}
+/* 左图位：高度固定，宽度随武器占格比例（aspect-ratio 由 JS 内联）；不拦截指针 */
+.ws-icon{
+  flex:0 0 auto;height:56px;align-self:center;
+  display:flex;align-items:center;justify-content:center;pointer-events:none;
+}
+.ws-icon .ws-thumb{
+  flex:0 0 auto;height:100%;width:auto;max-width:96px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:rgba(0,0,0,.28);overflow:hidden;
+}
+/* 复用仓库格 cell-img：contain 等比填满图位，旋转与仓库一致 */
+.ws-icon .ws-thumb .cell-img{
+  width:100%;height:100%;object-fit:contain;
+  pointer-events:none;-webkit-user-drag:none;user-select:none;
+}
+.ws-icon .ws-sil{height:60%;width:auto;opacity:.4;}
+/* 空态：剪影在左图位，文字“主武器 · 空”在右文区 */
+.ws-empty{display:flex;align-items:center;gap:10px;min-height:40px;}
+.ws-empty .ws-empty-txt{font-size:13px;color:var(--text-dim);}
+
+/* 武器条可拖文本区：图位之外整条仍可抓，点击面积不减 */
+.ws-grab{gap:12px;}
+.ws-grab .ws-thumb{display:none;}   /* 图位已移到 .ws-icon，条内不再重复出图 */
+
+/* 武器条与立绘互不影响：立绘里的手持武器是独立 .char-weapon 层，此处只管装备缩略图 */
+/* 只旋转武器条左图位里的枪图；方向反了把 90deg 改成 -90deg */
+.ws-icon .ws-thumb {
+    position: relative;
+    container-type: size;
+}
+
+    .ws-icon .ws-thumb .cell-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100cqh;
+        height: 100cqw; /* 旋转后宽=图位高，高=图位宽 */
+        max-width: none;
+        transform: translate(-50%,-50%) rotate(0deg)scale(1.8);
+        object-fit: contain;
+       }

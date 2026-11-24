@@ -1,0 +1,152 @@
+{
+  "project": "changsha",
+  "assets": [
+    {
+      "file": "changsha_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "cover",
+      "sources": [
+        "49_p4.png"
+      ],
+      "bytes": 36936
+    },
+    {
+      "file": "changsha_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "49_p4.png"
+      ],
+      "bytes": 31140
+    },
+    {
+      "file": "changsha_card_02.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "13_p13.png"
+      ],
+      "bytes": 63892
+    },
+    {
+      "file": "changsha_card_03.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "25_p25.png"
+      ],
+      "bytes": 53004
+    },
+    {
+      "file": "changsha_card_04.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "78_p33.png"
+      ],
+      "bytes": 24746
+    },
+    {
+      "file": "changsha_card_05.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "51_p6.png"
+      ],
+      "bytes": 44456
+    },
+    {
+      "file": "changsha_card_06.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "55_p10.png",
+        "56_p11.png",
+        "57_p12.png",
+        "58_p13.png"
+      ],
+      "bytes": 100450
+    },
+    {
+      "file": "changsha_card_07.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "63_p18.png"
+      ],
+      "bytes": 68896
+    },
+    {
+      "file": "changsha_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "75_p30.png"
+      ],
+      "bytes": 110412
+    },
+    {
+      "file": "changsha_card_09.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "grid-top-bottom",
+      "sources": [
+        "71_p26.png",
+        "73_p28.png",
+        "74_p29.png"
+      ],
+      "bytes": 150096
+    },
+    {
+      "file": "changsha_card_10.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "69_p24.png"
+      ],
+      "bytes": 56146
+    },
+    {
+      "file": "changsha_card_11.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "contain",
+      "sources": [
+        "67_p22.png"
+      ],
+      "bytes": 195150
+    },
+    {
+      "file": "changsha_card_12.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "external-cover",
+      "sources": [
+        "https://aka.doubaocdn.com/l/jVIDqx86Mq"
+      ],
+      "bytes": 210242,
+      "source_page": "http://m.toutiao.com/group/7214117089383186983/"
+    }
+  ],
+  "video": {
+    "file": "changsha_hero.mp4",
+    "source": "D:\\作品集all\\videos\\video_1\\06_成片\\长沙文旅_图形变形_9s_v01_video_1.mp4",
+    "bytes": 10876274,
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "width": 2400,
+    "height": 1350,
+    "duration_seconds": 9.0,
+    "browser_check": "readyState 4；桌面与 390px 嵌入预览均可显示"
+  }
+}

@@ -1,0 +1,191 @@
+/* ============================================================
+ * market.css — 阶段2 交易行全屏视图样式
+ * 仅作用于 #marketView / #buyMask 作用域，不改动主界面任何现有规则。
+ * 颜色/圆角/字号全部复用 styles.css :root 变量，与阶段1风格统一。
+ * ============================================================ */
+
+.market-view{
+  position:fixed; inset:0; z-index:80;
+  background:var(--bg);
+  display:flex; flex-direction:column;
+  color:var(--text);
+  font-size:var(--fs-sm,13px);
+}
+
+/* 顶栏 */
+.mk-topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  height:56px; padding:0 20px;
+  background:var(--panel2);
+  border-bottom:1px solid var(--line);
+}
+.mk-topright{ display:flex; align-items:center; gap:14px; }
+.mk-topright .status-item{ color:var(--text-dim); font-size:var(--fs-xs,12px); }
+.mk-topright b{ color:var(--accent); margin-left:4px; }
+#closeMarket span{ margin-left:4px; color:var(--text-dim); }
+#closeMarket{ padding:5px 12px; }
+
+.mk-body{ flex:1; display:flex; min-height:0; }
+
+/* 左侧栏 */
+.mk-side{
+  width:208px; flex:none;
+  background:var(--panel);
+  border-right:1px solid var(--line);
+  padding:16px 12px;
+  display:flex; flex-direction:column; gap:8px;
+}
+.mk-tab{
+  text-align:left; padding:10px 12px;
+  background:transparent; border:1px solid transparent;
+  border-radius:var(--radius);
+  color:var(--text-dim); font-size:var(--fs-sm,13px); cursor:pointer;
+}
+.mk-tab:hover{ background:var(--cell-2); color:var(--text); }
+.mk-tab.on{
+  background:color-mix(in srgb,var(--accent) 14%,transparent);
+  border-color:var(--accent-dim);
+  color:var(--accent); font-weight:600;
+}
+.mk-overview{
+  margin-top:10px; padding:12px;
+  background:var(--cell); border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+}
+.mk-ov-h{
+  font-size:var(--fs-xs,12px); color:var(--text-dim);
+  letter-spacing:1px; margin-bottom:8px;
+}
+.mk-ov-row{
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:var(--fs-sm,13px); color:var(--text); padding:4px 0;
+}
+.mk-ov-row b{ color:var(--accent); }
+.mk-ov-empty{ font-size:var(--fs-xs,12px); padding-top:6px; }
+.mk-note{
+  margin-top:auto; font-size:11px; line-height:1.7;
+  color:var(--text-dim);
+}
+
+/* 主区 */
+.mk-main{ flex:1; min-width:0; display:flex; flex-direction:column; padding:16px 18px; gap:12px; }
+
+.mk-toolbar{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.mk-search{
+  flex:1; min-width:200px;
+  background:var(--cell); border:1px solid var(--line2);
+  border-radius:var(--radius); color:var(--text);
+  padding:8px 12px; font-size:var(--fs-sm,13px); outline:none;
+}
+.mk-search:focus{ border-color:var(--accent-dim); }
+.mk-cats{ display:flex; gap:6px; flex-wrap:wrap; }
+.mk-sort{
+  background:var(--cell); border:1px solid var(--line2);
+  border-radius:var(--radius); color:var(--text);
+  padding:8px 10px; font-size:var(--fs-sm,13px); outline:none;
+}
+
+/* 表格 */
+.mk-table{
+  flex:1; min-height:0;
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:var(--radius-lg); overflow:auto;
+}
+.mk-table table{ width:100%; border-collapse:collapse; }
+.mk-table thead th{
+  position:sticky; top:0; z-index:1;
+  background:var(--panel2);
+  font-size:var(--fs-xs,12px); font-weight:600; color:var(--text-dim);
+  text-align:left; padding:10px 14px;
+  border-bottom:1px solid var(--line); white-space:nowrap;
+}
+.mk-table th.r, .mk-table td.r{ text-align:right; font-variant-numeric:tabular-nums; }
+.mk-table tbody td{
+  padding:10px 14px; font-size:var(--fs-sm,13px);
+  border-bottom:1px solid var(--line-soft);
+  vertical-align:middle;
+}
+.mk-table tbody tr:hover{ background:var(--cell-2); }
+.mk-table tbody tr:last-child td{ border-bottom:none; }
+
+.mk-name{ display:flex; align-items:center; gap:9px; }
+.mk-ico{
+  width:40px; height:40px; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; background:var(--cell); border:1px solid var(--line);
+  border-radius:var(--radius-sm); overflow:hidden;
+}
+.mk-ico img{
+  width:100%; height:100%; object-fit:contain;
+  pointer-events:none; -webkit-user-drag:none; user-select:none;
+}
+.mk-nm{ color:var(--text); }
+.mk-nm small{ display:block; color:var(--text-dim); font-size:11px; }
+
+.mk-q{
+  display:inline-block; padding:1px 8px; font-size:11px;
+  border:1px solid var(--q-color,var(--line2)); color:var(--q-color,var(--text-dim));
+  border-radius:var(--radius-sm);
+}
+.q-white{ --q-color:var(--q-white); }
+.q-green{ --q-color:var(--q-green); }
+.q-blue { --q-color:var(--q-blue); }
+.q-purple{ --q-color:var(--q-purple); }
+.q-gold { --q-color:var(--q-gold); }
+
+.mk-cat-tag{ color:var(--text-dim); font-size:12px; }
+.mk-price{ color:var(--text); }
+.mk-value{ color:var(--text-dim); }
+.mk-stock{ color:var(--text-dim); }
+.mk-stock.zero{ color:var(--danger); }
+
+/* 买入按钮：禁用态写明原因（用 title + 灰字） */
+.mk-buy{
+  padding:6px 14px; font-size:12px;
+  border-radius:var(--radius); white-space:nowrap;
+}
+.mk-buy[disabled]{
+  background:var(--cell-2); color:var(--text-dim);
+  border:1px solid var(--line); cursor:not-allowed; opacity:.85;
+}
+
+/* 空结果 */
+.mk-empty{
+  padding:40px 0; text-align:center; color:var(--text-dim);
+  font-size:var(--fs-sm,13px);
+}
+
+/* 底部建议栏：仅客观信息（余额/空间/与回收价对比），不做推荐、不接 AI */
+.mk-advice{
+  flex:none;
+  background:var(--panel); border:1px solid var(--line);
+  border-left:3px solid var(--accent-dim);
+  border-radius:var(--radius-lg);
+  padding:10px 14px; font-size:var(--fs-xs,12px); line-height:1.8;
+  color:var(--text-dim); min-height:20px;
+}
+.mk-advice b{ color:var(--text); font-weight:600; }
+.mk-advice .ok{ color:var(--green); }
+.mk-advice .bad{ color:var(--danger); }
+
+/* 我的挂单状态 */
+.mk-status{
+  display:inline-block; padding:1px 8px; font-size:11px;
+  color:var(--warn); border:1px solid var(--warn);
+  border-radius:var(--radius-sm); white-space:nowrap;
+}
+
+/* 买入确认弹窗 */
+.buy-card{ width:440px; max-width:92vw; }
+.buy-body{ padding:6px 4px 12px; }
+.buy-line{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px 2px; font-size:var(--fs-sm,13px); color:var(--text);
+}
+.buy-line .dim{ color:var(--text-dim); }
+.buy-total{
+  border-top:1px solid var(--line); margin-top:6px; padding-top:10px;
+  font-size:var(--fs-md,15px);
+}
+.buy-total b{ color:var(--danger); font-size:var(--fs-h3,16px); }
+.buy-after{ color:var(--text-dim); font-size:var(--fs-xs,12px); }

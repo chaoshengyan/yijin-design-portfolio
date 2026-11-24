@@ -1,0 +1,57 @@
+{
+  "brief_snapshot": {
+    "path": "C:\\Users\\19379\\AppData\\Local\\DoubaoWork\\User Data\\Default\\.doubaowork\\agent_mode\\workspace\\.sessions\\38453213146702850\\agents\\m_0cwegM4ufwj\\张家湾_brief.md",
+    "version": "2026-11-22-v1",
+    "status": "frozen"
+  },
+  "assets": [
+    {
+      "asset_id": "zhangjiawan-hero-concept-v2",
+      "purpose": "张家湾项目静态首屏概念主视觉，替代视频",
+      "production_method": "image_edit",
+      "reference_inputs": [
+        "https://aka.doubaocdn.com/s/L489IU74Le",
+        "https://aka.doubaocdn.com/s/ULKnGTAcgt"
+      ],
+      "identity_source": "图1作为待编辑基线，保留ZDT、三角色构图、材质与光影；图2作为大智三视图身份母版，核对对话框头部、左侧尖角、黑色细环、五官与细长白腿。",
+      "prompt": "以图1为完整基线，只做一处局部修正：将大智深蓝色对话框头部右侧的尖角改为平滑圆角，右侧轮廓与头部其余边缘自然衔接；保持大智左侧对话框尖角、顶部黑色细环、两只小黑圆眼、深蓝色矩形头部和两条极细长白色腿不变。除这一处边缘圆角外，图1的ZDT连续螺旋雕塑、张小湾、大智、元元的位置与比例，背景展厅、地面、光影、材质、反射和左侧深色留白均不改动。画面保持恰好1座ZDT雕塑和3个卡通角色，不新增角色、文字、水印或伪Logo。",
+      "target": {
+        "ratio": "16:9",
+        "width": 1920,
+        "height": 1080,
+        "safe_area": "左侧约40%低细节深色空间；ZDT与三角色完整位于右侧和中右区域，四边保留5%安全边距"
+      },
+      "consumers": [
+        "index.html #zhangjiawan .cs-hero"
+      ],
+      "acceptance": [
+        "1920×1080且为16:9",
+        "ZDT连续螺旋形态和三角色身份可辨、完整无裁切",
+        "大智右侧为平滑圆角，左侧对话框尖角保留",
+        "无最终发布方案元素、无新增文字、无水印",
+        "左侧原生标题具有足够对比与净空",
+        "明确作为Concept Visual而非真实落地证据"
+      ],
+      "postprocess": [
+        "原始编辑结果2047×1152已保存为_hero_generated.png与_hero_generated_v2.jpeg",
+        "v1原始生成结果保留为_hero_generated_v1.png，v1首屏备份在会话目录zhangjiawan_hero_poster.v1-backup.webp",
+        "等比缩放为1920×1080并导出zhangjiawan_hero_poster.webp"
+      ],
+      "output": {
+        "uri": "https://aka.doubaocdn.com/s/sUVdPoxfEO",
+        "user_link": "https://aka.doubaocdn.com/s/8UTUjrPiSQ",
+        "version": "v2",
+        "width": 2047,
+        "height": 1152,
+        "alpha": false
+      },
+      "previous_version": {
+        "uri": "https://aka.doubaocdn.com/s/noMfvTMXXp",
+        "version": "v1",
+        "backup": "C:\\Users\\19379\\AppData\\Local\\DoubaoWork\\User Data\\Default\\.doubaowork\\agent_mode\\workspace\\.sessions\\38453213146702850\\agents\\m_0cwegM4ufwj\\zhangjiawan_hero_poster.v1-backup.webp"
+      },
+      "status": "ready"
+    }
+  ],
+  "unresolved_blockers": []
+}

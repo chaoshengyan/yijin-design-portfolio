@@ -1,0 +1,63 @@
+/* ============================================================
+ * guide.css — QM-01 新手引导（4 步）与入口可发现性增强
+ * 只新增样式；不改库存/交易/拖拽规则，不改目标元素 position/z-index。
+ * ============================================================ */
+
+/* 1. 助手入口：加常驻「QM-01 助手」文字（复用原点击逻辑；不动 position/z-index） */
+.assistant-trigger{
+  width:auto; min-width:52px; height:52px; border-radius:26px;
+  padding:0 14px 0 11px; gap:8px;
+}
+.assistant-trigger .assistant-trigger-label{
+  font-size:13px; font-weight:600; letter-spacing:.5px; white-space:nowrap;
+  color:inherit; pointer-events:none; user-select:none;
+}
+
+/* 2. 输入/发送/语音点击区尽量 ≥40×40（仅针对相应按钮，不全局改 .icon-btn） */
+.assistant-input #voiceBtn{ width:40px; height:40px; }
+.assistant-input .btn{ height:40px; }
+
+/* 3. 助手头部「使用指引」入口 */
+.assistant-head-actions{ display:flex; align-items:center; gap:2px; }
+.assistant-guide-entry{
+  background:none; border:1px solid transparent; color:var(--accent);
+  font-family:var(--font-sans); font-size:12px; line-height:1; cursor:pointer;
+  padding:6px 8px; border-radius:var(--radius); white-space:nowrap;
+}
+.assistant-guide-entry:hover{ border-color:var(--accent-dim); background:rgba(100,226,204,.08); }
+
+/* 4. 引导遮罩 / 高亮 / 卡片 */
+.qm-guide-overlay{
+  position:fixed; inset:0; z-index:9990;
+  background:rgba(7,11,13,.62); pointer-events:auto;
+}
+.qm-guide-ring{
+  position:fixed; z-index:9991; pointer-events:none;
+  border:2px solid var(--accent); border-radius:8px;
+  background:rgba(100,226,204,.07);
+  box-shadow:0 0 0 3px rgba(100,226,204,.22), 0 0 22px rgba(100,226,204,.4);
+}
+.qm-guide-card{
+  position:fixed; z-index:9992; width:300px; box-sizing:border-box;
+  background:var(--panel2); border:1px solid var(--accent-dim);
+  border-radius:var(--radius-lg); box-shadow:0 14px 44px rgba(0,0,0,.6);
+  padding:16px; color:var(--text); font-family:var(--font-sans);
+}
+.qm-guide-step{
+  font-size:11px; letter-spacing:2px; color:var(--accent); font-weight:600; margin-bottom:8px;
+}
+.qm-guide-text{ font-size:14px; line-height:1.65; color:var(--text); margin-bottom:14px; }
+.qm-guide-degrade{ font-size:12px; color:var(--text-dim); margin:-6px 0 12px; }
+.qm-guide-actions{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+.qm-guide-nav{ display:flex; gap:8px; }
+.qm-guide-btn{
+  background:var(--cell); border:1px solid var(--line); color:var(--text);
+  font-family:var(--font-sans); font-size:12.5px; line-height:1; cursor:pointer;
+  padding:9px 12px; border-radius:var(--radius); white-space:nowrap;
+}
+.qm-guide-btn:hover:not(:disabled){ border-color:var(--accent-dim); }
+.qm-guide-btn:disabled{ opacity:.4; cursor:default; }
+.qm-guide-btn.primary{ background:var(--accent); border-color:var(--accent); color:#101a1b; font-weight:600; }
+.qm-guide-btn.primary:hover:not(:disabled){ filter:brightness(1.06); }
+.qm-guide-skip{ background:none; border-color:transparent; color:var(--text-dim); padding-left:4px; padding-right:4px; }
+.qm-guide-skip:hover:not(:disabled){ color:var(--text); }

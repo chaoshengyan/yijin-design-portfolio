@@ -1,0 +1,457 @@
+{
+ "project": "pushaway",
+ "generated_imagery": false,
+ "sources": [
+  "D:/作品集all/Push Away and Dance/Push Away and Dance.pdf",
+  "D:/作品集all/Push Away and Dance/Push Away and Dance.mp4"
+ ],
+ "privacy": [
+  "原稿全部打码保留",
+  "Research 栏未打码人像未使用",
+  "INSPIRATION 聊天截图（含头像与昵称）未使用",
+  "页3 LINK 文字未使用",
+  "视频观众仅为背影剪影"
+ ],
+ "assets": [
+  {
+   "file": "pushaway_card_01.webp",
+   "title": "Inspiration",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      0,
+      0,
+      600,
+      330
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      600,
+      335,
+      1105,
+      567
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      0,
+      330,
+      600,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_02.webp",
+   "title": "Research",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1330,
+      45,
+      1640,
+      215
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1150,
+      320,
+      1340,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_03.webp",
+   "title": "Interview",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1350,
+      350,
+      1620,
+      530
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1680,
+      40,
+      2268,
+      250
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_04.webp",
+   "title": "Field Study",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      0,
+      0,
+      520,
+      567
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      530,
+      0,
+      1150,
+      320
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      540,
+      320,
+      1110,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_05.webp",
+   "title": "Inherent Image",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1640,
+      260,
+      2268,
+      567
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1530,
+      20,
+      1900,
+      260
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1530,
+      265,
+      1900,
+      510
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_06.webp",
+   "title": "Why Push",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1210,
+      80,
+      1410,
+      285
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1215,
+      290,
+      1410,
+      325
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1210,
+      330,
+      1430,
+      530
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_07.webp",
+   "title": "Spring & Bounce",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1430,
+      50,
+      1670,
+      320
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1455,
+      325,
+      1660,
+      485
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1460,
+      485,
+      1670,
+      525
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_08.webp",
+   "title": "Sensor & Code",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1690,
+      120,
+      1900,
+      240
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1925,
+      125,
+      2065,
+      265
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      2070,
+      100,
+      2260,
+      265
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1925,
+      390,
+      2150,
+      490
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_09.webp",
+   "title": "Materials",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      60,
+      40,
+      700,
+      250
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      700,
+      0,
+      1140,
+      200
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_10.webp",
+   "title": "Filming",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      330,
+      150,
+      700,
+      300
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      700,
+      120,
+      1140,
+      300
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_11.webp",
+   "title": "Animation Narrative",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      0,
+      290,
+      500,
+      470
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      830,
+      290,
+      990,
+      420
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      700,
+      430,
+      1000,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_card_12.webp",
+   "title": "Exhibition",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1130,
+      0,
+      1500,
+      567
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1900,
+      20,
+      2268,
+      260
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1900,
+      265,
+      2268,
+      510
+     ]
+    }
+   ]
+  },
+  {
+   "file": "pushaway_hero.mp4",
+   "operation": "trim-4s-16s-resize-1920x1080-no-audio",
+   "source": "Push Away and Dance.mp4",
+   "note": "现场观众仅为背影剪影，无可识别正脸"
+  },
+  {
+   "file": "pushaway_hero_poster.webp",
+   "operation": "video-frame-13.8s-resize",
+   "source": "Push Away and Dance.mp4"
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "project": "qm01",
+ "operation": "source-crop-and-recompose-only",
+ "generated_imagery": false,
+ "sources": [
+  "QM-01·战术后勤方案说明.pdf",
+  "QM01_项目报告与迭代Debug档案.html (headless Chrome render, element clips)",
+  "QM-01·战术后勤演示视频.mp4"
+ ],
+ "items": [
+  {
+   "file": "qm01_card_01.webp",
+   "title": "Two Pains",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    3,
+    3
+   ],
+   "fill": 0.73,
+   "scale": 0.78,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p2 page-fraction [0.106, 0.222, 0.354, 0.845] storyboard 1: loot does not fit",
+    "p2 page-fraction [0.356, 0.222, 0.65, 0.845] storyboard 2: team is waiting",
+    "p2 page-fraction [0.652, 0.222, 0.896, 0.845] storyboard 3: checking and selling one by one",
+    "p3 page-fraction [0.106, 0.222, 0.354, 0.845] storyboard 4: wants to leave cheap",
+    "p3 page-fraction [0.356, 0.222, 0.65, 0.845] storyboard 5: takes too long",
+    "p3 page-fraction [0.652, 0.222, 0.896, 0.845] storyboard 6: grabs anything"
+   ]
+  },
+  {
+   "file": "qm01_card_02.webp",
+   "title": "Goal to Execution",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "fill": 0.81,
+   "scale": 0.88,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p05_1_515x933.png px [0, 0, 515, 933] assistant entry with three quick commands (embedded original)",
+    "p05_0_1143x1074.png px [0, 0, 1143, 1074] sell plan list with confirm (embedded original)",
+    "p04_0_494x528.png px [0, 0, 494, 528] loadout result, undo (embedded original)",
+    "p05_2_719x526.png px [0, 0, 719, 526] model connection settings (embedded original)"
+   ]
+  },
+  {
+   "file": "qm01_card_03.webp",
+   "title": "Three Core Commands",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "fill": 0.86,
+   "scale": 0.92,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p04_1_480x525.png px [0, 0, 480, 525] sell blue items: 9 to market, 2 direct (embedded original)",
+    "p04_2_484x640.png px [0, 0, 484, 640] loadout around 100k (embedded original)",
+    "p08_6_731x500.png px [0, 150, 731, 440] ammo and armour repair into the safe container (embedded original)"
+   ]
+  },
+  {
+   "file": "qm01_card_04.webp",
+   "title": "Exception & Fault Tolerance",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "fill": 0.81,
+   "scale": 0.88,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p9 page-fraction [0.04, 0.213, 0.96, 0.913] nine exception types and the fault-tolerance rule",
+    "p08_4_501x311.png px [0, 0, 501, 250] nothing matches: says so, does not touch the stash (embedded original)",
+    "p04_3_502x645.png px [0, 0, 502, 630] sell green: carried items protected (embedded original)"
+   ]
+  },
+  {
+   "file": "qm01_card_05.webp",
+   "title": "Coding with an Agent",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "fill": 0.88,
+   "scale": 0.95,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "report clip evo.png px (0, 0, 4496, 1975) four stages of the prototype",
+    "p7 page-fraction [0.04, 0.665, 0.96, 0.84] development stage: AI Coding + prompt engineering",
+    "report clip arch.png px None intent / constraint / presentation layer"
+   ]
+  },
+  {
+   "file": "qm01_card_06.webp",
+   "title": "Debug: Language",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "fill": 0.81,
+   "scale": 0.88,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "report clip rec04.png px None purple vs purple-and-above",
+    "report clip rec06.png px None load ammo for the AKM only"
+   ]
+  },
+  {
+   "file": "qm01_card_07.webp",
+   "title": "Debug: Rules & Layout",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "fill": 0.81,
+   "scale": 0.88,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "report clip rec05.png px None items counted per cell instead of per piece",
+    "report clip rec07.png px None stash items in one line -> CSS Grid"
+   ]
+  },
+  {
+   "file": "qm01_card_08.webp",
+   "title": "Running Prototype",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "fill": 0.92,
+   "scale": 1.0,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p08_5_2397x1399.png px [0, 105, 2397, 1310] main screen: operator, containers, stash (embedded original)",
+    "p08_2_2533x1464.png px [0, 0, 2533, 900] market (embedded original)",
+    "demo video frame 150s, top 900px"
+   ]
+  },
+  {
+   "file": "qm01_hero.mp4",
+   "operation": "trim-40s-56s-scale-1920x1080-30fps-no-audio",
+   "source": "QM-01·战术后勤演示视频.mp4"
+  },
+  {
+   "file": "qm01_hero_poster.webp",
+   "operation": "video-frame-48s-same-treatment",
+   "source": "QM-01·战术后勤演示视频.mp4"
+  }
+ ]
+}

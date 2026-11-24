@@ -1,0 +1,227 @@
+{
+ "project": "selection",
+ "generated_imagery": false,
+ "sources": [
+  "Design speculative visual report.pdf",
+  "group2 video.mp4"
+ ],
+ "note": "Deck figures credited to group members or third parties are used as they appear in the original report.",
+ "assets": [
+  {
+   "file": "selection_card_01.webp",
+   "title": "Background & Problem",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P3 [95, 158, 992, 610] body text",
+    "P3 [1022, 152, 1815, 465] UN population chart",
+    "P3 [1455, 545, 1832, 872] South Korea birth rate chart"
+   ]
+  },
+  {
+   "file": "selection_card_02.webp",
+   "title": "Future Map",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P2 [490, 48, 1872, 1013] future map"
+   ]
+  },
+  {
+   "file": "selection_card_03.webp",
+   "title": "Culture Background",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P4 [800, 118, 1720, 630] Yongsan-gu map",
+    "P4 [144, 749, 595, 922] reasons for needing a baby",
+    "P4 [660, 749, 1215, 941] primary consumer demographic"
+   ]
+  },
+  {
+   "file": "selection_card_04.webp",
+   "title": "Embryo Screening Timeline",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P6 [65, 215, 1160, 930] embryonic development + fetal stages",
+    "P6 [605, 185, 1765, 940] detection timeline table"
+   ]
+  },
+  {
+   "file": "selection_card_05.webp",
+   "title": "Weak Signals",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P8 [408, 77, 1862, 1066] weak signal map"
+   ]
+  },
+  {
+   "file": "selection_card_06.webp",
+   "title": "Future Cone",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P9 [560, 77, 1910, 384] cone Now-2035-2050",
+    "P9 [19, 420, 1910, 930] timeline 2025-2048"
+   ]
+  },
+  {
+   "file": "selection_card_07.webp",
+   "title": "Future Wheel",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P12 [96, 28, 1762, 898] future wheel"
+   ]
+  },
+  {
+   "file": "selection_card_08.webp",
+   "title": "Scenario & Storyboard",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P13 [518, 210, 1872, 538] scenario 1",
+    "P14 [518, 701, 1872, 1032] scenario 6",
+    "P14 [557, 250, 1838, 586] scenario 4 + 5"
+   ]
+  },
+  {
+   "file": "selection_card_09.webp",
+   "title": "VR Prototype · Scenes",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P16 [876, 65, 1874, 557] HDR laboratory scene",
+    "P16 [590, 459, 854, 955] input action map",
+    "P16 [1325, 624, 1810, 936] UV mapping"
+   ]
+  },
+  {
+   "file": "selection_card_10.webp",
+   "title": "Rough Prototyping",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P15 [20, 630, 400, 900] cardboard headset",
+    "P15 [420, 585, 800, 915] Game Screener build"
+   ]
+  },
+  {
+   "file": "selection_card_11.webp",
+   "title": "Bug Fixes & Interaction",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "P18 [40, 278, 1115, 540] gaze interaction logic",
+    "P18 [1125, 480, 1905, 720] panel raycast fix",
+    "P18 [1040, 850, 1875, 1003] glass material",
+    "P19 [120, 240, 790, 450] environment level slider"
+   ]
+  },
+  {
+   "file": "selection_card_12.webp",
+   "title": "Final Build & Team",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "video 104.5s [0, 0, 960, 960] chamber feed",
+    "video 132.5s [300, 230, 660, 800] project team credits"
+   ]
+  },
+  {
+   "file": "selection_hero.mp4",
+   "operation": "trim-61.5s-75.5s-letterbox-1920x1080-30fps-gradient-no-audio",
+   "source": "group2 video.mp4"
+  },
+  {
+   "file": "selection_hero_poster.webp",
+   "operation": "video-frame-62s-letterbox-gradient",
+   "source": "group2 video.mp4"
+  }
+ ]
+}

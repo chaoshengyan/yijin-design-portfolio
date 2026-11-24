@@ -1,0 +1,226 @@
+{
+  "project": "shuyi",
+  "source_deck": "书亦IP仙蒂-20211207.pptx（31页提案原稿）",
+  "official_sources": [
+    "http://shuyisxc.com/m/view/index/id/196.html",
+    "https://shuyisxc.com/m/service/index/id/19.html",
+    "https://shuyisxc.com/m/view/index/id/200.html"
+  ],
+  "assets": [
+    {
+      "file": "shuyi_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "source-crop-and-recompose",
+      "sources": [
+        "P3"
+      ],
+      "bytes": 30270,
+      "generative": false,
+      "role": "本人IP角色仙蒂三维形象"
+    },
+    {
+      "file": "shuyi_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "concept-origin",
+      "sources": [
+        "P2",
+        "P3"
+      ],
+      "bytes": 58822,
+      "generative": false,
+      "role": "本人IP概念"
+    },
+    {
+      "file": "shuyi_card_02.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "character-profile-and-logo",
+      "sources": [
+        "P5",
+        "P4"
+      ],
+      "bytes": 71474,
+      "generative": false,
+      "role": "本人角色档案与提案版组合标"
+    },
+    {
+      "file": "shuyi_card_03.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "three-views-and-expressions",
+      "sources": [
+        "P6",
+        "P7"
+      ],
+      "bytes": 46632,
+      "generative": false,
+      "role": "本人三视图与表情延展"
+    },
+    {
+      "file": "shuyi_card_04.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "action-extension",
+      "sources": [
+        "P8",
+        "P13"
+      ],
+      "bytes": 58704,
+      "generative": false,
+      "role": "本人动作延展"
+    },
+    {
+      "file": "shuyi_card_05.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "costumes-and-themed-variants",
+      "sources": [
+        "P9",
+        "P18"
+      ],
+      "bytes": 77584,
+      "generative": false,
+      "role": "本人服装与主题变装"
+    },
+    {
+      "file": "shuyi_card_06.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "ingredient-family",
+      "sources": [
+        "P10",
+        "P11"
+      ],
+      "bytes": 41040,
+      "generative": false,
+      "role": "本人配料家族延展"
+    },
+    {
+      "file": "shuyi_card_07.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "theme-posters",
+      "sources": [
+        "P14",
+        "P12"
+      ],
+      "bytes": 107604,
+      "generative": false,
+      "role": "本人主题海报"
+    },
+    {
+      "file": "shuyi_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "3d-themed-scenes",
+      "sources": [
+        "P15",
+        "P16",
+        "P17"
+      ],
+      "bytes": 203634,
+      "generative": false,
+      "role": "本人三维主题场景"
+    },
+    {
+      "file": "shuyi_card_09.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "digital-touchpoints",
+      "sources": [
+        "P20",
+        "P23",
+        "P22"
+      ],
+      "bytes": 116104,
+      "generative": false,
+      "role": "本人数字触点延展"
+    },
+    {
+      "file": "shuyi_card_10.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "rabbit-ear-cup-lid-proposal",
+      "sources": [
+        "P24",
+        "P25",
+        "P26"
+      ],
+      "bytes": 74756,
+      "generative": false,
+      "role": "本人杯盖提案；最终红色杯盖不断言为本人设计"
+    },
+    {
+      "file": "shuyi_card_11.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "packaging-and-materials",
+      "sources": [
+        "P27",
+        "P28"
+      ],
+      "bytes": 89116,
+      "generative": false,
+      "role": "本人包装与物料延展"
+    },
+    {
+      "file": "shuyi_card_12.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "team-space-proposal",
+      "sources": [
+        "P29",
+        "P30",
+        "P31",
+        "P21"
+      ],
+      "bytes": 341554,
+      "generative": false,
+      "role": "东道团队空间提案；来源为原稿P29、P30、P31与P21"
+    },
+    {
+      "file": "shuyi_card_13.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "official-landed-stores",
+      "sources": [
+        "official_store_01.png",
+        "official_store_02.png",
+        "official_store_03.png"
+      ],
+      "bytes": 337688,
+      "generative": false,
+      "role": "项目落地实拍；绿色门店与新标志为东道团队成果",
+      "source_url": "http://shuyisxc.com/m/view/index/id/196.html"
+    },
+    {
+      "file": "shuyi_card_14.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "official-landed-merchandise",
+      "sources": [
+        "official_cup_lid.jpg",
+        "official_tote.jpg",
+        "official_keychain.jpg",
+        "official_doll.jpg",
+        "official_plush_bag.jpg",
+        "official_badge.jpg"
+      ],
+      "bytes": 228378,
+      "generative": false,
+      "role": "IP落地周边；兔耳杯盖为提案方向延续，周边不写成本人设计",
+      "source_url": "https://shuyisxc.com/m/service/index/id/19.html"
+    }
+  ],
+  "notes": [
+    "全部网页素材仅由原稿与书亦官网实拍图裁剪、缩放、拼贴；未使用生成式图片。",
+    "2022年书亦烧仙草品牌升级由东道品牌创意集团完成VI、SI与IP整体升级；本人负责其中IP仙蒂的角色设计与视觉延展。",
+    "新标志与绿色门店空间归东道团队，不写成本人设计。",
+    "官网IP展示页的季节主题图不在本人31页原稿内，按本人确认不展示。",
+    "兔耳杯盖写为提案方向在落地中延续，不断言最终杯盖由本人设计。",
+    "上线后的帆布包、钥匙扣、玩偶等周边仅作为IP落地结果，不写成本人设计。",
+    "原稿P1封面仅541x300，不用于展示。"
+  ]
+}

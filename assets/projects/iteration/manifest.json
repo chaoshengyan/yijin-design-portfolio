@@ -1,0 +1,455 @@
+{
+ "project": "iteration",
+ "generated_imagery": false,
+ "sources": [
+  "BEHIND THE ITERATION.pdf",
+  "QQ20261124-020410-HD.mp4"
+ ],
+ "excluded": [
+  "未来推演时间线网图未使用",
+  "If I were AGI 电影剧照未使用",
+  "VR/AR 背景拼贴网图未使用",
+  "页尾 LINK 文字未使用"
+ ],
+ "assets": [
+  {
+   "file": "iteration_card_01.webp",
+   "title": "Setting",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      428,
+      0,
+      1130,
+      488
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1135,
+      0,
+      1425,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_02.webp",
+   "title": "Question",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1435,
+      0,
+      1800,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_03.webp",
+   "title": "Design Concept",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1800,
+      330,
+      2268,
+      567
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      725,
+      355,
+      1125,
+      470
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      30,
+      110,
+      325,
+      190
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_04.webp",
+   "title": "Reciprocal Influence",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      540,
+      20,
+      1110,
+      330
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1170,
+      395,
+      1320,
+      567
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      30,
+      200,
+      170,
+      390
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_05.webp",
+   "title": "Mind Map & AGI System",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      0,
+      395,
+      1110,
+      567
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      20,
+      408,
+      305,
+      478
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      762,
+      438,
+      1105,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_06.webp",
+   "title": "Storyboard · Human",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      40,
+      103,
+      140,
+      152
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      140,
+      100,
+      430,
+      186
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      430,
+      100,
+      720,
+      186
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      720,
+      100,
+      1120,
+      186
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_07.webp",
+   "title": "Storyboard · AGI",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      40,
+      183,
+      140,
+      250
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      140,
+      180,
+      430,
+      266
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      430,
+      180,
+      720,
+      266
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      720,
+      180,
+      1120,
+      266
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_08.webp",
+   "title": "Modelling",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      2040,
+      140,
+      2268,
+      567
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      365,
+      340,
+      530,
+      545
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      525,
+      350,
+      730,
+      545
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      120,
+      265,
+      390,
+      365
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_09.webp",
+   "title": "Shooting & Effects",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      745,
+      340,
+      1110,
+      545
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1130,
+      75,
+      2268,
+      492
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_10.webp",
+   "title": "Film Reading",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 4,
+     "box_pdf_points": [
+      45,
+      90,
+      425,
+      370
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      45,
+      385,
+      425,
+      555
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_11.webp",
+   "title": "Screen & Gallery",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 4,
+     "box_pdf_points": [
+      470,
+      15,
+      770,
+      390
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      500,
+      385,
+      800,
+      560
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_card_12.webp",
+   "title": "Exhibition",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 4,
+     "box_pdf_points": [
+      1130,
+      65,
+      2268,
+      567
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      800,
+      110,
+      1110,
+      325
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      830,
+      380,
+      1110,
+      555
+     ]
+    }
+   ]
+  },
+  {
+   "file": "iteration_hero.mp4",
+   "operation": "trim-34s-48.5s-horizontal-flip-crop-1920x1080-30fps-gradient-no-audio",
+   "source": "QQ20261124-020410-HD.mp4"
+  },
+  {
+   "file": "iteration_hero_poster.webp",
+   "operation": "video-frame-46.18s-horizontal-flip-crop-gradient",
+   "source": "QQ20261124-020410-HD.mp4"
+  }
+ ]
+}

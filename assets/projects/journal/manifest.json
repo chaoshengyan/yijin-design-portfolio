@@ -1,0 +1,370 @@
+{
+ "project": "journal",
+ "generated_imagery": false,
+ "sources": [
+  "10_jOURnal deck pages p2-p13",
+  "Demo for 《jOURnal 》.mp4"
+ ],
+ "note": "Card 19 is a typeset process diagram. All other cards are crops of the deck or frames of the team demo video.",
+ "assets": [
+  {
+   "file": "journal_card_01.webp",
+   "title": "Background Research",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p2 [0.055, 0.17, 0.47, 0.455] second-hand research text",
+    "p2 [0.06, 0.49, 0.475, 0.685] Gallup + line chart",
+    "p2 [0.05, 0.69, 0.47, 0.93] retrieve memories flow"
+   ]
+  },
+  {
+   "file": "journal_card_02.webp",
+   "title": "Market Survey",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p2 [0.49, 0.11, 0.955, 0.685] note-taking app comparison"
+   ]
+  },
+  {
+   "file": "journal_card_03.webp",
+   "title": "Pain Points",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p2 [0.49, 0.54, 0.955, 0.685] disadvantages / best for",
+    "p2 [0.55, 0.695, 0.95, 0.76] conclusion",
+    "p2 [0.55, 0.785, 0.95, 0.945] pain point and limitations"
+   ]
+  },
+  {
+   "file": "journal_card_04.webp",
+   "title": "Why 3D",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p3 [0.325, 0.05, 0.965, 0.375] overview context",
+    "p3 [0.63, 0.48, 0.955, 0.825] people",
+    "p3 [0.025, 0.28, 0.285, 0.725] 2D / 3D table"
+   ]
+  },
+  {
+   "file": "journal_card_05.webp",
+   "title": "Idea Generation",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p4 [0.02, 0.04, 0.49, 0.92] medical problems column",
+    "p4 [0.51, 0.195, 0.96, 0.83] creativity column"
+   ]
+  },
+  {
+   "file": "journal_card_06.webp",
+   "title": "Interview",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p5 [0.01, 0.03, 0.52, 0.48] interview card",
+    "p5 [0.54, 0.03, 1.0, 0.29] respondent 1",
+    "p5 [0.54, 0.61, 1.0, 0.96] respondent 3"
+   ]
+  },
+  {
+   "file": "journal_card_07.webp",
+   "title": "Questionnaire",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p5 [0.03, 0.49, 0.375, 0.96] three pie charts",
+    "p5 [0.395, 0.52, 0.56, 0.97] questions"
+   ]
+  },
+  {
+   "file": "journal_card_08.webp",
+   "title": "Storyboard & Persona",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p7 [0.02, 0.035, 0.98, 0.49] persona + frames 1-2",
+    "p8 [0.0, 0.0, 1.0, 0.47] frames 6-7"
+   ]
+  },
+  {
+   "file": "journal_card_09.webp",
+   "title": "Solution",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p6 [0.035, 0.12, 0.4, 0.365] user acceptance",
+    "p6 [0.425, 0.07, 0.965, 0.51] 3D modelling and content generation",
+    "p6 [0.425, 0.67, 0.955, 0.96] community building"
+   ]
+  },
+  {
+   "file": "journal_card_10.webp",
+   "title": "Brand & Logo",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p9 [0.045, 0.05, 0.23, 0.47] logo",
+    "p9 [0.25, 0.1, 0.395, 0.47] logo rationale",
+    "p9 [0.03, 0.49, 0.23, 0.94] palette, grayscale, do",
+    "p9 [0.25, 0.64, 0.42, 0.94] supporting graphics"
+   ]
+  },
+  {
+   "file": "journal_card_11.webp",
+   "title": "Icon Set",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p9 [0.625, 0.065, 0.975, 0.64] 30 icons"
+   ]
+  },
+  {
+   "file": "journal_card_12.webp",
+   "title": "UI Workflow",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p11 [0.045, 0.15, 0.51, 0.965] collection + retrieve flow",
+    "p11 [0.54, 0.02, 0.975, 0.66] retrieve workflow diagram",
+    "p11 [0.5, 0.655, 0.98, 0.955] sharing and collaboration"
+   ]
+  },
+  {
+   "file": "journal_card_13.webp",
+   "title": "Interface Design",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p10 [0.035, 0.385, 0.61, 0.595] phone creation flow",
+    "p10 [0.04, 0.04, 0.505, 0.385] five modules",
+    "p10 [0.045, 0.6, 0.61, 0.95] visual application notes",
+    "p10 [0.69, 0.02, 1.0, 0.45] visual application mockups"
+   ]
+  },
+  {
+   "file": "journal_card_14.webp",
+   "title": "Prototype App",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p12 [0.105, 0.19, 0.32, 0.443] tablet mockups",
+    "p12 [0.37, 0.075, 0.955, 0.365] frames 1-8"
+   ]
+  },
+  {
+   "file": "journal_card_15.webp",
+   "title": "VR Development",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p13 [0.035, 0.59, 0.245, 0.94] development process",
+    "p13 [0.245, 0.55, 0.47, 1.0] headset photo"
+   ]
+  },
+  {
+   "file": "journal_card_16.webp",
+   "title": "Prototype VR",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    3
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p13 [0.415, 0.04, 0.73, 0.3] unity screenshot",
+    "p13 [0.75, 0.04, 0.965, 0.37] create history community + storage",
+    "p13 [0.75, 0.385, 0.965, 0.61] project card",
+    "p13 [0.475, 0.385, 0.73, 0.95] real-time photo",
+    "p13 [0.75, 0.63, 0.975, 0.965] memory wall"
+   ]
+  },
+  {
+   "file": "journal_card_17.webp",
+   "title": "AI-Generated Footage",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "video 10.5s beach",
+    "video 35.0s headset",
+    "video 70.5s beads",
+    "video 82.5s two friends"
+   ]
+  },
+  {
+   "file": "journal_card_18.webp",
+   "title": "AI Stylisation in Product",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p6 [0.035, 0.365, 0.4, 0.46] software development question",
+    "p6 [0.035, 0.49, 0.36, 0.625] architecture",
+    "p6 [0.035, 0.795, 0.4, 0.955] AI style and LLM"
+   ]
+  },
+  {
+   "file": "journal_card_20.webp",
+   "title": "Motion Compositing",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "video 94.0s VR memory wall",
+    "video 115.5s community panels",
+    "video 135.5s 3D model scan",
+    "video 153.5s comments"
+   ]
+  },
+  {
+   "file": "journal_card_19.webp",
+   "title": "AI Production Pipeline",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "typeset-diagram-from-author-stated-workflow",
+   "source": [
+    "author interview"
+   ]
+  },
+  {
+   "file": "journal_hero.mp4",
+   "operation": "trim-89.5s-105.5s-upscale-1920x1080-30fps-gradient-no-audio",
+   "source": "Demo for 《jOURnal 》.mp4"
+  },
+  {
+   "file": "journal_hero_poster.webp",
+   "operation": "video-frame-94s-upscaled-gradient",
+   "source": "Demo for 《jOURnal 》.mp4"
+  }
+ ]
+}

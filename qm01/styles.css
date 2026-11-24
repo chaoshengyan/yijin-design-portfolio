@@ -1,0 +1,147 @@
+/* ============================================================
+ * styles.css — QM-01 战术背包管家
+ * 本文件：配色变量 + 全局基础样式（深蓝黑 + 青色军事终端）
+ * 组件/三列布局样式后续分段追加到本文件。
+ * 色值依据 PDF《三幕高保真网页UI重构》第九节视觉规范。
+ * ============================================================ */
+
+:root{
+  /* —— 主色板（阶段1：向交易行基准 QM01_marketplace 色板靠拢） —— */
+  --bg:        #101618;   /* 页面底色（基准 #101618） */
+  --panel:     #151e21;   /* 面板底色（基准 --panel） */
+  --panel2:    #182225;   /* 次级面板/弹窗（基准 --panel2） */
+  --cell:      #121B1F;   /* 物品格填充：深于空格底(--panel2)，浅面板上呈“压暗方块” */
+  --cell-2:    #1d282c;   /* 物品格悬停/表头浅底 */
+  --line:      #293639;   /* 默认边框（基准 --line） */
+  --line-soft: #22323C;   /* 次级/内部分隔线 */
+  --line2:     #3a494c;   /* 高亮描边/控件边（基准 --line2） */
+  --accent:    #64e2cc;   /* 强调色：薄荷青（基准 #64e2cc） */
+  --accent-dim:#2f8f82;   /* 强调色暗态 */
+  --text:      #e9eeee;   /* 主文字（基准 --text） */
+  --text-dim:  #92a7ab;   /* 次级文字（基准 --sub） */
+  --sub:       #92a7ab;   /* 别名：交易行组件使用 */
+  --warn:      #d1b48a;   /* 风险提示（基准卡其 --warn） */
+  --danger:    #e07a6f;   /* 错误提示（基准 --danger） */
+
+  /* —— 状态色（补齐旧引用：conversation.css 的 --green/--red-bright） —— */
+  --success:   #6fbf8f;
+  --green:     #6fbf8f;   /* 兼容旧变量名，等同成功色 */
+  --red-bright:#e07a6f;   /* 兼容旧变量名，等同危险色 */
+
+  /* —— 品质色（仅用于物品边框/低强度底色；物品格品质体系保持不变） —— */
+  --q-white:  #AEB9C0;
+  --q-green:  #6FC47A;
+  --q-blue:   #5AA0E0;
+  --q-purple: #B07FE0;
+  --q-gold:   #E3C05A;
+  /* 交易行图标用的基准蓝/紫（与物品品质边区分，不影响网格） */
+  --blue:     #6a9abf;
+  --purple:   #a48ccb;
+
+  /* —— 层级与尺寸（阶段1补丁：三级圆角，统一引用，不写死像素） —— */
+  --radius-sm:2px;  /* 物品格/空格子 */
+  --radius:3px;     /* 按钮/标签/输入框/装备槽/武器条/徽标/浮卡 */
+  --radius-md:3px;  /* 兼容旧名，等同 --radius */
+  --radius-lg:4px;  /* 面板/容器框/弹窗/卡片 */
+  --top-h:64px;      /* 顶部导航高 */
+  --action-h:56px;   /* 底部操作栏高 */
+  --gap:12px;
+
+  /* —— 字号阶梯（向基准靠齐，仅新增变量，不改 14px 基准） —— */
+  --fs-xs:11px; --fs-sm:12px; --fs-md:14px; --fs-h3:16px;
+  --fs-h2:19px; --fs-h1:26px; --fs-title:30px;
+
+  --font-mono:"Consolas","SF Mono","Courier New",monospace;
+  --font-sans:"Noto Sans SC","Microsoft YaHei UI","Microsoft YaHei","PingFang SC",sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html,body{height:100%;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  font-size:14px;
+  line-height:1.5;
+  overflow:hidden;                 /* 由内部三列各自滚动 */
+  -webkit-font-smoothing:antialiased;
+}
+
+/* 页面氛围：顶部冷光 + 细网格 + 暗角，克制不抢内容 */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 480px at 18% -8%, rgba(100,226,204,.10), transparent 60%),
+    radial-gradient(720px 420px at 100% 0%, rgba(100,226,204,.06), transparent 55%);
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    repeating-linear-gradient(0deg, rgba(100,226,204,.022) 0 1px, transparent 1px 4px),
+    radial-gradient(ellipse at center, transparent 62%, rgba(0,0,0,.5));
+}
+
+/* —— 通用面板 —— */
+.panel{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  overflow:hidden; /* 圆角裁剪面板头/列表，不改尺寸与网格对齐 */
+  display:flex;flex-direction:column;
+  min-height:0;min-width:0;
+}
+.panel-h{
+  flex:0 0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:0 14px;height:42px;
+  background:linear-gradient(180deg, rgba(100,226,204,.06), transparent);
+  border-bottom:1px solid var(--line-soft);
+  font-size:13px;letter-spacing:1px;color:var(--accent);
+}
+.panel-h .hint{color:var(--text-dim);font-size:11px;letter-spacing:0;font-weight:normal;}
+.panel-b{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;}
+
+/* —— 文字工具 —— */
+.dim{color:var(--text-dim);}
+.accent{color:var(--accent);}
+.warn{color:var(--warn);}
+.danger{color:var(--danger);}
+.mono{font-family:var(--font-mono);}
+
+/* —— 按钮（阶段1：统一到交易行基准 .btn / .btn.primary） —— */
+.btn{
+  font-family:var(--font-sans);font-size:13px;letter-spacing:1px;
+  border:1px solid var(--line2);background:var(--panel2);color:#dde7e6;
+  padding:9px 16px;cursor:pointer;border-radius:var(--radius);font-weight:600;
+  transition:border-color .15s,background .15s,color .15s,filter .15s;
+}
+.btn:hover{border-color:var(--accent);}
+.btn.primary{border-color:var(--accent);color:#101a1b;background:var(--accent);}
+.btn.primary:hover{filter:brightness(1.08);background:var(--accent);}
+.btn.ghost{background:transparent;}
+.btn:disabled{opacity:.4;cursor:not-allowed;filter:none;}
+
+/* —— 标签 —— */
+.tag{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid var(--line);padding:3px 10px;font-size:11px;
+  color:var(--accent);border-radius:var(--radius);cursor:pointer;
+  white-space:nowrap;
+}
+.tag.off{color:var(--text-dim);}
+.tag .dot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+
+/* —— 滚动条 —— */
+.scroll{overflow-y:auto;}
+.scroll::-webkit-scrollbar{width:8px;height:8px;}
+.scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:var(--radius-sm);}
+.scroll::-webkit-scrollbar-thumb:hover{background:var(--accent-dim);}
+.scroll::-webkit-scrollbar-track{background:transparent;}
+
+/* —— 动效 —— */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+.fade-in{animation:fadeUp .2s ease both;}

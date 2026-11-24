@@ -1,0 +1,180 @@
+{
+ "project": "windvane",
+ "generated_imagery": false,
+ "sources": [
+  "13_WIND VANE deck pages p1-p3",
+  "WIND VANE.mp4"
+ ],
+ "note": "All cards are crops of the 3-page deck recomposed on the page's own blank paper (tiled) so the margin reads as paper. No AI declaration was found on the three pages. The \"FINAL DISTPLAY\" masthead (original typo, with a LINK label to an external video) is left out of the crops.",
+ "assets": [
+  {
+   "file": "windvane_card_01.webp",
+   "title": "Background",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    4
+   ],
+   "fill": 0.74,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p1 [0.16, 0.036, 0.497, 0.205] masthead",
+    "p1 [0.002, 0.038, 0.152, 0.975] cover",
+    "p1 [0.166, 0.245, 0.271, 0.95] inspiration column",
+    "p1 [0.283, 0.245, 0.383, 0.95] herd mentality column",
+    "p1 [0.398, 0.245, 0.49, 0.95] one-sided information column"
+   ]
+  },
+  {
+   "file": "windvane_card_02.webp",
+   "title": "Academic Research",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "fill": 0.84,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p1 [0.506, 0.232, 0.608, 0.955] echo chamber effect",
+    "p1 [0.626, 0.232, 0.78, 0.535] research on cyber violence",
+    "p1 [0.784, 0.232, 0.962, 0.552] violence types and charts"
+   ]
+  },
+  {
+   "file": "windvane_card_03.webp",
+   "title": "Cases of Escalation",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "fill": 0.96,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p1 [0.626, 0.638, 0.703, 0.975] Logan Paul",
+    "p1 [0.718, 0.638, 0.797, 0.972] Chen Caishi",
+    "p1 [0.814, 0.638, 0.892, 0.99] Tyler Clementi",
+    "p1 [0.909, 0.638, 0.988, 0.925] Duke Lacrosse case"
+   ]
+  },
+  {
+   "file": "windvane_card_04.webp",
+   "title": "Design Concept & Gameplay",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "fill": 0.83,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p2 [0.008, 0.248, 0.122, 0.308] design concept title",
+    "p2 [0.508, 0.228, 0.598, 0.35] gameplay description title",
+    "p2 [0.008, 0.33, 0.182, 0.96] design concept text",
+    "p2 [0.506, 0.362, 0.624, 0.952] gameplay description table"
+   ]
+  },
+  {
+   "file": "windvane_card_05.webp",
+   "title": "Game Flow & Wireframe",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "fill": 0.7,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p2 [0.634, 0.215, 0.716, 0.292] game flow title",
+    "p2 [0.78, 0.215, 0.875, 0.295] prototyping title",
+    "p2 [0.636, 0.3, 0.764, 0.897] game flow chart covered [(0.678, 0.79, 0.764, 0.897)]",
+    "p2 [0.78, 0.3, 0.977, 0.79] interface wireframe"
+   ]
+  },
+  {
+   "file": "windvane_card_06.webp",
+   "title": "Interface Design",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "fill": 0.79,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p2 [0.746, 0.828, 0.83, 0.985] select comments",
+    "p2 [0.843, 0.828, 0.905, 0.985] function UI design",
+    "p2 [0.917, 0.828, 0.98, 0.985] levels UI design"
+   ]
+  },
+  {
+   "file": "windvane_card_07.webp",
+   "title": "Making Process",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "fill": 0.8,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p3 [0.006, 0.392, 0.22, 0.935] five-direction comment collection",
+    "p3 [0.226, 0.333, 0.33, 0.968] Unity production process",
+    "p3 [0.341, 0.262, 0.49, 0.47] game controller scripts"
+   ]
+  },
+  {
+   "file": "windvane_card_08.webp",
+   "title": "Final Presentation",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    2
+   ],
+   "fill": 0.97,
+   "operation": "source-crop-and-recompose-only, page paper as margin",
+   "source": [
+    "p3 [0.51, 0.362, 0.836, 0.662] menu, rule and level 1-6 screenshots",
+    "p3 [0.51, 0.678, 0.836, 0.975] failure interface and level review screenshots",
+    "p3 [0.862, 0.333, 1.0, 0.697] using scenario, two phones in hand",
+    "p3 [0.862, 0.698, 1.0, 0.996] using scenario, phone in one hand"
+   ]
+  },
+  {
+   "file": "windvane_hero.mp4",
+   "operation": "trim-24.0s-40.0s-crop-phone-area-311x661-reframed-1920x1080-30fps-no-audio",
+   "source": "WIND VANE.mp4"
+  },
+  {
+   "file": "windvane_hero_poster.webp",
+   "operation": "video-frame-28.0s-same-treatment",
+   "source": "WIND VANE.mp4"
+  }
+ ]
+}

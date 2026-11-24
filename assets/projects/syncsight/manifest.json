@@ -1,0 +1,306 @@
+{
+ "project": "syncsight",
+ "generated_imagery": false,
+ "sources": [
+  "12_SyncSight deck pages p2-p24",
+  "Demo for 《SyncSight》.mp4"
+ ],
+ "note": "All cards are crops of the deck recomposed on a dark canvas. The AI-generated footnotes on p10, p15 and p22 lie outside the crop boxes. The scope note above the personas (p10) is covered with the surrounding page colour.",
+ "assets": [
+  {
+   "file": "syncsight_card_01.webp",
+   "title": "Introduction",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p2 [0.06, 0.05, 0.43, 0.49] title and project description",
+    "p2 [0.495, 0.085, 0.895, 0.455] strabismus diagrams and eye-tracking flow",
+    "p2 [0.06, 0.52, 0.95, 0.86] scope statement and binocular field diagram"
+   ]
+  },
+  {
+   "file": "syncsight_card_02.webp",
+   "title": "Market Survey",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p3 [0.06, 0.135, 0.6, 0.755] AmblyoPlay how it works",
+    "p4 [0.055, 0.205, 0.64, 0.825] Beat Saber banner and gameplay",
+    "p3 [0.645, 0.09, 0.985, 0.77] AmblyoPlay SWOT",
+    "p4 [0.645, 0.085, 0.985, 0.84] Beat Saber SWOT"
+   ]
+  },
+  {
+   "file": "syncsight_card_03.webp",
+   "title": "Pre-test Duration Test",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p6 [0.06, 0.255, 0.29, 0.825] enter judgement and end condition screenshots",
+    "p6 [0.6, 0.595, 0.945, 0.965] duration chart",
+    "p5 [0.235, 0.315, 0.94, 0.935] pre-test visual script"
+   ]
+  },
+  {
+   "file": "syncsight_card_04.webp",
+   "title": "Research",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p7 [0.06, 0.21, 0.345, 0.85] support mechanism text",
+    "p7 [0.37, 0.2, 0.955, 0.85] traditional training to music game conversion",
+    "p8 [0.06, 0.21, 0.6, 0.82] why music gamification text",
+    "p8 [0.585, 0.2, 0.955, 0.82] training design principles"
+   ]
+  },
+  {
+   "file": "syncsight_card_05.webp",
+   "title": "Mind Mapping",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p9 [0.02, 0.04, 0.975, 0.95] mind map"
+   ]
+  },
+  {
+   "file": "syncsight_card_06.webp",
+   "title": "Personas",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p10 [0.02, 0.09, 0.49, 0.935] Dr. Leo Wang note-covered",
+    "p10 [0.515, 0.09, 0.975, 0.935] Elena Novak note-covered"
+   ]
+  },
+  {
+   "file": "syncsight_card_07.webp",
+   "title": "Wireframe",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p11 [0.03, 0.255, 0.5, 0.85] profile setup and calibration screens",
+    "p11 [0.49, 0.255, 0.975, 0.85] training and session archive screens"
+   ]
+  },
+  {
+   "file": "syncsight_card_08.webp",
+   "title": "Training Workflow",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p12 [0.03, 0.215, 0.945, 0.805] workflow icons"
+   ]
+  },
+  {
+   "file": "syncsight_card_09.webp",
+   "title": "User Journey Map",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p13 [0.03, 0.265, 0.94, 0.92] journey map table"
+   ]
+  },
+  {
+   "file": "syncsight_card_10.webp",
+   "title": "Use Case Diagram",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p14 [0.27, 0.215, 0.95, 0.95] use case diagram"
+   ]
+  },
+  {
+   "file": "syncsight_card_11.webp",
+   "title": "Storyboard",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p15 [0.03, 0.19, 0.31, 0.57] frame 1",
+    "p15 [0.315, 0.19, 0.59, 0.57] frame 2",
+    "p15 [0.59, 0.19, 0.89, 0.57] frame 3",
+    "p15 [0.07, 0.575, 0.35, 0.93] frame 4",
+    "p15 [0.35, 0.575, 0.63, 0.93] frame 5",
+    "p15 [0.63, 0.575, 0.92, 0.93] frame 6"
+   ]
+  },
+  {
+   "file": "syncsight_card_12.webp",
+   "title": "Hi-fi Prototype",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p16 [0.0, 0.14, 1.0, 0.57] welcome, who is training, calibration screens",
+    "p16 [0.0, 0.56, 1.0, 1.0] session, training, baseline, summary screens"
+   ]
+  },
+  {
+   "file": "syncsight_card_13.webp",
+   "title": "Use Case Test",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p17 [0.02, 0.24, 0.49, 0.56] test header",
+    "p17 [0.54, 0.295, 0.985, 0.775] test steps",
+    "p17 [0.02, 0.58, 0.49, 0.84] step results table"
+   ]
+  },
+  {
+   "file": "syncsight_card_14.webp",
+   "title": "Development",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p18 [0.5, 0.135, 0.98, 0.955] object hierarchy and module labels",
+    "p20 [0.26, 0.185, 0.975, 0.875] calibration visual script",
+    "p21 [0.03, 0.475, 0.515, 0.9] music training visual script, hit detection",
+    "p21 [0.505, 0.475, 0.99, 0.9] music training visual script, rhythm targets"
+   ]
+  },
+  {
+   "file": "syncsight_card_15.webp",
+   "title": "Rendering",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p23 [0.555, 0.435, 0.945, 0.825] URP shader",
+    "p23 [0.06, 0.49, 0.49, 0.865] HDR images",
+    "p19 [0.03, 0.235, 0.33, 0.84] binocular display solution text",
+    "p19 [0.335, 0.235, 0.955, 0.84] challenges, decisions and responses"
+   ]
+  },
+  {
+   "file": "syncsight_card_16.webp",
+   "title": "Logo & UI Design",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p24 [0.03, 0.17, 0.62, 0.705] lenses and overlap logo construction",
+    "p24 [0.635, 0.17, 0.955, 0.705] icon set",
+    "p24 [0.03, 0.74, 0.96, 0.905] logo and type rationale"
+   ]
+  },
+  {
+   "file": "syncsight_hero.mp4",
+   "operation": "trim-42.0s-58.0s-full-frame-1920x1080-30fps-left-gradient-no-audio",
+   "source": "Demo for 《SyncSight》.mp4"
+  },
+  {
+   "file": "syncsight_hero_poster.webp",
+   "operation": "video-frame-52.0s-same-treatment",
+   "source": "Demo for 《SyncSight》.mp4"
+  }
+ ],
+ "covered": [
+  "p10 [0.4, 0.135, 0.49, 0.205]",
+  "p10 [0.515, 0.135, 0.975, 0.205]"
+ ]
+}

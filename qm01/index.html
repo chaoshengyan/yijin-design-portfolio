@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QM-01·战术后勤</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="grid.css">
+<link rel="stylesheet" href="conversation.css">
+<link rel="stylesheet" href="market.css">
+<link rel="stylesheet" href="character.css">
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<!-- 整窗最底层背景：固定铺满、cover、叠 --bg 半透明遮罩；纯装饰不拦截指针 -->
+<div class="app-bg" id="charBg" aria-hidden="true"></div>
+<div class="preview-badge" id="previewBadge" style="display:none;"></div>
+<div class="app-shell">
+
+  <!-- ================= 顶部导航（仅战前准备 + 交易行覆盖层入口；无局内/结算场景入口） ================= -->
+  <header class="global-header">
+    <div class="brand">
+      <span class="brand-mark">QM-01</span>
+      <span class="brand-sub">战术后勤<small>QUARTERMASTER</small></span>
+    </div>
+    <nav class="phase-nav single" id="phaseNav">
+      <button class="scene-btn on" data-scene="pre"><i>01</i>战前准备</button>
+      <button class="scene-btn market-entry" id="openMarket"><i>◆</i>交易行</button>
+    </nav>
+    <div class="phase-status">
+      <span class="status-item">装备价值 <b class="accent mono" id="gearVal">0</b></span>
+      <span class="status-item">L币 <b class="mono" id="moneyVal">128,400</b></span>
+      <button class="status-item" id="sfxToggle" type="button" title="音效开关">音效：开</button>
+      <span class="tag off" id="aiTag"><span class="dot"></span>AI 本地模式</span>
+    </div>
+  </header>
+
+  <!-- ================= 三列工作区 ================= -->
+  <main class="phase-workspace">
+
+    <!-- 左：角色 / 装备 -->
+    <section class="panel char-panel" id="charPanel">
+      <div class="panel-h">角色装备<span class="hint">影 · 扫荡者</span></div>
+      <div class="panel-b char-body">
+        <div class="equip-top" id="charRow">
+          <!-- 左：人物立绘 + 名称/负重 -->
+          <div class="figure-col">
+            <div class="char-figure" id="charFigure">
+              <div class="char-stage" id="charStage" data-weapon-key="" aria-hidden="true">
+                <img class="char-layer char-base" id="charBase"
+                     src="assets/character/operator_ying_base.png" alt="干员立绘" draggable="false">
+                <img class="char-layer char-weapon" id="charWeapon" alt="" draggable="false">
+              </div>
+            </div>
+            <div class="char-meta"><div class="char-name">扫荡者影</div><div class="char-weight mono" id="charWeight">0.0 / 88 千克</div></div>
+          </div>
+          <!-- 右：竖排五槽（头盔/甲/胸挂/背包/近战），每槽=2×2格 -->
+          <div class="equip-col">
+            <div class="equip-slot" data-slot="helmet"><div class="eq-cell" id="eq-helmet"></div><span class="eq-label">头盔</span></div>
+            <div class="equip-slot" data-slot="armor"><div class="eq-cell" id="eq-armor"></div><span class="eq-label">胸甲</span></div>
+            <div class="equip-slot" data-slot="rig"><div class="eq-cell" id="eq-rig"></div><span class="eq-label">胸挂</span></div>
+            <div class="equip-slot" data-slot="bag"><div class="eq-cell" id="eq-bag"></div><span class="eq-label">背包</span></div>
+            <div class="equip-slot" data-slot="melee"><div class="eq-cell" id="eq-melee"></div><span class="eq-label">近战</span></div>
+          </div>
+        </div>
+        <!-- 下：主/副武器横向长条，左图右文，铺满面板 -->
+        <div class="weapon-strip" data-slot="primary">
+          <div class="ws-icon" id="wph-primary" aria-hidden="true"></div>
+          <div class="ws-info" id="eq-primary"></div>
+        </div>
+        <div class="weapon-strip" data-slot="secondary">
+          <div class="ws-icon" id="wph-secondary" aria-hidden="true"></div>
+          <div class="ws-info" id="eq-secondary"></div>
+        </div>
+        <div class="char-vitals" id="charVitals" style="display:none;"><span>生命 <b class="danger">62</b></span><span>弹药 24/90</span></div>
+      </div>
+    </section>
+
+    <!-- 中：携带物资 -->
+    <section class="panel carry-panel" id="carryPanel">
+      <div class="panel-h"><span id="sceneTitle">战前准备</span><span class="hint" id="gridLabel">携带容器</span></div>
+      <div class="panel-b carry-body">
+        <div class="summary-bar">
+          <span class="summary-label">装备价值 / 负重</span>
+          <span class="summary-val mono accent" id="carrySummary">—</span>
+        </div>
+        <div class="container-list scroll">
+          <div class="container-section" id="rigSection">
+            <div class="container-h"><span id="rigName">胸挂</span> <span class="dim" id="rigCount">0/8</span></div>
+            <div class="container-grid g-rig" id="rigGrid"></div>
+            <div class="container-lock" id="rigLock">未装备胸挂，请将胸挂拖到此处</div>
+          </div>
+          <div class="container-section">
+            <div class="container-h">口袋 <span class="dim" id="pocketsCount">0/5</span></div>
+            <div class="container-grid g-pockets" id="pocketsGrid"></div>
+          </div>
+          <div class="container-section" id="backpackSection">
+            <div class="container-h"><span id="backpackName">背包</span> <span class="dim" id="backpackCount">0/20</span></div>
+            <div class="container-grid g-backpack" id="backpackGrid"></div>
+            <div class="container-lock" id="backpackLock">未装备背包，请将背包拖到背包栏</div>
+          </div>
+        </div>
+        <div class="bag-view" id="bagView" style="display:none;"></div>
+        <!-- 安全箱：位置不变 -->
+        <div class="secure-case" id="safeBoxWrap">
+          <div class="container-h secure-h">
+            <span>安全箱<small class="dim">（带入局 · 死亡不掉落）</small></span>
+            <span class="mono accent" id="safeCount">0/6</span>
+          </div>
+          <div class="secure-grid g-safe" id="safeGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 右：12×12 仓库 -->
+    <section class="panel context-panel" id="contextPanel">
+      <div class="panel-h"><span id="contextTitle">仓库</span><span class="hint" id="contextHint">12 × 12</span></div>
+      <div class="category-rail" id="categoryRail">
+        <button class="cat-btn on" data-cat="all">全部</button>
+        <button class="cat-btn" data-cat="weapon">武器</button>
+        <button class="cat-btn" data-cat="gear">装备</button>
+        <button class="cat-btn" data-cat="ammo">弹药</button>
+        <button class="cat-btn" data-cat="med">医疗</button>
+        <button class="cat-btn" data-cat="mat">材料</button>
+      </div>
+      <div class="context-body scroll">
+        <div class="item-grid g-stash" id="grid"></div>
+        <div class="grid-legend" id="gridLegend">
+          <span><i class="q-dot q-white"></i>白</span>
+          <span><i class="q-dot q-green"></i>绿</span>
+          <span><i class="q-dot q-blue"></i>蓝</span>
+          <span><i class="q-dot q-purple"></i>紫</span>
+          <span><i class="q-dot q-gold"></i>金</span>
+          <span class="dim">角标=数量</span>
+        </div>
+      </div>
+      <div class="loot-view" id="inRaidView" style="display:none;">
+        <div class="loot-title">物资箱</div>
+        <div class="loot-grid" id="lootGrid"></div>
+        <div class="loot-empty dim" id="lootEmpty">当前无可搜刮对象</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= 底部操作栏 ================= -->
+  <footer class="phase-action-bar">
+    <div class="action-hints dim">
+      <span><kbd>Esc</kbd> 关闭助手</span>
+    </div>
+    <div class="action-main">
+      <button class="btn ghost" id="transferAll" style="display:none;">转移全部</button>
+      <button class="btn primary" id="phasePrimary">开始行动</button>
+    </div>
+  </footer>
+</div>
+
+<!-- ================= 阶段2：交易行全屏视图（覆盖层，不重建主界面状态） ================= -->
+<div class="market-view" id="marketView" style="display:none;">
+  <header class="mk-topbar">
+    <div class="brand">
+      <span class="brand-mark">QM-01</span>
+      <span class="brand-sub">交易行<small>MARKETPLACE</small></span>
+    </div>
+    <div class="mk-topright">
+      <span class="status-item">L币 <b class="mono" id="mkMoney">0</b></span>
+      <button class="btn ghost" id="closeMarket">返回<span id="mkBackScene">战前准备</span></button>
+    </div>
+  </header>
+
+  <div class="mk-body">
+    <!-- 左侧栏：购买物品 / 我的挂单 + 市场概况（出售挂售、交易记录、待领取收益按要求不放入口） -->
+    <aside class="mk-side">
+      <button class="mk-tab on" data-mktab="buy">购买物品</button>
+      <button class="mk-tab" data-mktab="mine">我的挂单</button>
+      <div class="mk-overview">
+        <div class="mk-ov-h">市场概况</div>
+        <div class="mk-ov-row"><span>我的挂单</span><b class="mono" id="mkListCount">0/8</b></div>
+        <div class="mk-ov-row"><span>挂单预计净收益</span><b class="mono" id="mkListNet">0</b></div>
+        <div class="mk-ov-empty dim" id="mkListEmpty" style="display:none;">暂无挂单</div>
+      </div>
+      <div class="mk-note dim">原型演示·非真实交易<br>所有价格、库存与费率均为演示数据</div>
+    </aside>
+
+    <!-- 购买物品 -->
+    <section class="mk-main" id="mkBuyPane">
+      <div class="mk-toolbar">
+        <input class="mk-search" id="mkSearch" type="text" placeholder="搜索物品名…" autocomplete="off">
+        <div class="mk-cats" id="mkCats">
+          <button class="cat-btn on" data-mkcat="all">全部</button>
+          <button class="cat-btn" data-mkcat="weapon">武器</button>
+          <button class="cat-btn" data-mkcat="gear">防具</button>
+          <button class="cat-btn" data-mkcat="ammo">弹药</button>
+          <button class="cat-btn" data-mkcat="med">医疗</button>
+          <button class="cat-btn" data-mkcat="mat">材料</button>
+        </div>
+        <select class="mk-sort" id="mkSort">
+          <option value="">默认排序</option>
+          <option value="price-asc">价格从低到高</option>
+          <option value="price-desc">价格从高到低</option>
+        </select>
+      </div>
+      <div class="mk-table scroll">
+        <table>
+          <thead><tr>
+            <th>物品</th><th>分类</th><th>品质</th><th>占格</th>
+            <th class="r">商人回收</th><th class="r">交易行价</th><th>库存</th><th></th>
+          </tr></thead>
+          <tbody id="mkTbody"></tbody>
+        </table>
+      </div>
+      <div class="mk-advice" id="mkAdvice"></div>
+    </section>
+
+    <!-- 我的挂单 -->
+    <section class="mk-main" id="mkMinePane" style="display:none;">
+      <div class="mk-table scroll">
+        <table>
+          <thead><tr>
+            <th>物品</th><th>数量</th><th class="r">每堆价格</th>
+            <th class="r">每堆手续费</th><th class="r">预计净收益</th><th>状态</th>
+          </tr></thead>
+          <tbody id="mkMineBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- 买入确认弹窗（不可撤销，清除此前撤销记录） -->
+<div class="modal-mask" id="buyMask">
+  <div class="modal-card buy-card">
+    <div class="modal-h">确认买入<small>CONFIRM BUY · 不可撤销</small></div>
+    <div class="buy-body" id="buyBody"></div>
+    <div class="sell-warn"><b>确认后买入不可撤销，并清除此前操作的撤销记录。</b><br>挂单为模拟数据，买入物品将放入当前场景仓库。</div>
+    <div class="modal-row">
+      <button class="btn ghost" id="buyCancel">取消</button>
+      <button class="btn primary" id="buyConfirm">确认买入</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 出战摘要弹窗 ================= -->
+<div class="modal-mask" id="deployMask">
+  <div class="modal-card deploy-card">
+    <div class="modal-h">出战摘要<small>DEPLOY BRIEFING</small></div>
+    <div class="deploy-body">
+      <div class="deploy-row"><span>装备总价值</span><b class="accent mono" id="deployGearVal">0</b></div>
+      <div class="deploy-row"><span>携带L币</span><b class="mono" id="deployMoney">0</b></div>
+      <div class="deploy-sub">安全箱内容（死亡不掉落）</div>
+      <div class="deploy-safe scroll" id="deploySafeList"><span class="dim">安全箱为空</span></div>
+    </div>
+    <div class="modal-row">
+      <button class="btn ghost" id="deployCancel">返回整理</button>
+      <button class="btn primary" id="deployGo">确认出战</button>
+    </div>
+  </div>
+</div>
+
+<!-- 指令C-1：仓库内蓝色物品出售确认（独立居中弹窗；直接出售与挂交易行均不可撤销） -->
+<div class="modal-mask" id="sellMask">
+  <div class="modal-card sell-card">
+    <div class="modal-h">出售仓库内蓝色物品<small>SELL BLUE · 不可撤销</small></div>
+    <div class="sell-scope dim">范围：仅「仓库」内蓝色物品（白/绿/紫/金、装备栏与口袋/胸挂/背包/安全箱均不出售）。每堆整堆出售，不拆分。</div>
+    <div class="sell-table scroll" id="sellTable"><!-- 表头与勾选行由 app.js 渲染 --></div>
+    <div class="sell-sum" id="sellSummary"></div>
+    <div class="sell-warn">确认后，直接出售与挂交易行均<b>不可撤销</b>，请核对勾选物品。挂单预计收益不代表已到账。<br><b>本次出售也会清除此前操作的撤销记录。</b></div>
+    <div class="modal-row">
+      <button class="btn ghost" id="sellCancel">取消</button>
+      <button class="btn primary" id="sellConfirm">确认出售</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 撤销提示（仅 AI 指令） ================= -->
+<div class="undo-toast" id="undoToast">
+  <span id="undoText">已完成</span>
+  <button class="undo-btn" id="undoBtn">撤销</button>
+</div>
+
+<!-- ================= AI 浮层 ================= -->
+<div class="assistant-layer" id="assistantLayer">
+  <button class="assistant-trigger" id="aiTrigger" title="QM-01·战术后勤" aria-label="打开助手">
+    <span class="mic-ico"><img src="assets/UI%20icon/mic-ico.png" alt="" draggable="false"></span>
+    <span class="assistant-trigger-label">QM-01 助手</span>
+    <span class="wave"></span>
+  </button>
+  <aside class="assistant-panel" id="aiPanel" style="display:none;">
+    <div class="assistant-head">
+      <span>QM-01·<b id="assistantStage">战术后勤</b></span>
+      <div class="assistant-head-actions">
+        <button class="assistant-guide-entry" id="guideEntry" type="button">使用指引</button>
+        <button class="assistant-close" id="aiClose" title="最小化" aria-label="最小化">—</button>
+      </div>
+    </div>
+    <div class="quick-actions">
+      <div class="qa-label" id="scriptLab">快捷指令</div>
+      <div class="qa-list scroll" id="scriptBox"></div>
+    </div>
+    <div class="assistant-feedback scroll" id="chat"></div>
+    <div class="preview-bar" id="previewBar">
+      <div class="pv-title" id="pvTitle">操作预览（不可逆操作 · 请确认）</div>
+      <div class="pv-list" id="pvList"></div>
+      <div class="pv-row">
+        <button class="btn primary" id="pvConfirm">确认执行</button>
+        <button class="btn ghost" id="pvCancel">取消</button>
+      </div>
+    </div>
+    <div class="assistant-input">
+      <button class="icon-btn" id="voiceBtn" title="语音（结果进输入框）"><span class="ui-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/></svg></span></button>
+      <input id="cmdInput" type="text" placeholder="对 QM-01 说：把高价值物品放进安全箱…" autocomplete="off">
+      <button class="btn primary" id="sendBtn">发送</button>
+    </div>
+  </aside>
+</div>
+
+<!-- 配置弹窗（保留，旧脚本依赖） -->
+<div class="modal-mask" id="cfgMask">
+  <div class="modal-card cfg-card">
+    <div class="modal-h">AI 接入设置</div>
+    <label class="cfg-row">API Base URL<input id="cfgBase" type="text" placeholder="https://ark.cn-beijing.volces.com/api/v3"></label>
+    <label class="cfg-row">API Key<input id="cfgKey" type="password" placeholder="sk-..."></label>
+    <label class="cfg-row">模型 ID<input id="cfgModel" type="text" placeholder="ep-..."></label>
+    <div class="modal-row">
+      <button class="btn ghost" id="cfgCancel">取消</button>
+      <button class="btn primary" id="cfgSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/glossary.js"></script>
+<script src="js/nlu.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/market.js"></script>
+<script src="js/item-image-files.js"></script>
+<script src="js/item-images.js"></script>
+<script src="js/slot-icons.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/appearance.js"></script>
+<script src="js/app.js"></script>
+<script src="js/drag.js"></script>
+<script src="js/assistant-ui.js"></script>
+<script src="js/guide.js"></script>
+<script src="js/ui-sfx.js"></script>
+</body>
+</html>

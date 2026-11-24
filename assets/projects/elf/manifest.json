@@ -1,0 +1,179 @@
+{
+ "project": "elf",
+ "generated_imagery": false,
+ "sources": [
+  "myopia.pdf deck pages p8, p11, p15, p16, p17, p20, p21",
+  "Demo for 《Where's the Elf》.mp4"
+ ],
+ "note": "All cards are crops of the deck recomposed on plain paper. Screenshots that the deck shows faded (ConvAI character page) are taken from the embedded originals of the same PDF pages. The \"AI declaration\" lines on p8 and p11 are outside every crop. The rotated dark script screenshot on p20 is not used.",
+ "assets": [
+  {
+   "file": "elf_card_01.webp",
+   "title": "Concept & Scenario",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "fill": 0.86,
+   "scale": 0.92,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p8 page-fraction [0.012, 0.078, 0.975, 0.928] idea generation mind map",
+    "p11 page-fraction [0.273, 0.531, 0.616, 0.828] storyboard 5, gaze test in game",
+    "p11 page-fraction [0.636, 0.531, 0.971, 0.828] storyboard 6, music and ConvAI in game"
+   ]
+  },
+  {
+   "file": "elf_card_02.webp",
+   "title": "NPC Jin",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    2
+   ],
+   "fill": 0.8,
+   "scale": 0.86,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p16_1_1435x962.png px [28, 232, 1412, 692] Jin core description (embedded original)",
+    "p16_2_1341x852.png px [0, 19, 1341, 402] speaking style (embedded original)",
+    "p16_0_840x520.png px [0, 0, 788, 520] personality radar (embedded original)",
+    "p16 page-fraction [0.07, 0.236, 0.172, 0.464] elf sprite"
+   ]
+  },
+  {
+   "file": "elf_card_03.webp",
+   "title": "Knowledge Bank",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "fill": 0.88,
+   "scale": 0.95,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p16_3_1207x558.png px [0, 0, 1207, 558] knowledge bank, advice.txt (embedded original)",
+    "p16 page-fraction [0.476, 0.733, 0.959, 0.928] four groups of eye care tips",
+    "p16_2_1341x852.png px [0, 458, 1341, 804] sample dialogues (embedded original)"
+   ]
+  },
+  {
+   "file": "elf_card_04.webp",
+   "title": "Hit Streak Triggers",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "fill": 0.77,
+   "scale": 1.0,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p15 page-fraction [0.075, 0.175, 0.326, 0.358] statement",
+    "p15_0_886x513.png px [0, 0, 886, 513] ConvAI narrative design trigger sections (embedded original)",
+    "p15 page-fraction [0.147, 0.589, 0.571, 0.9] interaction details and system logic",
+    "p20_0_678x1218.png px [0, 0, 678, 1218] three narrative design triggers on Jin (embedded original)"
+   ]
+  },
+  {
+   "file": "elf_card_05.webp",
+   "title": "Conversation Flow",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "fill": 0.72,
+   "scale": 0.78,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p15 page-fraction [0.592, 0.142, 0.951, 0.898] XR gaze interaction conversation flow S0-S5 blanked [(0, 0.07, 0.3, 0.46)]"
+   ]
+  },
+  {
+   "file": "elf_card_06.webp",
+   "title": "Key Scripts",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1
+   ],
+   "fill": 0.74,
+   "scale": 1.0,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p21 page-fraction [0.599, 0.213, 0.95, 0.678] HitStreakManager RegisterHit / RegisterMiss / Update blanked [(0.85, 0.9, 1, 1)]"
+   ]
+  },
+  {
+   "file": "elf_card_07.webp",
+   "title": "Voice Input",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "fill": 0.81,
+   "scale": 1.0,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p20 page-fraction [0.066, 0.114, 0.301, 0.364] microphone permission script blanked [(0.5, 0.085, 1, 0.25)]",
+    "p20_2_954x226.png px [0, 0, 954, 186] push-to-talk action bindings (embedded original)"
+   ]
+  },
+  {
+   "file": "elf_card_08.webp",
+   "title": "Eye Tracking Scene & Build Demo",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    1,
+    3
+   ],
+   "fill": 0.73,
+   "scale": 0.79,
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p17_2_2517x1351.png px [0, 0, 2517, 1351] Unity eye tracking scene and hierarchy (embedded original)",
+    "video frame 10s",
+    "video frame 34s",
+    "video frame 67s"
+   ]
+  },
+  {
+   "file": "elf_hero.mp4",
+   "operation": "trim-12.0s-28.0s-scale-880px-square-reframed-1920x1080-30fps-no-audio",
+   "source": "Demo for 《Where's the Elf》.mp4"
+  },
+  {
+   "file": "elf_hero_poster.webp",
+   "operation": "video-frame-15.0s-same-treatment",
+   "source": "Demo for 《Where's the Elf》.mp4"
+  }
+ ]
+}

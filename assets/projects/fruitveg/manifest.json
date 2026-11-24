@@ -1,0 +1,491 @@
+{
+ "project": "fruitveg",
+ "generated_imagery": false,
+ "sources": [
+  "1 A fruit and vegetable beauty contest.pdf",
+  "10.27 QR code voting interaction.mp4"
+ ],
+ "privacy": [
+  "Face Recognition 真人照片未使用",
+  "访谈对象均为原稿插画头像",
+  "页尾 LINK 文字未使用",
+  "数据仅展示原图，正文不引具体数值"
+ ],
+ "assets": [
+  {
+   "file": "fruitveg_card_01.webp",
+   "title": "Introduction",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      0,
+      0,
+      335,
+      285
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      35,
+      290,
+      325,
+      540
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      20,
+      130,
+      390,
+      320
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_02.webp",
+   "title": "Research",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      340,
+      10,
+      1145,
+      165
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      770,
+      195,
+      1130,
+      370
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_03.webp",
+   "title": "Data & Questionnaire",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      360,
+      190,
+      760,
+      375
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1160,
+      125,
+      1410,
+      465
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1430,
+      125,
+      1680,
+      470
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_04.webp",
+   "title": "Interviews & Causes",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1710,
+      180,
+      2268,
+      385
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      1720,
+      390,
+      2268,
+      545
+     ]
+    },
+    {
+     "page": 1,
+     "box_pdf_points": [
+      350,
+      385,
+      1140,
+      545
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_05.webp",
+   "title": "Specialty Fruits",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      0,
+      0,
+      500,
+      300
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      0,
+      290,
+      500,
+      567
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_06.webp",
+   "title": "Why Anthropomorphic",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      505,
+      150,
+      690,
+      290
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      700,
+      150,
+      905,
+      290
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      510,
+      290,
+      905,
+      520
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      915,
+      155,
+      1115,
+      520
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_07.webp",
+   "title": "Character Cards",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1160,
+      115,
+      1510,
+      520
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_08.webp",
+   "title": "Graphic Design",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1515,
+      130,
+      1740,
+      325
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1515,
+      330,
+      1745,
+      520
+     ]
+    },
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1760,
+      375,
+      2268,
+      525
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_09.webp",
+   "title": "Script & Installation",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      20,
+      110,
+      480,
+      350
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      20,
+      355,
+      480,
+      540
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      520,
+      155,
+      1120,
+      360
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      520,
+      390,
+      1120,
+      540
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_10.webp",
+   "title": "Animation & Dubbing",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1210,
+      140,
+      1760,
+      335
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1205,
+      380,
+      1290,
+      460
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1370,
+      380,
+      1510,
+      465
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1635,
+      380,
+      1785,
+      465
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_11.webp",
+   "title": "Voting & Layout",
+   "size": [
+    1200,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 2,
+     "box_pdf_points": [
+      1745,
+      140,
+      2268,
+      345
+     ]
+    },
+    {
+     "page": 3,
+     "box_pdf_points": [
+      1810,
+      215,
+      2268,
+      490
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      1170,
+      300,
+      1520,
+      525
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_card_12.webp",
+   "title": "Exhibition",
+   "size": [
+    1600,
+    1200
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    {
+     "page": 4,
+     "box_pdf_points": [
+      410,
+      135,
+      790,
+      320
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      790,
+      135,
+      1080,
+      320
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      450,
+      358,
+      720,
+      540
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      740,
+      358,
+      1080,
+      540
+     ]
+    },
+    {
+     "page": 4,
+     "box_pdf_points": [
+      1440,
+      90,
+      1740,
+      270
+     ]
+    }
+   ]
+  },
+  {
+   "file": "fruitveg_hero.mp4",
+   "operation": "trim-2s-14s-resize-readability-gradient-no-audio",
+   "source": "10.27 QR code voting interaction.mp4"
+  },
+  {
+   "file": "fruitveg_hero_poster.webp",
+   "operation": "video-frame-11.84s-resize-gradient",
+   "source": "10.27 QR code voting interaction.mp4"
+  }
+ ]
+}

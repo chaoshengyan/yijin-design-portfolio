@@ -1,0 +1,214 @@
+{
+  "project": "zhangjiawan",
+  "assets": [
+    {
+      "file": "zhangjiawan_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "generated-concept-resize",
+      "version": "v2",
+      "sources": [
+        "https://aka.doubaocdn.com/s/sUVdPoxfEO",
+        "https://aka.doubaocdn.com/s/8UTUjrPiSQ",
+        "https://aka.doubaocdn.com/s/L489IU74Le",
+        "https://aka.doubaocdn.com/s/ULKnGTAcgt"
+      ],
+      "bytes": 121196,
+      "original_dimensions": [
+        2047,
+        1152
+      ],
+      "revision": "以选中的三视图首屏为基线，仅将大智头部右侧尖角改为平滑圆角；其余构图、角色、材质与光影保持不变。",
+      "previous_source": "https://aka.doubaocdn.com/s/noMfvTMXXp",
+      "previous_backup": "C:\\Users\\19379\\AppData\\Local\\DoubaoWork\\User Data\\Default\\.doubaowork\\agent_mode\\workspace\\.sessions\\38453213146702850\\agents\\m_0cwegM4ufwj\\zhangjiawan_hero_poster.v1-backup.webp",
+      "concept_visual": true
+    },
+    {
+      "file": "zhangjiawan_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "4x4-team-process-grid",
+      "sources": [
+        "C:\\Users\\19379\\AppData\\Local\\DoubaoWork\\User Data\\Default\\.doubaowork\\agent_mode\\workspace\\.sessions\\38453213146702850\\agents\\m_0cwegM4ufwj\\张家湾_多提案汇总_346.png",
+        "C:\\Users\\19379\\AppData\\Local\\DoubaoWork\\User Data\\Default\\.doubaowork\\agent_mode\\workspace\\.sessions\\38453213146702850\\agents\\m_0cwegM4ufwj\\张家湾_多提案汇总_347.png",
+        "07_p78.png",
+        "37_s57.png"
+      ],
+      "bytes": 151042,
+      "team_proposals": 14,
+      "personal_directions": [
+        "ZDT FORM",
+        "IP FAMILY"
+      ]
+    },
+    {
+      "file": "zhangjiawan_card_02.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "01_p72.png",
+        "02_p73.png",
+        "04_p75.png",
+        "05_p76.png"
+      ],
+      "bytes": 232114
+    },
+    {
+      "file": "zhangjiawan_card_03.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "09_p80.png",
+        "10_p81.png",
+        "11_p82.png",
+        "13_p84.png"
+      ],
+      "bytes": 43194
+    },
+    {
+      "file": "zhangjiawan_card_04.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "grid-two-top-three-bottom",
+      "sources": [
+        "17_p88.png",
+        "18_p89.png",
+        "19_p90.png",
+        "20_p91.png",
+        "21_p92.png"
+      ],
+      "bytes": 72422
+    },
+    {
+      "file": "zhangjiawan_card_05.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "22_p93.png",
+        "23_p94.png",
+        "24_p95.png",
+        "25_p96.png"
+      ],
+      "bytes": 86372
+    },
+    {
+      "file": "zhangjiawan_card_06.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "27_p98.png",
+        "31_p102.png",
+        "32_p103.png",
+        "33_p104.png"
+      ],
+      "bytes": 96482
+    },
+    {
+      "file": "zhangjiawan_card_07.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "family-and-profile-composite",
+      "sources": [
+        "37_s57.png",
+        "39_s59.png",
+        "40_s60.png",
+        "41_s61.png"
+      ],
+      "bytes": 81586
+    },
+    {
+      "file": "zhangjiawan_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "three-characters-three-views-matrix",
+      "sources": [
+        "42_s62.png",
+        "43_s63.png",
+        "44_s64.png"
+      ],
+      "bytes": 71086,
+      "crop_regions": "front/side/back; headers and footers removed"
+    },
+    {
+      "file": "zhangjiawan_card_09.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "46_s66.png",
+        "47_s67.png",
+        "50_s70.png",
+        "52_s72.png"
+      ],
+      "bytes": 132204
+    },
+    {
+      "file": "zhangjiawan_card_10.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-two-rows",
+      "sources": [
+        "56_s76.png",
+        "60_s80.png"
+      ],
+      "bytes": 97904
+    },
+    {
+      "file": "zhangjiawan_card_11.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "62_s82.png",
+        "65_s85.png",
+        "66_s86.png",
+        "68_s88.png"
+      ],
+      "bytes": 141218
+    },
+    {
+      "file": "zhangjiawan_card_12.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "grid-2x2",
+      "sources": [
+        "61_s81.png",
+        "63_s83.png",
+        "70_s90.png",
+        "71_s91.png"
+      ],
+      "bytes": 257132
+    },
+    {
+      "file": "zhangjiawan_card_13.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "official-report-crops",
+      "sources": [
+        "C:\\Users\\19379\\AppData\\Local\\DoubaoWork\\User Data\\ClipboardTemp\\704fe6a8-9d4b-4324-bb4b-710cb01b65ca.png"
+      ],
+      "bytes": 119620,
+      "source_page": "http://kw.beijing.gov.cn/xwdt/bmdt/202402/t20240221_3816182.html",
+      "published": "2024-02-21",
+      "attribution": "团队另一提案方向，非本人设计"
+    }
+  ],
+  "notes": [
+    "无视频；首屏为静态概念图。",
+    "另一套进入IP探索的方案无素材，不设置缺图占位。",
+    "首屏概念图不作为真实落地照片；个人提案应用均为概念或效果模拟。"
+  ],
+  "validation": {
+    "webp_assets_loaded": 14,
+    "cards": 13,
+    "desktop": "987px实浏览器检查通过",
+    "mobile": "390px iframe视口检查通过，无横向溢出",
+    "interactions": "鼠标、Enter、Space、Escape及焦点恢复已验证",
+    "changsha_regression": "视频首屏与12张卡片保持，键盘交互通过",
+    "javascript_syntax": "PASS"
+  }
+}

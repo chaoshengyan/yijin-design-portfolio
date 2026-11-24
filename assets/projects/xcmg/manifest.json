@@ -1,0 +1,205 @@
+{
+  "project": "xcmg",
+  "source_deck": "徐工集团品牌文创设计方案-202203.pptx（原稿封面标注2023.03）",
+  "official_release_url": "https://www.xcmg.com/aftermarket/wenchuang.htm",
+  "assets": [
+    {
+      "file": "xcmg_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "source-resize-left-readability-gradient",
+      "sources": [
+        "14_p14.png"
+      ],
+      "bytes": 123914,
+      "generative": false
+    },
+    {
+      "file": "xcmg_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "source-contain",
+      "sources": [
+        "08_p8.png"
+      ],
+      "bytes": 91988,
+      "role": "团队项目背景"
+    },
+    {
+      "file": "xcmg_card_02.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "two-row-strategy",
+      "sources": [
+        "10_p10.png",
+        "09_p9.png"
+      ],
+      "bytes": 60448,
+      "role": "团队设计策略"
+    },
+    {
+      "file": "xcmg_card_03.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "culture-research-composite",
+      "sources": [
+        "06_p6.png",
+        "04_p4.png",
+        "05_p5.png"
+      ],
+      "bytes": 179102,
+      "role": "团队文化研究"
+    },
+    {
+      "file": "xcmg_card_04.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "pattern-system-and-detail",
+      "sources": [
+        "12_p12.png",
+        "11_p11.png"
+      ],
+      "bytes": 78152,
+      "role": "本人设计主要纹样"
+    },
+    {
+      "file": "xcmg_card_05.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "three-graphic-variants",
+      "sources": [
+        "13_p13.png",
+        "14_p14.png",
+        "16_p16.png"
+      ],
+      "bytes": 286212,
+      "role": "团队图形延展"
+    },
+    {
+      "file": "xcmg_card_06.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "proposal-and-official-product",
+      "sources": [
+        "21_p21.png",
+        "22_p22.png",
+        "24_p24.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_products.png"
+      ],
+      "bytes": 72960,
+      "role": "本人设计 · 已上线",
+      "official_url": "https://www.xcmg.com/aftermarket/wenchuang.htm"
+    },
+    {
+      "file": "xcmg_card_07.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "proposal-and-official-product",
+      "sources": [
+        "27_p27.png",
+        "29_p29.png",
+        "33_p33.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_products.png"
+      ],
+      "bytes": 105820,
+      "role": "本人设计 · 已上线",
+      "official_url": "https://www.xcmg.com/aftermarket/wenchuang.htm"
+    },
+    {
+      "file": "xcmg_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "raincoat-proposal-and-official",
+      "sources": [
+        "71_p71.png",
+        "70_p70.png",
+        "72_p72.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_products.png"
+      ],
+      "bytes": 110286,
+      "role": "本人设计 · 已上线",
+      "official_url": "https://www.xcmg.com/aftermarket/wenchuang.htm",
+      "corrected_source_range": "p69–72；p43为防晒服，未误用"
+    },
+    {
+      "file": "xcmg_card_09.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "thermos-proposal-and-official",
+      "sources": [
+        "42_p42.png",
+        "38_p38.png",
+        "39_p39.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_products.png"
+      ],
+      "bytes": 97556,
+      "role": "本人设计 · 已上线",
+      "official_url": "https://www.xcmg.com/aftermarket/wenchuang.htm"
+    },
+    {
+      "file": "xcmg_card_10.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "usb-proposal-and-official",
+      "sources": [
+        "59_p59.png",
+        "60_p60.png",
+        "61_p61.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_products.png"
+      ],
+      "bytes": 148254,
+      "role": "本人设计 · 已上线",
+      "official_url": "https://www.xcmg.com/aftermarket/wenchuang.htm"
+    },
+    {
+      "file": "xcmg_card_11.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "six-team-product-grid",
+      "sources": [
+        "44_p44.png",
+        "49_p49.png",
+        "64_p64.png",
+        "67_p67.png",
+        "76_p76.png",
+        "86_p86.png"
+      ],
+      "bytes": 144382,
+      "role": "团队成果"
+    },
+    {
+      "file": "xcmg_card_12.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "direction02-five-panel-composite",
+      "sources": [
+        "95_p95.png",
+        "103_p103.png",
+        "120_p120.png",
+        "128_p128.png",
+        "132_p132.png"
+      ],
+      "bytes": 123632,
+      "role": "设计方案 · 未落地"
+    },
+    {
+      "file": "xcmg_card_13.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "official-products-title-formula-description",
+      "sources": [
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_products.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_hanyun_page.png",
+        "D:\\作品集all\\作品集首页交互优化源码包\\portfolio\\assets\\projects\\xcmg\\sources\\official_design_formula.png"
+      ],
+      "bytes": 185734,
+      "role": "官网落地对照",
+      "official_url": "https://www.xcmg.com/aftermarket/wenchuang.htm"
+    }
+  ],
+  "notes": [
+    "全部网页素材仅由原稿及徐工官网真实图片裁剪、缩放、拼接；未使用生成式图片。",
+    "本人设计范围：汉文化方案主要纹样、烟灰缸、多层摆件、雨衣、水杯、U盘；其余为团队成果。",
+    "方案02为未落地提案。"
+  ]
+}

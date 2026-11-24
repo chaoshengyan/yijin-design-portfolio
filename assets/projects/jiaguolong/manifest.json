@@ -1,0 +1,208 @@
+{
+  "project": "jiaguolong",
+  "source_deck": "贾国龙功夫菜中秋主题IP设计方案.pptx（2022.08）",
+  "assets": [
+    {
+      "file": "jiaguolong_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "source-resize-left-readability-gradient",
+      "sources": [
+        "52_p52.png"
+      ],
+      "bytes": 111142,
+      "generative": false
+    },
+    {
+      "file": "jiaguolong_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "background-and-requirements",
+      "sources": [
+        "04_p4.png",
+        "05_p5.png"
+      ],
+      "bytes": 75156,
+      "role": "团队项目背景"
+    },
+    {
+      "file": "jiaguolong_card_02.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "brand-and-competitor-grid",
+      "sources": [
+        "06_p6.png",
+        "11_p11.png",
+        "13_p13.png",
+        "14_p14.png"
+      ],
+      "bytes": 104732,
+      "role": "团队研究"
+    },
+    {
+      "file": "jiaguolong_card_03.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "naming-brands-and-strategy",
+      "sources": [
+        "27_p27.png",
+        "28_p28.png"
+      ],
+      "bytes": 89430,
+      "role": "团队策略"
+    },
+    {
+      "file": "jiaguolong_card_04.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "concept-and-cultural-references",
+      "sources": [
+        "30_p30.png",
+        "29_p29.png",
+        "31_p31.png",
+        "32_p32.png"
+      ],
+      "bytes": 280474,
+      "role": "团队创意概念"
+    },
+    {
+      "file": "jiaguolong_card_05.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "three-character-family-and-variants",
+      "sources": [
+        "34_p34.png",
+        "60_p60.png",
+        "61_p61.png"
+      ],
+      "bytes": 242516,
+      "role": "团队角色系统",
+      "character_count": 3
+    },
+    {
+      "file": "jiaguolong_card_06.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "xiaoxi-robot-system",
+      "sources": [
+        "36_p36.png",
+        "38_p38.png",
+        "39_p39.png",
+        "40_p40.png"
+      ],
+      "bytes": 73496,
+      "role": "团队成果"
+    },
+    {
+      "file": "jiaguolong_card_07.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "change-yuxiaotu-flat-archives",
+      "sources": [
+        "42_p42.png",
+        "43_p43.png",
+        "46_p46.png",
+        "47_p47.png"
+      ],
+      "bytes": 111340,
+      "role": "团队平面设定"
+    },
+    {
+      "file": "jiaguolong_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "personal-yuxiaotu-3d-modeling",
+      "sources": [
+        "48_p48.png",
+        "45_p45.png",
+        "51_p51.png",
+        "52_p52.png"
+      ],
+      "bytes": 107182,
+      "role": "本人负责预小兔三维建模；平面设定为团队成果"
+    },
+    {
+      "file": "jiaguolong_card_09.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "comics-and-narrative-scenes",
+      "sources": [
+        "49_p49.png",
+        "50_p50.png",
+        "53_p53.png",
+        "54_p54.png"
+      ],
+      "bytes": 264992,
+      "role": "团队成果"
+    },
+    {
+      "file": "jiaguolong_card_10.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "lifestyle-illustration-grid",
+      "sources": [
+        "63_p63.png",
+        "64_p64.png",
+        "66_p66.png",
+        "68_p68.png"
+      ],
+      "bytes": 222498,
+      "role": "团队成果"
+    },
+    {
+      "file": "jiaguolong_card_11.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "store-space-digital-grid",
+      "sources": [
+        "72_p72.png",
+        "73_p73.png",
+        "75_p75.png",
+        "77_p77.png",
+        "81_p81.png",
+        "82_p82.png"
+      ],
+      "bytes": 271010,
+      "role": "团队成果"
+    },
+    {
+      "file": "jiaguolong_card_12.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "personal-fridge-magnets-and-team-products",
+      "sources": [
+        "89_p89.png",
+        "86_p86.png",
+        "92_p92.png",
+        "99_p99.png",
+        "103_p103.png"
+      ],
+      "bytes": 142934,
+      "role": "冰箱贴为本人设计；其余为团队成果",
+      "source_label_note": "p89原稿标注BADGE，按用户确认作为本人冰箱贴作品"
+    },
+    {
+      "file": "jiaguolong_card_13.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "personal-packaging-illustration-box-design",
+      "sources": [
+        "96_p96.png",
+        "97_p97.png",
+        "100_p100.png",
+        "104_p104.png",
+        "105_p105.png"
+      ],
+      "bytes": 243006,
+      "role": "本人负责包装插画与包装盒设计"
+    }
+  ],
+  "notes": [
+    "全部网页素材仅由原稿裁剪、缩放、拼接；未使用生成式图片。",
+    "项目为东道团队项目，本人参与：预小兔三维建模、包装插画、包装盒设计、冰箱贴。",
+    "全案为设计方案，未落地。",
+    "原稿为三角色：小西（厨师机器人）、嫦娥、预小兔。",
+    "p89原稿标注BADGE；按用户确认将冰箱贴列为本人设计，保留此名称差异。",
+    "p1东道封面、p106 THANKS及冬奥供应商资质未用于展示。"
+  ]
+}

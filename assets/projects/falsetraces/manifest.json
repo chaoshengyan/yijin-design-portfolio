@@ -1,0 +1,350 @@
+{
+ "project": "falsetraces",
+ "generated_imagery": false,
+ "sources": [
+  "11_Fales Traces deck pages p2-p26",
+  "Demo for 《Fales Traces》.mp4"
+ ],
+ "note": "All cards are crops of the deck recomposed on a dark canvas. Footnotes are covered with the surrounding paper colour (listed per tile).",
+ "assets": [
+  {
+   "file": "falsetraces_card_01.webp",
+   "title": "Market Survey",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    3,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p2 [0.075, 0.47, 0.5, 0.935] You Sleuth screenshot",
+    "p2 [0.52, 0.21, 0.935, 0.975] Manor House Murder Mystery screenshot",
+    "p3 [0.04, 0.48, 0.9, 0.97] Eastern Market Murder photos",
+    "p2 [0.04, 0.235, 0.5, 0.475] You Sleuth text",
+    "p3 [0.04, 0.135, 0.45, 0.47] Eastern Market Murder text"
+   ]
+  },
+  {
+   "file": "falsetraces_card_02.webp",
+   "title": "SWOT",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p4 [0.13, 0.055, 0.915, 0.155] title",
+    "p4 [0.085, 0.235, 0.96, 0.745] SWOT table",
+    "p4 [0.115, 0.845, 0.96, 0.915] conclusion"
+   ]
+  },
+  {
+   "file": "falsetraces_card_03.webp",
+   "title": "Background & Problem",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p5 [0.04, 0.21, 0.505, 0.72] pain points text",
+    "p5 [0.52, 0.17, 0.875, 0.63] escape room cost chart",
+    "p5 [0.115, 0.635, 0.445, 0.875] Forensic Detective screenshot",
+    "p5 [0.46, 0.665, 0.915, 0.835] crime-scene AR text"
+   ]
+  },
+  {
+   "file": "falsetraces_card_04.webp",
+   "title": "Literature Review",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    3,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p7 [0.5, 0.095, 0.88, 0.54] luminol photo",
+    "p8 [0.525, 0.045, 0.73, 0.49] footwear impressions",
+    "p8 [0.525, 0.545, 0.745, 0.975] fluorescent fingerprints",
+    "p7 [0.035, 0.545, 0.56, 0.79] bloodstain pattern types",
+    "p7 [0.56, 0.565, 0.875, 0.8] relevance"
+   ]
+  },
+  {
+   "file": "falsetraces_card_05.webp",
+   "title": "Brainstorming",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p11 [0.03, 0.08, 0.475, 0.925] experiences and feature clusters",
+    "p11 [0.465, 0.03, 0.89, 0.93] AR feature / logical / storytelling clusters"
+   ]
+  },
+  {
+   "file": "falsetraces_card_06.webp",
+   "title": "Questionnaire",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p9 [0.04, 0.215, 0.89, 0.405] overall text",
+    "p9 [0.045, 0.44, 0.6, 0.905] Q1-Q4 bars",
+    "p9 [0.6, 0.44, 0.89, 0.905] Q5-Q6 bars"
+   ]
+  },
+  {
+   "file": "falsetraces_card_07.webp",
+   "title": "Interview",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p10 [0.11, 0.185, 0.9, 0.345] overall text",
+    "p10 [0.095, 0.4, 0.975, 0.585] P1-P2 answers",
+    "p10 [0.09, 0.645, 0.83, 0.865] P3-P5 answers"
+   ]
+  },
+  {
+   "file": "falsetraces_card_08.webp",
+   "title": "Storytelling",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p18 [0.03, 0.13, 0.565, 0.985] suspects and staged scene, left",
+    "p18 [0.555, 0.13, 0.955, 0.985] suspects and staged scene, right footnote-covered"
+   ]
+  },
+  {
+   "file": "falsetraces_card_09.webp",
+   "title": "Personas",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p13 [0.03, 0.07, 0.465, 0.935] Lin",
+    "p13 [0.47, 0.16, 0.89, 0.935] Mei"
+   ]
+  },
+  {
+   "file": "falsetraces_card_10.webp",
+   "title": "Journey Map",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p14 [0.39, 0.185, 0.905, 0.825] gameplay journey",
+    "p14 [0.39, 0.84, 0.905, 0.985] emotional arc"
+   ]
+  },
+  {
+   "file": "falsetraces_card_11.webp",
+   "title": "Workflow",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    1,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p15 [0.1, 0.25, 0.8, 0.56] workflow rows 1-2",
+    "p15 [0.1, 0.6, 0.8, 0.85] workflow row 3 + legend"
+   ]
+  },
+  {
+   "file": "falsetraces_card_12.webp",
+   "title": "Storyboard",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p19 [0.02, 0.175, 0.49, 0.985] frames 1-3",
+    "p19 [0.48, 0.175, 0.94, 0.985] frames 4-6"
+   ]
+  },
+  {
+   "file": "falsetraces_card_13.webp",
+   "title": "Hi-fi Prototype",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    5,
+    1
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p17 [0.025, 0.185, 0.195, 0.86] title screen",
+    "p17 [0.2, 0.185, 0.36, 0.86] case briefing",
+    "p17 [0.37, 0.185, 0.545, 0.86] walkie-talkie",
+    "p17 [0.56, 0.185, 0.755, 0.86] evidence details",
+    "p17 [0.77, 0.185, 0.935, 0.86] link evidence",
+    "p17 [0.02, 0.865, 0.735, 0.985] annotations"
+   ]
+  },
+  {
+   "file": "falsetraces_card_14.webp",
+   "title": "3D Model & UI",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p25 [0.02, 0.17, 0.39, 0.76] 3D model steps footnote-covered",
+    "p25 [0.585, 0.185, 0.935, 0.745] UI icons and cards"
+   ]
+  },
+  {
+   "file": "falsetraces_card_15.webp",
+   "title": "Unity Prototype",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p21 [0.055, 0.19, 0.33, 0.34] AR frame list",
+    "p21 [0.505, 0.085, 0.895, 0.54] game manager",
+    "p21 [0.07, 0.38, 0.39, 0.96] AR plane / raycast inspector",
+    "p21 [0.505, 0.565, 0.895, 0.945] photo capture"
+   ]
+  },
+  {
+   "file": "falsetraces_card_16.webp",
+   "title": "Shader & Animation",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    3,
+    3
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p22 [0.075, 0.235, 0.73, 0.925] shader graph",
+    "p24 [0.115, 0.49, 0.39, 0.865] page-turn frames",
+    "p24 [0.395, 0.34, 0.69, 0.855] timeline",
+    "p22 [0.735, 0.185, 0.98, 0.52] material inspector",
+    "p24 [0.69, 0.19, 0.905, 0.66] animation code",
+    "p24 [0.69, 0.67, 0.84, 0.855] animator"
+   ]
+  },
+  {
+   "file": "falsetraces_card_17.webp",
+   "title": "Click Logic & Test Fix",
+   "size": [
+    1600,
+    1200
+   ],
+   "rows": [
+    3,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p23 [0.02, 0.14, 0.33, 0.925] code, left",
+    "p23 [0.545, 0.11, 0.8, 0.5] code, right",
+    "p23 [0.535, 0.54, 0.92, 0.925] final result card",
+    "p20 [0.055, 0.16, 0.985, 0.585] test case sheets 1-3",
+    "p20 [0.685, 0.61, 0.975, 0.985] overview"
+   ]
+  },
+  {
+   "file": "falsetraces_card_18.webp",
+   "title": "AI Partner & Limitation",
+   "size": [
+    1200,
+    1200
+   ],
+   "rows": [
+    2,
+    2
+   ],
+   "operation": "source-crop-and-recompose-only",
+   "source": [
+    "p26 [0.06, 0.18, 0.46, 0.49] ConvAI menu",
+    "p26 [0.51, 0.15, 0.955, 0.68] character backstory",
+    "p26 [0.06, 0.51, 0.46, 0.625] limitation text",
+    "p26 [0.48, 0.7, 0.955, 0.985] sample dialogues"
+   ]
+  },
+  {
+   "file": "falsetraces_hero.mp4",
+   "operation": "trim-21.0s-37.0s-vertical-strip-on-blurred-same-frame-background-1920x1080-30fps-gradient-no-audio",
+   "source": "Demo for 《Fales Traces》.mp4"
+  },
+  {
+   "file": "falsetraces_hero_poster.webp",
+   "operation": "video-frame-28.0s-same-treatment",
+   "source": "Demo for 《Fales Traces》.mp4"
+  }
+ ]
+}

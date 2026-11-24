@@ -1,0 +1,240 @@
+{
+  "project": "magipark",
+  "source_deck": "麦咭乐园汇总2021.10.27.pptx（151页团队初次提案）",
+  "final_photo": "用户提供的大众点评门店截图",
+  "assets": [
+    {
+      "file": "magipark_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "source-resize-readability-gradient",
+      "sources": [
+        "p121"
+      ],
+      "bytes": 67894,
+      "generative": false,
+      "role": "本人方案四主视觉；初次提案未获选"
+    },
+    {
+      "file": "magipark_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "project-context",
+      "sources": [
+        "p12",
+        "p46",
+        "p86"
+      ],
+      "bytes": 75612,
+      "generative": false,
+      "role": "团队品牌升级背景"
+    },
+    {
+      "file": "magipark_card_02.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "scheme-1-team",
+      "sources": [
+        "p6",
+        "p13",
+        "p18",
+        "p28",
+        "p38",
+        "p41"
+      ],
+      "bytes": 156710,
+      "generative": false,
+      "role": "团队方案一；非本人方案"
+    },
+    {
+      "file": "magipark_card_03.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "personal-scheme-2-wordmark",
+      "sources": [
+        "p45",
+        "p46",
+        "p47",
+        "p48"
+      ],
+      "bytes": 38424,
+      "generative": false,
+      "role": "本人方案二标志设计"
+    },
+    {
+      "file": "magipark_card_04.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "personal-scheme-2-visual-system",
+      "sources": [
+        "p44",
+        "p51",
+        "p52",
+        "p56"
+      ],
+      "bytes": 140068,
+      "generative": false,
+      "role": "本人方案二视觉延展"
+    },
+    {
+      "file": "magipark_card_05.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "personal-scheme-2-posters-subbrands",
+      "sources": [
+        "p53",
+        "p54",
+        "p55",
+        "p61",
+        "p62",
+        "p63",
+        "p64",
+        "p65",
+        "p66"
+      ],
+      "bytes": 166238,
+      "generative": false,
+      "role": "本人方案二海报与子品牌延展"
+    },
+    {
+      "file": "magipark_card_06.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "personal-scheme-2-products-space",
+      "sources": [
+        "p68",
+        "p72",
+        "p73",
+        "p77",
+        "p78"
+      ],
+      "bytes": 227514,
+      "generative": false,
+      "role": "本人方案二文创与空间延展"
+    },
+    {
+      "file": "magipark_card_07.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "scheme-3-team",
+      "sources": [
+        "p81",
+        "p84",
+        "p93",
+        "p100",
+        "p109"
+      ],
+      "bytes": 131770,
+      "generative": false,
+      "role": "团队方案三；非本人方案"
+    },
+    {
+      "file": "magipark_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "personal-scheme-4-symbol-wordmark",
+      "sources": [
+        "p118",
+        "p119",
+        "p120",
+        "p121",
+        "p122"
+      ],
+      "bytes": 91518,
+      "generative": false,
+      "role": "本人方案四标志与色彩延展"
+    },
+    {
+      "file": "magipark_card_09.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "personal-scheme-4-concept-graphics",
+      "sources": [
+        "p115",
+        "p116",
+        "p117",
+        "p123",
+        "p124"
+      ],
+      "bytes": 169998,
+      "generative": false,
+      "role": "本人方案四概念与图形延展"
+    },
+    {
+      "file": "magipark_card_10.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "personal-scheme-4-posters-activities",
+      "sources": [
+        "p125",
+        "p127",
+        "p128",
+        "p129",
+        "p130",
+        "p132",
+        "p133",
+        "p134",
+        "p135"
+      ],
+      "bytes": 223942,
+      "generative": false,
+      "role": "本人方案四海报与活动延展"
+    },
+    {
+      "file": "magipark_card_11.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "personal-scheme-4-materials-space",
+      "sources": [
+        "p136",
+        "p137",
+        "p138",
+        "p139",
+        "p140",
+        "p141",
+        "p142",
+        "p143",
+        "p144",
+        "p145"
+      ],
+      "bytes": 242596,
+      "generative": false,
+      "role": "本人方案四物料与空间延展"
+    },
+    {
+      "file": "magipark_card_12.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "four-initial-directions-unselected",
+      "sources": [
+        "p147",
+        "p148",
+        "p149",
+        "p150"
+      ],
+      "bytes": 40872,
+      "generative": false,
+      "role": "四方案团队对照；初次提案均未获选"
+    },
+    {
+      "file": "magipark_card_13.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "final-team-implementation",
+      "sources": [
+        "final_store_dianping.png"
+      ],
+      "bytes": 352750,
+      "generative": false,
+      "role": "团队后续落地结果；非本人最终造型",
+      "source_note": "用户提供的大众点评截图，保留平台标识"
+    }
+  ],
+  "notes": [
+    "全部网页素材仅由原稿和用户提供的落地照片裁剪、缩放、拼接；未使用生成式图片。",
+    "团队品牌升级项目；本人负责方案二p45与方案四p118的方案设计及视觉延展。",
+    "方案一、方案三为团队其他方向；初次提案四个方向均未获选。",
+    "项目后续经团队调整已经落地；最终落地造型不归为本人设计。",
+    "首屏采用本人方案四p121；第13卡保留大众点评来源标识。"
+  ]
+}
