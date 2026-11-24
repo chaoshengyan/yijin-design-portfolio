@@ -63,13 +63,13 @@
     2,
     1
    ],
-   "fill": 0.86,
-   "scale": 0.92,
+   "fill": 0.83,
+   "scale": 0.89,
    "operation": "source-crop-and-recompose-only",
    "source": [
     "p04_1_480x525.png px [0, 0, 480, 525] sell blue items: 9 to market, 2 direct (embedded original)",
     "p04_2_484x640.png px [0, 0, 484, 640] loadout around 100k (embedded original)",
-    "p08_6_731x500.png px [0, 150, 731, 440] ammo and armour repair into the safe container (embedded original)"
+    "p08_6_731x500.png px [0, 55, 731, 372] ammo and armour repair into the safe container (embedded original)"
    ]
   },
   {
