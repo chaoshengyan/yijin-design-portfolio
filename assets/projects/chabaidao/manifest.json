@@ -1,0 +1,154 @@
+{
+  "project": "chabaidao",
+  "source_deck": "唯诗礼茶百道IP案例 20210910.pptx 第 9–19 页（本人 2021.09 实习期间组内比稿方案）",
+  "source_video": "视觉传达2022IP汇总.mp4 第 2.12–7.66 秒",
+  "official_sources": [
+    "https://finance.sina.cn/2023-04-25/detail-imyrqpnp4429036.d.html",
+    "http://m.toutiao.com/group/7009138341249548813/",
+    "http://m.toutiao.com/group/7012421173023638030/",
+    "https://socialbeta.com/campaign/15987"
+  ],
+  "assets": [
+    {
+      "file": "chabaidao_card_01.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "source-crop",
+      "sources": [
+        "P9"
+      ],
+      "bytes": 36802,
+      "generative": false,
+      "role": "本人角色档案"
+    },
+    {
+      "file": "chabaidao_card_02.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "source-crop",
+      "sources": [
+        "P10",
+        "P11"
+      ],
+      "bytes": 95754,
+      "generative": false,
+      "role": "本人平面与三维三视图"
+    },
+    {
+      "file": "chabaidao_card_03.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "slide-composite-first-frame",
+      "sources": [
+        "P12"
+      ],
+      "bytes": 74994,
+      "generative": false,
+      "role": "本人动态表情（取静帧）"
+    },
+    {
+      "file": "chabaidao_card_04.webp",
+      "width": 1200,
+      "height": 1200,
+      "mode": "source-crop",
+      "sources": [
+        "P13",
+        "P14"
+      ],
+      "bytes": 163160,
+      "generative": false,
+      "role": "本人六套变装与线稿底纹",
+      "size": "narrow"
+    },
+    {
+      "file": "chabaidao_card_05.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "source-crop",
+      "sources": [
+        "P15"
+      ],
+      "bytes": 114148,
+      "generative": false,
+      "role": "本人主题海报"
+    },
+    {
+      "file": "chabaidao_card_06.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "slide-composite",
+      "sources": [
+        "P16"
+      ],
+      "bytes": 324268,
+      "generative": false,
+      "role": "本人插画主视觉与灯箱、公交站效果图"
+    },
+    {
+      "file": "chabaidao_card_07.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "source-crop",
+      "sources": [
+        "P17"
+      ],
+      "bytes": 225264,
+      "generative": false,
+      "role": "本人三维形象、口号与户外灯箱"
+    },
+    {
+      "file": "chabaidao_card_08.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "slide-composite-first-frame",
+      "sources": [
+        "P18"
+      ],
+      "bytes": 154332,
+      "generative": false,
+      "role": "本人周边物料"
+    },
+    {
+      "file": "chabaidao_card_09.webp",
+      "width": 1600,
+      "height": 1200,
+      "mode": "before-after-layout",
+      "sources": [
+        "sources/old_statue.png",
+        "sources/store_statue_event.png"
+      ],
+      "bytes": 132922,
+      "generative": false,
+      "role": "品牌IP升级落地：升级前旧版立体形象 / 升级后门店落地实拍（用户提供的现场照片）",
+      "source_url": "http://m.toutiao.com/group/7009138341249548813/"
+    },
+    {
+      "file": "chabaidao_hero_poster.webp",
+      "width": 1920,
+      "height": 1080,
+      "mode": "source-crop",
+      "sources": [
+        "P17"
+      ],
+      "bytes": 533818,
+      "generative": false,
+      "role": "首屏封面：本人三维形象与口号"
+    },
+    {
+      "file": "chabaidao_hero.mp4",
+      "bytes": 1966654,
+      "mode": "video-trim-and-upscale",
+      "sources": [
+        "视觉传达2022IP汇总.mp4"
+      ],
+      "seconds": 5.54,
+      "generative": false
+    }
+  ],
+  "notes": [
+    "第 9–19 页素材仅由原稿图片裁剪、缩放、拼贴；未使用生成式图片。",
+    "第 1–8 页为唯诗礼幼儿园案例，不属于本页，未使用。",
+    "落地图为网络公开的新闻配图，仅用于交代品牌 IP 的落地语境，不写成本人设计。",
+    "公开报道显示茶百道自 2018 年起使用蓝色熊猫「丁丁猫」，2023 年 4 月发布手捧茶杯的新版形象。"
+  ]
+}

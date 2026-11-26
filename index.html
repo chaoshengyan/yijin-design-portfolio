@@ -2,7 +2,10 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- [T2] -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080807">
+<!-- [/T2] -->
 <title>YijinLi — Portfolio</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080807'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='%23ece6dc' font-family='sans-serif' font-weight='700'%3EY%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/project-details.css">
@@ -536,6 +539,8 @@
   .ip-hero.is-open .acv-ip-figure-wrap{top:calc(min(460px,78vw) * var(--figure-top-open))}
   @media(prefers-reduced-motion:reduce){.ip-hero .acv-ip-figure-wrap{transition:none}}
   .ip-hero .acv-ip-figure{display:block;width:100%;height:auto}
+  /* 手机断点：人像容器不超过屏幕宽度，仍以展开区中线居中，高度随图片比例 */
+  @media(max-width:900px){.ip-hero .acv-ip-figure-wrap{width:min(920px,100vw);max-width:100vw}}
   .ip-hero .acv-glasses{position:absolute;left:var(--glasses-left);top:var(--glasses-top);width:var(--glasses-width);height:auto;z-index:1;pointer-events:none;opacity:0;transform:translateY(-160%);will-change:transform,opacity}
   .ip-stage{position:absolute;inset:0;overflow:hidden}
   .ip-stage img{
@@ -684,7 +689,7 @@
   /* ---------- 响应式 ---------- */
   @media (max-width:768px){
     .home{flex-direction:column}
-    .cover{width:100%;flex:none;border-right:none;border-bottom:1px solid var(--line);height:100svh;min-height:560px;padding:22px}
+    .cover{width:100%;flex:none;border-right:none;border-bottom:1px solid var(--line);height:100svh;min-height:560px;padding:22px;overflow:hidden}
     .cover .year{top:20px;left:18px}
     .cover .sign{bottom:20px;right:18px}
     .cover-toggle{top:16px;right:15px}
@@ -1012,8 +1017,13 @@
 .about-cv .acv-row-side{display:inline-flex;align-items:center;gap:12px}
 .about-cv .acv-copied{font-size:12px;color:var(--acv-ac);opacity:0;transition:opacity .15s;white-space:nowrap}
 .about-cv .acv-copied.is-on{opacity:1}
+/* 联系区：微信内下载提示行；微信号文字可长按选中 */
+.about-cv .acv-wx-tip{margin:0;padding:12px 0;border-bottom:1px solid var(--acv-ln);font-size:12px;line-height:1.7;color:var(--acv-dim)}
+.about-cv .acv-wx p{-webkit-user-select:text;user-select:text}
 @media(min-width:901px){
   .about-cv{width:100vw;margin-left:calc(50% - 50vw)}
+  /* About 的通栏内容和 My Style 全宽透明带按 100vw 铺开，会比不含滚动条的可视宽度多出一截；由页面容器裁掉（不建立滚动容器，不动 html/body） */
+  .page:has(.about-cv){overflow-x:clip}
   .about-cv .acv-wrap{width:min(82vw,1500px);max-width:none}
   #page-inner:has(> .about-cv) > .h-en,
   #page-inner:has(> .about-cv) > .h-zh,
@@ -1076,6 +1086,9 @@
 .cs-wrap .cs-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .cs-wrap .cs-tag{font-size:13px;color:var(--muted);border:1px solid var(--line);padding:8px 16px;border-radius:999px;transition:color .2s,border-color .2s}
 .cs-wrap .cs-tag:hover{color:var(--cs-ac);border-color:var(--cs-ac)}
+/* 单项目可选：hero_mask:'deep' —— 首屏视频画面较花时加深遮罩，保证左侧文字可读 */
+.cs-wrap .cs-hero-mask--deep{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(to right,rgba(8,8,7,.94) 0%,rgba(8,8,7,.86) 44%,rgba(8,8,7,.5) 100%)}
+@media(max-width:900px){.cs-wrap .cs-hero-mask--deep{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(rgba(8,8,7,.82),rgba(8,8,7,.82))}}
 .cs-wrap .cs-cards{padding:88px 0 0}
 .cs-wrap .cs-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px 24px}
 .cs-wrap .cs-card{grid-column:span 7;min-width:0}
@@ -1119,6 +1132,61 @@
   .cs-wrap>section{width:min(82vw,1500px);max-width:none;margin:0 auto}
 }
 
+/* [T1] 手机端首页技能卡：封面高度、关闭按钮、展开后的横滑标签行 */
+@media (max-width:768px){
+  .cover{height:72vh;height:72svh;min-height:440px}
+  .skills .sk:not(.active) .sk-close-inline{display:none}
+  .skills.open .sk.active .sk-close-inline{top:2px;right:2px;width:44px;height:44px}
+  .skills.open{
+    grid-template-columns:repeat(8,max-content);grid-template-rows:minmax(0,1fr) 46px;gap:8px;
+    overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;container-type:inline-size;
+  }
+  .skills.open::-webkit-scrollbar{display:none}
+  .skills.open .sk.active{
+    position:sticky;left:0;justify-self:start;margin:0;
+    width:calc(100vw - 28px);width:100cqw;
+    transform:none;animation:none;
+  }
+  .skills.open .sk.active .sk-detail{min-height:0;flex:0 1 auto}
+  .skills.open .sk:not(.active),
+  .skills.open .sk:not(.active):hover,
+  .skills.open .sk:not(.active):focus-visible{transform:none}
+  .skills.open .sk:not(.active){
+    flex-direction:row;gap:6px;min-width:88px;min-height:44px;padding:0 12px;white-space:nowrap;opacity:.92;
+  }
+  .skills.open .sk:not(.active) .t{font-size:12px;line-height:1.2}
+  .skills.open .sk:not(.active) .n{font-size:12px}
+}
+/* [/T1] */
+/* [T2] 手机端点击区、字号、安全区、触摸属性 */
+html{color-scheme:dark}
+:where(a,button){touch-action:manipulation}
+.home,.page{min-height:100svh}
+.toast{bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+.wechat-dialog{overscroll-behavior:contain}
+@media (max-width:768px){
+  .topbar{position:sticky;top:0;z-index:40;background:var(--bg);padding-top:calc(22px + env(safe-area-inset-top,0px))}
+  .back{position:relative}
+  .back::after{content:"";position:absolute;left:-12px;right:-12px;top:50%;height:44px;transform:translateY(-50%)}
+  .cover-toggle::before{content:"";position:absolute;left:-8px;right:-8px;top:50%;height:44px;transform:translateY(-50%)}
+  .topbar .tag{font-size:12px}
+  .cover .skills:not(.open) .sk .t,.cover .skills:not(.open) .sk .n,.cover .skills.open .sk.active .n{font-size:12px}
+  .cover .year,.cover .sign,.cover .cover-toggle,.wall .cap-idx{font-size:12px}
+  .skills:not(.open) .sk .t-en{display:none}
+  .sk-detail p{font-size:14px}
+  .cap-zh{font-size:12px}
+}
+@media (max-width:900px){
+  .acv-style-toggle{z-index:2}
+  .acv-style-toggle::after{content:"";position:absolute;left:50%;top:50%;width:max(100%,44px);height:max(100%,44px);transform:translate(-50%,-50%)}
+  .about-cv .acv-wrap .acv-rank .cap,.about-cv .acv-detail-body .acv-course-groups article p,.about-cv .acv-list.acv-ct .acv-row p{font-size:14px}
+  .about-cv .acv-rank .acv-scale span,.about-cv .acv-course-list .acv-course-row small,.about-cv .acv-course-list .acv-course-row>span{font-size:12px}
+}
+/* [/T2] */
+/* [T3] 作品墙栏目链接：清除链接默认样式 */
+.wall a.col,.wall a.col:visited{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+/* [/T3] */
 </style>
 <link rel="stylesheet" href="assets/cursor/cursor.css">
 <script src="assets/cursor/cursor-shuttle.js" defer></script>
@@ -1193,14 +1261,15 @@ const DATA = {
   },
   // preview 仅填用户确认且实际存在的 assets/previews/ 本地相对路径；缺图保持 null。
   brand:{
-    idx:"02", en:"Brand & IP", zh:"品牌与IP设计", tag:"COMMERCIAL · 6 PROJECTS", year:"2023",
+    idx:"02", en:"Brand & IP", zh:"品牌与IP设计", tag:"COMMERCIAL · 7 PROJECTS", year:"2023",
     projects:[
+      {en:"Shuyi Grass Jelly", zh:"书亦烧仙草", type:"Brand IP Building", preview:"assets/previews/xiandi.webp", href:"#shuyi"},
+      {en:"Chabaidao", zh:"茶百道", type:"Brand IP Pitch", preview:"assets/previews/chabaidao.webp", href:"#chabaidao"},
       {en:"Changsha Cultural Tourism", zh:"长沙文旅", type:"Brand & IP", preview:"assets/previews/changsha-cultural-tourism.webp", href:"#changsha"},
       {en:"Zhangjiawan", zh:"张家湾", type:"Brand & IP", preview:"assets/previews/zhangjiawan.webp", href:"#zhangjiawan"},
       {en:"XCMG", zh:"徐工集团", type:"Cultural & Creative", preview:"assets/previews/xcmg.webp", href:"#xcmg"},
       {en:"Jia Guolong Kung Fu Cuisine", zh:"贾国龙功夫菜", type:"IP & Packaging", preview:"assets/previews/jia-guolong.webp", href:"#jiaguolong"},
-      {en:"Magi Park", zh:"麦咭乐园", type:"Brand Rebrand", preview:"assets/previews/magi-park.webp", href:"#magipark"},
-      {en:"Shuyi Grass Jelly", zh:"书亦烧仙草", type:"Brand IP Building", preview:"assets/previews/xiandi.webp", href:"#shuyi"}
+      {en:"Magi Park", zh:"麦咭乐园", type:"Brand Rebrand", preview:"assets/previews/magi-park.webp", href:"#magipark"}
     ]
   },
   installation:{
@@ -1244,11 +1313,13 @@ const ORDER = ["about","brand","installation","xr","ai"];
 /* ================= 渲染首页列墙 ================= */
 const WALL_VISUALS = {
   // position：桌面竖条/展开时的取景；mobilePosition（可选）：手机横条时的取景。
-  about:{src:"assets/images/about.webp", position:"50% 16%", mobilePosition:"50% 12%"},
-  brand:{src:"assets/images/brand-ip.webp", position:"50% 52%"},
-  installation:{src:"assets/images/installation.webp", position:"50% 50%"},
-  xr:{src:"assets/images/xr-game.webp", position:"50% 44%"},
-  ai:{src:"assets/images/ai-creation.webp", position:"50% 8%"}
+  /* [T5] 封面改用 -opt.webp（w 为它的真实宽度），另有同名 -720.webp 供手机加载 */
+  about:{src:"assets/images/about-opt.webp", w:897, position:"50% 16%", mobilePosition:"50% 12%"},
+  brand:{src:"assets/images/brand-ip-opt.webp", w:903, position:"50% 52%"},
+  installation:{src:"assets/images/installation-opt.webp", w:903, position:"50% 50%"},
+  xr:{src:"assets/images/xr-game-opt.webp", w:903, position:"50% 44%"},
+  ai:{src:"assets/images/ai-creation-opt.webp", w:925, position:"50% 8%"}
+  /* [/T5] */
 };
 const wall = document.getElementById("wall");
 const WALL_YEAR = ((document.querySelector(".cover .year") || {}).textContent || "2026").trim();
@@ -1269,11 +1340,13 @@ function wallCaptionLine(d,className){
 }
 ORDER.forEach(key=>{
   const d = DATA[key];
-  const col = document.createElement("div");
+  /* [T3] 栏目改为真实链接，跳转由 href 完成 */
+  const col = document.createElement("a");
+  col.href = "#" + key;
+  col.draggable = false;
   col.className = "col";
   col.dataset.key = key;
-  col.setAttribute("role","link");
-  col.setAttribute("tabindex","0");
+  /* [/T3] */
   col.setAttribute("aria-label", d.idx + " / " + (d.wallEn || d.en) + " / " + d.zh);
   const visual = WALL_VISUALS[key];
   const frame = document.createElement("span");
@@ -1294,6 +1367,13 @@ ORDER.forEach(key=>{
     image.style.setProperty("--wall-pos", visual.position || "50% 50%");
     if(visual.mobilePosition) image.style.setProperty("--wall-pos-m", visual.mobilePosition);
     image.addEventListener("error",()=>{image.remove();frame.classList.add("is-empty");},{once:true});
+    /* [T5] 手机断点加载 -720，桌面加载 -opt。sizes 是有意取的选图用数值（不影响显示尺寸）：
+       手机 180px 保证 3 到 4 倍屏也选 720w；桌面 1000px 保证总是选 -opt。 */
+    if(visual.w){
+      image.sizes = "(max-width:768px) 180px, 1000px";
+      image.srcset = visual.src.replace("-opt.webp","-720.webp") + " 720w, " + visual.src + " " + visual.w + "w";
+    }
+    /* [/T5] */
     image.src = visual.src;
     frame.appendChild(image);
   }
@@ -1310,8 +1390,7 @@ ORDER.forEach(key=>{
   yearEl.textContent = d.year || WALL_YEAR;
   yearEl.setAttribute("aria-hidden","true");
   col.append(frame,yearEl,caption);
-  col.addEventListener("click",()=>location.hash = key);
-  col.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();location.hash=key;} });
+  /* [T3] 原来的 click / keydown 跳转处理已删除，由链接本身完成 */
   wall.appendChild(col);
 });
 
@@ -1410,8 +1489,11 @@ function startSkillsLoader(){
   coverEl.classList.remove("is-skill-open");
   coverEl.classList.add("is-loading");
 
-  const duration = REDUCED ? 0 : 2600;
-  const hold = REDUCED ? 0 : 260;
+  /* [T1] 手机断点下加载动画缩短（合计 0.6 秒），桌面端时长不变 */
+  const t1Mobile = window.matchMedia("(max-width:768px)").matches;
+  const duration = REDUCED ? 0 : (t1Mobile ? 480 : 2600);
+  const hold = REDUCED ? 0 : (t1Mobile ? 120 : 260);
+  /* [/T1] */
   const start = performance.now();
 
   function tick(now){
@@ -1430,6 +1512,18 @@ function startSkillsLoader(){
   }
 
   skillsLoaderAnim = requestAnimationFrame(tick);
+  /* [T1] 手机断点下：加载期间点屏幕任意位置立即结束 */
+  if(t1Mobile){
+    const skip = ()=>{
+      document.removeEventListener("pointerdown",skip,true);
+      if(token !== skillsLoaderToken || !coverEl.classList.contains("is-loading")) return;
+      if(skillsLoaderAnim){cancelAnimationFrame(skillsLoaderAnim);skillsLoaderAnim=null;}
+      if(skillsLoaderTimer){clearTimeout(skillsLoaderTimer);skillsLoaderTimer=null;}
+      finishSkillsLoader(token);
+    };
+    document.addEventListener("pointerdown",skip,true);
+  }
+  /* [/T1] */
 }
 
 function cancelClose(){ if(closeTimer){clearTimeout(closeTimer);closeTimer=null;} }
@@ -1546,7 +1640,12 @@ if(skillsEl){
       openPanel(i,k);
     });
     k.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();cancelHoverCycle();cancelSkillSwitch();openPanel(i,k);} });
-    k.addEventListener("focus",()=>{if(!suppressNextFocus){cancelHoverCycle();cancelSkillSwitch();openPanel(i,k);}});
+    k.addEventListener("focus",()=>{
+      /* [T1] 触屏上由手指点击带来的 focus 不负责展开（交给 click），focus 展开只留给键盘 */
+      if(!HOVER_DEVICE && performance.now()-(skillsEl._t1PointerAt||-1e9) < 800) return;
+      /* [/T1] */
+      if(!suppressNextFocus){cancelHoverCycle();cancelSkillSwitch();openPanel(i,k);}
+    });
     if(HOVER_DEVICE){
       k.addEventListener("pointerenter",()=>{
         cancelClose();
@@ -1590,6 +1689,9 @@ if(skillsEl){
       scheduleClose();
     });
   }
+  /* [T1] 记录最近一次指针按下的时间，供上面的 focus 判断 */
+  skillsEl.addEventListener("pointerdown",()=>{skillsEl._t1PointerAt=performance.now();},true);
+  /* [/T1] */
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&openIdx!==-1)closePanel(true);});
 }
 
@@ -1677,10 +1779,10 @@ const PROFILE = {
     ['青岛农业大学三等奖学金','2019 / 2020 / 2021','2019、2020、2021 年获校级三等奖学金。']
   ],
   experience:[
-    ['东道品牌创意集团','2022.07—2023.04 / 视觉传达设计师','参与多行业品牌传播与视觉设计项目，负责品牌视觉延展、IP／文创及传播物料执行，在团队协作中理解项目需求并推进视觉输出。'],
-    ['东道品牌创意集团','视觉传达设计实习生','参与品牌视觉设计与需求调研，积累设计规范、视觉执行与项目协作经验。'],
-    ['成都松谷科技','兼职平面设计师','参与图形与传播素材设计，围绕具体需求完成平面视觉制作。'],
-    ['青岛农业大学数字媒体研发中心','2019.06—2022.07 / 成员','参与品牌设计实践与数字媒体项目，积累从概念到视觉输出的协作经验。']
+    ['东道品牌创意集团','2022.07—2023.05 / 视觉传达设计师','参与书亦烧仙草、徐工集团、贾国龙功夫菜、长沙文旅、张家湾等品牌与 IP 项目，独立负责角色动作延展、变装体系、主题海报、包装物料与数字触点等视觉模块。所在团队的书亦烧仙草「仙蒂」IP 于 2022 年落地全国 100 多家升级门店，兔耳杯盖由本人的提案方向延续为落地产品。'],
+    ['东道品牌创意集团','2020.09—2021.04 / 视觉传达设计实习生','在品牌 IP 项目组参与麦咭乐园与中信集团的 IP 延展竞标提案：麦咭乐园初次提案的四个方向中，独立完成方案二与方案四的方案设计及视觉延展；参与中信集团 IP 周边延展提案。'],
+    ['成都松谷科技','2021.10—2022.01 / 兼职平面设计师','兼职期间独立交付 6 个客户的项目：为教育品牌「熊猫说英文」做品牌升级，完成熊猫 IP、品牌画册、课程物料、简历信纸与微信公众号推送；为箭牌门锁制作电商详情页及品宣物料；完成「鼎之谜」礼盒包装（盒型刀版与荷花插画延展）、维多利亚企业画册与信纸，以及淄博家建工、武汉桩工基础工程两本宣传画册，后者于 2021.11 定稿。'],
+    ['青岛农业大学数字媒体研发中心','2019.06—2022.07 / 小组组长','担任 5 人设计小组组长，负责项目排期、审稿与客户对接。带领组员完成鲁山山泉、黔顶贡茶、金沙贡茶 3 个品牌的标志、VI 与包装延展，并负责出品把关；带领小组为第三届中国社会心理服务高峰论坛（中国科学院心理研究所主办）和第三届中国茶业发展大会设计会议视觉，落地参会证、座牌、就餐券等物料。在校期间获中国大学生计算机设计大赛二等奖（省赛一等奖）、圣荷西国际美术与设计艺术节选拔赛一等奖。']
   ],
   leedsRank:'同届同专业综合成绩前 15%（正式发布前确认是最终排名还是当前阶段排名）',
   leedsCourses:[
@@ -1712,7 +1814,10 @@ function renderAbout(d){
   let html = '<div class="hbg-wrap" aria-hidden="true"><span class="hbg">About</span></div>';
   html += '<div class="h-en">About</div><div class="h-zh">关于我</div><div class="rule"></div>';
   html += '<button class="acv-style-toggle" id="acv-style-toggle" type="button" aria-expanded="false" aria-controls="ip-hero" aria-label="My style"><span>My Style</span></button>';
-  html += '<div class="ip-hero" id="ip-hero"><div class="acv-ip-collapse" id="acv-ip-collapse"><div class="ip-stage" id="ip-stage" aria-label="个人 IP 角色姿态控制区"><img id="ip-pose" src="assets/video/ip-nine/0000.webp" alt="个人 IP 角色姿态"><span class="ip-debug-box" id="ip-debug-box" aria-hidden="true"></span></div><div class="ip-bubbles" id="ip-bubbles"></div></div><div class="acv-ip-figure-wrap"><img class="acv-ip-figure" src="assets/images/personal%20figure.png" alt="个人形象图" loading="lazy" decoding="async"><img class="acv-glasses" src="assets/images/sunglasses.png" alt="墨镜" loading="lazy" decoding="async"></div></div><div class="ip-debug-info" id="ip-debug-info" aria-hidden="true"></div>';
+  /* [T5] 下面一行的人物图 src 改为 personal figure.webp */
+  /* [T3] 下面一行给姿态图、人物图、墨镜图补了 width/height（真实像素尺寸），姿态图加了懒加载 */
+  html += '<div class="ip-hero" id="ip-hero"><div class="acv-ip-collapse" id="acv-ip-collapse"><div class="ip-stage" id="ip-stage" aria-label="个人 IP 角色姿态控制区"><img id="ip-pose" src="assets/video/ip-nine/0000.webp" alt="个人 IP 角色姿态" width="920" height="690" loading="lazy" decoding="async"><span class="ip-debug-box" id="ip-debug-box" aria-hidden="true"></span></div><div class="ip-bubbles" id="ip-bubbles"></div></div><div class="acv-ip-figure-wrap"><img class="acv-ip-figure" src="assets/images/personal%20figure.webp" alt="个人形象图" width="1044" height="1064" loading="lazy" decoding="async"><img class="acv-glasses" src="assets/images/sunglasses.png" alt="墨镜" width="318" height="139" loading="lazy" decoding="async"></div></div><div class="ip-debug-info" id="ip-debug-info" aria-hidden="true"></div>';
+  /* [/T3] */
   const aboutImage = (key,alt,width,height) => '<img src="'+safeProfileUrl(encodeURI(PROFILE.aboutImages[key]))+'" alt="'+esc(alt)+'" width="'+width+'" height="'+height+'" loading="lazy" decoding="async">';
   const acvLeeds = '<p>聚焦 XR、空间交互、互动叙事与数字体验研究。</p>' +
     '<div class="acv-rank-note">排名预留：' + esc(PROFILE.leedsRank) + '</div>' +
@@ -1796,9 +1901,9 @@ function renderAbout(d){
       <div class="acv-list acv-ct">
         <a class="acv-row" href="assets/resume/Resume-LiYijin-Visual.pdf" download><div><h3>品牌视觉方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>
         <a class="acv-row" href="assets/resume/Resume-LiYijin-Interaction.pdf" download><div><h3>交互原型方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>
-        <a class="acv-row" href="assets/resume/Resume-LiYijin-AI-Product.pdf" download><div><h3>AI 产品助理方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>
+        <a class="acv-row" href="assets/resume/Resume-LiYijin-AI-Product.pdf" download><div><h3>AI 产品助理方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>${/MicroMessenger/i.test(navigator.userAgent) ? '<p class="acv-wx-tip">微信内无法下载时，请点右上角“…”选择在浏览器打开</p>' : ''}
         <a class="acv-row acv-copy" href="mailto:${esc(PROFILE.email)}" data-copy="${esc(PROFILE.email)}"><div><h3>邮箱</h3><p>${esc(PROFILE.email)}</p></div><span class="acv-row-side"><span class="acv-copied">已复制</span><span class="acv-arrow">↗</span></span></a>
-        <button class="acv-row acv-copy" type="button" data-copy="${esc(PROFILE.wechat)}"><div><h3>微信</h3><p>${esc(PROFILE.wechat)}</p></div><span class="acv-row-side"><span class="acv-copied">已复制</span><span class="acv-arrow">↗</span></span></button>
+        <button class="acv-row acv-copy acv-wx" type="button" data-copy="${esc(PROFILE.wechat)}"><div><h3>微信</h3><p>${esc(PROFILE.wechat)}</p></div><span class="acv-row-side"><span class="acv-copied">已复制</span><span class="acv-arrow">↗</span></span></button>
       </div>
     </div></section>
   </div>`;
@@ -2042,6 +2147,32 @@ const PROJECTS = {
       {src:'assets/projects/shuyi/shuyi_card_12.webp',tag:'SPACE · TEAM',title:'Space Proposal',info:'空间提案｜东道团队',desc:'东道团队将仙蒂放入门店立面、围挡与商场灯箱的提案画面，属团队空间方向，与最终绿色门店不同。',alt:'东道团队仙蒂门店立面围挡与商场灯箱空间提案'},
       {src:'assets/projects/shuyi/shuyi_card_13.webp',tag:'IMPLEMENTED',title:'Landed Stores',info:'落地门店｜官网实拍',desc:'2022 年五一新门店在全国陆续上新，红白配色改为绿色主色调，门头启用新标志并加入仙蒂雕塑，全国升级门店 100 多家。绿色空间与新标志为东道团队成果。来源：shuyisxc.com 官网新闻。',alt:'书亦绿色新门店门头新标志与仙蒂雕塑落地实拍'},
       {src:'assets/projects/shuyi/shuyi_card_14.webp',tag:'IMPLEMENTED',title:'Landed Merchandise',info:'落地周边｜官网实拍',desc:'仙蒂落地为红色兔耳杯盖、帆布包、钥匙扣、玩偶与徽章等周边。兔耳杯盖是提案方向在落地产品中的延续；上线后的周边不列为本人设计。来源：shuyisxc.com 官网展示页。',alt:'仙蒂红色兔耳杯盖帆布包钥匙扣玩偶与徽章落地实拍'}
+    ]
+  },
+  chabaidao:{
+    parent:['brand'],
+    hero:'assets/projects/chabaidao/chabaidao_hero.mp4',
+    hero_poster:'assets/projects/chabaidao/chabaidao_hero_poster.webp',
+    hero_alt:'本人设计的茶百道蓝色熊猫丁丁猫三维形象与口号“惊喜不止这一杯”',
+    hero_mask:'deep',
+    category:'INTERNAL PITCH / BRAND IP / 2021',
+    title_1:'茶百道', title_2:'品牌IP塑造',
+    intro:'2021 年 9 月，本人在工作期间参加茶百道品牌 IP 的组内比稿，组内每人独立出一套方案，本页为本人方案。蓝色熊猫「丁丁猫」被设定为一只爱喝甜食、爱看电影的熊猫，从角色档案、三视图、表情与变装，延展到主题海报、插画主视觉、三维形象、周边与一段动态演示。',
+    tags:['IP CHARACTER','VISUAL EXTENSION','MOTION','IMPLEMENTED'],
+    stats:[{num:'1',label:'IP CHARACTER'},{num:'10',label:'EXPRESSIONS'},{num:'6',label:'COSTUMES'}],
+    filter_title:'一只爱喝甜食的熊猫，从设定到周边',
+    filter_intro:'按“角色档案—三视图—表情—变装—海报—插画主视觉—三维形象与口号—周边—品牌IP升级落地”组织。前 8 卡为本人 2021 年工作期间的比稿方案，最后一卡为旧版形象与门店落地的对比。',
+    filters:['CHARACTER','EXPRESSION','EXTENSION','POSTER','3D','IMPLEMENTED'],
+    cards:[
+      {src:'assets/projects/chabaidao/chabaidao_card_01.webp',size:'wide',tag:'CHARACTER',title:'丁丁猫 · Profile',info:'角色档案｜本人方案',desc:'标签：喜欢甜食、呆萌、积极向上、年轻活力、身体柔软、幽默；爱好：看电影、运动、旅行。',alt:'茶百道蓝色熊猫丁丁猫平面形象与角色标签爱好'},
+      {src:'assets/projects/chabaidao/chabaidao_card_02.webp',size:'narrow',tag:'CHARACTER',title:'Three Views',info:'平面与三维三视图｜本人方案',desc:'正面、侧面、背面三个角度锁定圆耳、蓝眼圈、短腿和肚子上的小叉，并给出对应的三维版本。',alt:'丁丁猫平面与三维正侧背三视图'},
+      {src:'assets/projects/chabaidao/chabaidao_card_03.webp',size:'wide',tag:'EXPRESSION',title:'Expressions',info:'动态表情｜本人方案',desc:'10 个动态表情，配不同底色，测试角色在大笑、流泪、生气、打招呼、骑滑板车、掀桌等状态下的辨识度。',alt:'丁丁猫十个彩色圆形底上的动态表情'},
+      {src:'assets/projects/chabaidao/chabaidao_card_04.webp',tag:'EXTENSION',title:'Costumes',info:'六套变装｜本人方案',desc:'运动外套、墨镜夹克、椰子壳、西瓜、蛋壳、草莓六套变装，角色轮廓不变，只换服装与道具；下方为用变装线稿铺成的底纹。',alt:'丁丁猫六套服装变装与线稿底纹',size:'narrow'},
+      {src:'assets/projects/chabaidao/chabaidao_card_05.webp',size:'wide',tag:'POSTER',title:'Theme Posters',info:'主题海报｜本人方案',desc:'「健康好喝」「选择多样」「款款好喝」三张竖版海报，分别用黄、红、紫三种底色。',alt:'丁丁猫健康好喝选择多样款款好喝三张主题海报'},
+      {src:'assets/projects/chabaidao/chabaidao_card_06.webp',tag:'ILLUSTRATION',title:'Key Visuals & Out-of-home',info:'插画主视觉与户外效果｜本人方案',desc:'黄色乐队主题与红色手机主题两张插画主视觉，并放入灯箱和公交站牌检验远距离的识别效果。',alt:'丁丁猫黄色乐队与红色手机主题插画及灯箱公交站效果图'},
+      {src:'assets/projects/chabaidao/chabaidao_card_07.webp',size:'wide',tag:'3D',title:'3D & Slogan',info:'三维形象与口号｜本人方案',desc:'三维丁丁猫搭配「惊喜不止这一杯」，延展到电脑与手机屏保、文字海报和户外灯箱。',alt:'丁丁猫三维形象与惊喜不止这一杯口号及屏保灯箱应用'},
+      {src:'assets/projects/chabaidao/chabaidao_card_08.webp',size:'narrow',tag:'EXTENSION',title:'Merchandise',info:'周边物料｜本人方案',desc:'工牌、手机壳、围裙与帆布袋，用单色线稿底纹和大面积角色插画两种方式承载 IP。',alt:'丁丁猫工牌手机壳围裙与帆布袋周边'},
+      {src:'assets/projects/chabaidao/chabaidao_card_09.webp',size:'wide',tag:'IMPLEMENTED',title:'Brand IP Upgrade · Landed',info:'品牌IP升级落地｜旧版形象与门店落地对比',desc:'左：升级前的立体形象，亮面材质，手里抱着印有旧标志的杯子，肚子上的小叉被挡住。右：落地到门店的形象，哑光平面色，耳朵、眼圈和四肢用品牌蓝，肚子上的小叉完整露出，与平面设定一致。两张均为现场实拍。',alt:'茶百道立体熊猫升级前后对比：旧版亮面形象抱着印旧标志的杯子，对比门店落地版哑光形象露出肚子上的小叉'}
     ]
   },
   pushaway:{
@@ -2407,7 +2538,7 @@ function renderProject(id){
   return '<div class="cs-wrap" data-no-amp>'+
     '<section class="cs-hero">'+
       '<div class="cs-ph cs-ph--hero"'+heroPlaceholderAttrs+'>'+heroMedia+'</div>'+
-      '<div class="cs-hero-mask" aria-hidden="true"></div>'+
+      '<div class="cs-hero-mask'+(P.hero_mask==='deep'?' cs-hero-mask--deep':'')+'" aria-hidden="true"></div>'+
       '<div class="cs-hero-grid">'+
       '<div class="cs-hero-text">'+
         '<p class="cs-eyebrow">'+pick(P.category,'分类')+'</p>'+
@@ -3618,14 +3749,23 @@ async function acvCopy(text,node){
     if(ta&&ta.parentNode)ta.parentNode.removeChild(ta);
   }
   if(!done&&node)acvSelectText(node);
+  return done;
 }
 document.addEventListener('click',e=>{
   const row=e.target.closest('.acv-copy');
   if(!row)return;
   const text=row.getAttribute('data-copy')||'';
   const target=row.querySelector('p');
-  acvCopy(text,target);
   const badge=row.querySelector('.acv-copied');
+  if(row.classList.contains('acv-wx')){
+    /* 微信按钮：按复制结果给出明确提示；失败时不显示“已复制” */
+    acvCopy(text,target).then(ok=>{
+      toast(ok ? '微信号已复制' : '复制失败，微信号：'+text);
+      if(ok&&badge){badge.classList.add('is-on');clearTimeout(badge._t);badge._t=setTimeout(()=>badge.classList.remove('is-on'),1500);}
+    });
+    return;
+  }
+  acvCopy(text,target);
   if(badge){
     badge.classList.add('is-on');
     clearTimeout(badge._t);
