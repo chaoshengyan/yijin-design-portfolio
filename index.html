@@ -1089,6 +1089,11 @@
 /* 单项目可选：hero_mask:'deep' —— 首屏视频画面较花时加深遮罩，保证左侧文字可读 */
 .cs-wrap .cs-hero-mask--deep{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(to right,rgba(8,8,7,.94) 0%,rgba(8,8,7,.86) 44%,rgba(8,8,7,.5) 100%)}
 @media(max-width:900px){.cs-wrap .cs-hero-mask--deep{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(rgba(8,8,7,.82),rgba(8,8,7,.82))}}
+/* 单项目可选：hero_mask:'left' —— 只压暗+虚化左侧文字区（原型 UI 小字太多，仅压暗仍会透出来），右侧画面保持清晰；手机上文字通栏，整体压暗虚化 */
+.cs-wrap .cs-hero-mask--left{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(to right,rgba(8,8,7,.93) 0%,rgba(8,8,7,.86) 48%,rgba(8,8,7,.3) 100%)}
+.cs-wrap .cs-hero-mask--left::before{content:'';position:absolute;inset:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(to right,#000 0%,rgba(0,0,0,.8) 48%,transparent 92%);mask-image:linear-gradient(to right,#000 0%,rgba(0,0,0,.8) 48%,transparent 92%)}
+@media(max-width:900px){.cs-wrap .cs-hero-mask--left{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(rgba(8,8,7,.86),rgba(8,8,7,.86))}
+.cs-wrap .cs-hero-mask--left::before{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:none;mask-image:none}}
 .cs-wrap .cs-cards{padding:88px 0 0}
 .cs-wrap .cs-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px 24px}
 .cs-wrap .cs-card{grid-column:span 7;min-width:0}
@@ -1189,6 +1194,54 @@ html{color-scheme:dark}
 /* [T3] 作品墙栏目链接：清除链接默认样式 */
 .wall a.col,.wall a.col:visited{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
 /* [/T3] */
+/* [T6] 学位证明按钮与弹层 */
+.about-cv .acv-award-btn{margin:10px 0 14px;min-height:44px;color:var(--ink);line-height:1.2}
+@media (max-width:900px){.about-cv .acv-award-btn{font-size:14px}}
+.award-dialog{width:fit-content;max-width:90vw;max-height:85vh;padding:0;overflow:hidden;overscroll-behavior:contain}
+.award-dialog .award-img{display:block;width:auto;height:auto;max-width:90vw;max-height:85vh}
+.award-dialog .award-close{right:0;top:0;width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;background:rgba(17,16,14,.82);color:var(--ink);z-index:1}
+/* [/T6] */
+/* [T7] 主卡左右滑动：纵向手势仍交给页面滚动 */
+@media (max-width:768px){
+  .skills.open .sk.active{touch-action:pan-y}
+}
+/* [/T7] */
+/* [T8] 手机触屏：作品墙滚动展开。展开栏沿用 .is-active，其余收成窄带 */
+@media (max-width:768px){
+  .wall.t8-on{overflow-anchor:none}
+  .wall.t8-on .col{min-height:var(--t8-n,72px);transition:min-height .28s cubic-bezier(.2,.7,.2,1)}
+  .wall.t8-on .col.is-active{min-height:var(--t8-e,480px)}
+  .wall.t8-on .col.is-active .col-image{opacity:var(--wall-lit-brightness)}
+}
+@media (max-width:768px) and (prefers-reduced-motion:reduce){
+  .wall.t8-on .col{transition:none}
+}
+/* [/T8] */
+/* [T9] 手机端 About 顶部：人像单独占一块（英文标语之下、简介之上），求职城市行上移 */
+@media (max-width:900px){
+  .about-cv > .acv-ip-figure-wrap{
+    position:relative;display:block;width:70vw;max-width:100%;margin:32px auto;pointer-events:none;
+    --glasses-left:39%;--glasses-top:26%;--glasses-width:30%;
+  }
+  .about-cv > .acv-ip-figure-wrap .acv-ip-figure{display:block;width:100%;height:auto}
+  .about-cv > .acv-ip-figure-wrap .acv-glasses{
+    position:absolute;left:var(--glasses-left);top:var(--glasses-top);width:var(--glasses-width);height:auto;z-index:1;pointer-events:none;
+  }
+  .about-cv > .acv-ip-figure-wrap + .acv-sec{margin-top:0!important;padding-top:0}
+  .about-cv .acv-city{margin-top:10px;white-space:normal;overflow-wrap:anywhere}
+}
+/* [/T9] */
+/* [T10] */
+@media(max-width:900px){
+.cs-wrap .cs-hero{flex-direction:column;align-items:stretch;min-height:0;padding-top:48px;padding-bottom:48px}
+.cs-wrap .cs-hero .cs-hero-grid,.cs-wrap .cs-hero .cs-hero-text{display:contents}
+.cs-wrap .cs-hero .cs-hero-mask{display:none}
+.cs-wrap .cs-hero .cs-ph--hero{position:relative;inset:auto;z-index:auto;order:5;width:100%;margin:28px 0;background:none;border:0}
+.cs-wrap .cs-hero .cs-hero-video{position:static;inset:auto;width:auto;height:auto;max-width:100%;max-height:60vh;max-height:60svh;object-fit:contain;margin:0 auto}
+.cs-wrap .cs-hero .cs-pills{max-width:100%}
+.cs-wrap .cs-hero .cs-stats{order:6;margin-top:0}
+}
+/* [/T10] */
 </style>
 <link rel="stylesheet" href="assets/cursor/cursor.css">
 <script src="assets/cursor/cursor-shuttle.js" defer></script>
@@ -1242,6 +1295,12 @@ html{color-scheme:dark}
 <button type="button" class="profile-btn" id="copy-wechat">复制微信号</button>
 <p class="wechat-note" id="wechat-copy-status" role="status" aria-live="polite">可长按二维码保存，或复制微信号搜索。</p>
 </dialog>
+<!-- [T6] 学位证明弹层：复用微信弹窗的外观和遮罩；图片在点击按钮后才设置 src -->
+<dialog class="wechat-dialog award-dialog" id="award-dialog" aria-label="利兹大学学位证明">
+<button type="button" class="wechat-close award-close" data-close-award aria-label="关闭学位证明">×</button>
+<img class="award-img" id="award-img" alt="利兹大学学位证明" width="1075" height="1516" loading="lazy" decoding="async">
+</dialog>
+<!-- [/T6] -->
 
 
 <script src="assets/projects-data.js"></script>
@@ -1401,6 +1460,9 @@ ORDER.forEach(key=>{
 let activeKey = null;
 let hoverLocked = false;
 function setActiveCol(key){
+  /* [T8] 手机滚动展开模式下，活动栏只由滚动逻辑设置，忽略触摸带来的 pointerleave / focus 等 */
+  if(wall._t8On && !wall._t8Set) return;
+  /* [/T8] */
   if(activeKey === key) return;
   activeKey = key;
   wall.classList.toggle("has-active", !!key);
@@ -1436,6 +1498,94 @@ wall.addEventListener("focusout",e=>{
   if(e.relatedTarget && wall.contains(e.relatedTarget)) return;
   setActiveCol(null);
 });
+/* [T8] 手机触屏：作品墙随滚动自动展开一栏（复用 .is-active / .has-active，scroll + requestAnimationFrame）
+   规则：下一栏的顶部升到屏幕 45% 以上 → 展开下一栏；当前栏顶部降到 45%+60px 以下 → 展开上一栏。
+   两条线相隔 60px 防止来回跳；切换时逐帧补偿滚动，让新展开栏的顶部在屏幕上不动。 */
+(function(){
+  const mq = window.matchMedia("(max-width:768px) and (pointer:coarse)");
+  const homeEl = wall.closest(".home");
+  const cols = ()=>[...wall.querySelectorAll(".col")];
+  const NARROW = 72;
+  let on = false, idx = 0, locked = false, ticking = false, lineA = 0, lineB = 0, measured = false;
+  const setIdx = i=>{
+    idx = i;
+    const c = cols()[i];
+    wall._t8Set = true; setActiveCol(c ? c.dataset.key : null); wall._t8Set = false;
+  };
+  function measure(){
+    const vh = window.innerHeight, list = cols();
+    if(!wall.clientWidth){ measured = false; return; }  /* 首页还没显示时量不到尺寸，等显示后再量 */
+    measured = true;
+    lineA = Math.round(vh*0.45); lineB = lineA + 60;
+    const full = Math.round((wall.clientWidth - 28) * 1140 / 720) + 12;
+    wall.style.setProperty("--t8-n", NARROW + "px");
+    wall.style.setProperty("--t8-e", Math.max(200, Math.min(full, Math.round(vh*0.84))) + "px");
+    /* 最后一栏要能滚到展开线：不够时在作品墙下方补最少的留白 */
+    wall.style.marginBottom = "";
+    const last = list[list.length-1];
+    if(!last) return;
+    const doc = document.documentElement;
+    const below = doc.scrollHeight - (last.getBoundingClientRect().bottom + window.scrollY);
+    const isLastActive = idx === list.length-1;
+    const lastTopAtEnd = vh - below - (isLastActive ? last.getBoundingClientRect().height : NARROW);
+    const need = isLastActive ? (wall._t8Pad||0) : Math.max(0, Math.ceil(lastTopAtEnd - lineA + 16));
+    wall._t8Pad = need;
+    wall.style.marginBottom = need ? need + "px" : "";
+  }
+  function switchTo(j){
+    const target = cols()[j];
+    if(!target) return;
+    const top0 = target.getBoundingClientRect().top;
+    setIdx(j);
+    const fix = ()=>{
+      const d = target.getBoundingClientRect().top - top0;
+      if(Math.abs(d) > 0.5) window.scrollBy(0, d);
+    };
+    if(REDUCED){ fix(); return; }
+    locked = true;
+    const start = performance.now();
+    const step = ()=>{
+      fix();
+      if(performance.now() - start < 300){ requestAnimationFrame(step); }
+      else{ locked = false; request(); }
+    };
+    requestAnimationFrame(step);
+  }
+  function check(){
+    ticking = false;
+    if(!on || locked || !homeEl || !homeEl.classList.contains("active")) return;
+    if(!measured){ measure(); if(!measured) return; }
+    const list = cols(), cur = list[idx], next = list[idx+1];
+    if(!cur) return;
+    let j = idx;
+    if(window.scrollY <= 1) j = 0;
+    else if(next && next.getBoundingClientRect().top < lineA) j = idx + 1;
+    else if(idx > 0 && cur.getBoundingClientRect().top > lineB) j = idx - 1;
+    if(j !== idx) switchTo(j);
+  }
+  function request(){ if(!ticking){ ticking = true; requestAnimationFrame(check); } }
+  function apply(){
+    /* 本功能验证未通过（切换时顶部位置跳动），已关闭；改为 true 即重新启用 */
+    const T8_ENABLED = false;
+    const want = T8_ENABLED && mq.matches;
+    if(want && !on){
+      on = true; wall._t8On = true; wall.classList.add("t8-on");
+      setIdx(0); measure(); request();
+    }else if(!want && on){
+      on = false; wall.classList.remove("t8-on"); wall.style.marginBottom = "";
+      wall._t8Set = true; setActiveCol(null); wall._t8Set = false; wall._t8On = false;
+    }else if(on){ measure(); request(); }
+  }
+  window.addEventListener("scroll",request,{passive:true});
+  window.addEventListener("resize",apply);
+  if(mq.addEventListener) mq.addEventListener("change",apply);
+  /* 从作品页返回首页后，按当前滚动位置重新计算 */
+  window.addEventListener("hashchange",()=>{ if(on) setTimeout(()=>{ if(homeEl && homeEl.classList.contains("active")){ setIdx(idx); measure(); request(); } },80); });
+  apply();
+  window.addEventListener("load",()=>{ if(on){ measure(); request(); } });
+  setTimeout(()=>{ if(on && !measured){ measure(); request(); } },400);
+})();
+/* [/T8] */
 
 /* ================= 技能卡片（左侧封面区） ================= */
 const SKILLS = [
@@ -1694,6 +1844,72 @@ if(skillsEl){
   /* [T1] 记录最近一次指针按下的时间，供上面的 focus 判断 */
   skillsEl.addEventListener("pointerdown",()=>{skillsEl._t1PointerAt=performance.now();},true);
   /* [/T1] */
+  /* [T7] 手机触屏：展开的主卡左右滑动切换上一张 / 下一张（只用 touch 事件，桌面鼠标不受影响） */
+  (function(){
+    const mq = window.matchMedia("(max-width:768px)");
+    const cards = ()=>[...skillsEl.querySelectorAll(".sk")];
+    let g = null, swipeAt = -1e9;
+    const settle = (card,animate)=>{
+      if(!card.style.transform) return;
+      if(animate && !REDUCED){
+        card.style.transition = "transform .25s cubic-bezier(.2,.7,.2,1)";
+        card.style.transform = "translateX(0px)";
+        setTimeout(()=>{card.style.transition="";card.style.transform="";},270);
+      }else{card.style.transition="";card.style.transform="";}
+    };
+    const syncRow = i=>{
+      /* 当前这张是上方主卡，标签行里是其余 8 张：把标签行滚到它前一张的位置，前后两张都露出来 */
+      const list = cards(), prev = list[i-1];
+      requestAnimationFrame(()=>{
+        const left = prev ? Math.max(0, skillsEl.scrollLeft + prev.getBoundingClientRect().left - skillsEl.getBoundingClientRect().left) : 0;
+        skillsEl.scrollTo({left, behavior:"auto"});
+      });
+    };
+    skillsEl._t7SyncRow = syncRow;
+    skillsEl.addEventListener("touchstart",e=>{
+      g = null;
+      if(!mq.matches || openIdx===-1 || e.touches.length!==1) return;
+      const card = e.target.closest ? e.target.closest(".sk.active") : null;
+      if(!card) return;
+      cancelHoverCycle();
+      const t = e.touches[0];
+      g = {card, x:t.clientX, y:t.clientY, dx:0, dy:0, mode:""};
+    },{passive:true});
+    skillsEl.addEventListener("touchmove",e=>{
+      if(!g) return;
+      const t = e.touches[0];
+      g.dx = t.clientX - g.x; g.dy = t.clientY - g.y;
+      const ax = Math.abs(g.dx), ay = Math.abs(g.dy);
+      if(!g.mode && (ax>8 || ay>8)) g.mode = ax > ay*1.5 ? "h" : "v";
+      if(g.mode!=="h") return;
+      const atEdge = (g.dx>0 && openIdx===0) || (g.dx<0 && openIdx===cards().length-1);
+      if(atEdge){
+        const off = Math.sign(g.dx) * Math.min(24, ax*0.3);
+        g.card.style.transition = "";
+        g.card.style.transform = "translateX(" + off.toFixed(1) + "px)";
+      }else if(g.card.style.transform){ g.card.style.transform = ""; }
+    },{passive:true});
+    const end = ()=>{
+      if(!g) return;
+      const s = g; g = null;
+      const ax = Math.abs(s.dx), ay = Math.abs(s.dy);
+      settle(s.card,true);
+      if(s.mode!=="h") return;
+      swipeAt = performance.now();
+      if(ax<=40 || ax<=ay*1.5 || openIdx===-1) return;
+      const list = cards(), j = openIdx + (s.dx<0 ? 1 : -1);
+      if(j<0 || j>=list.length) return;
+      openPanel(j, list[j]);
+      syncRow(j);
+    };
+    skillsEl.addEventListener("touchend",end,{passive:true});
+    skillsEl.addEventListener("touchcancel",end,{passive:true});
+    /* 一次横滑之后紧跟的点击不生效，避免误关或误触 */
+    skillsEl.addEventListener("click",e=>{
+      if(performance.now()-swipeAt < 400){e.stopPropagation();e.preventDefault();}
+    },true);
+  })();
+  /* [/T7] */
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&openIdx!==-1)closePanel(true);});
 }
 
@@ -1786,7 +2002,9 @@ const PROFILE = {
     ['成都松谷科技','2021.10—2022.01 / 兼职平面设计师','兼职期间独立交付 6 个客户的项目：为教育品牌「熊猫说英文」做品牌升级，完成熊猫 IP、品牌画册、课程物料、简历信纸与微信公众号推送；为箭牌门锁制作电商详情页及品宣物料；完成「鼎之谜」礼盒包装（盒型刀版与荷花插画延展）、维多利亚企业画册与信纸，以及淄博家建工、武汉桩工基础工程两本宣传画册，后者于 2021.11 定稿。'],
     ['青岛农业大学数字媒体研发中心','2019.06—2022.07 / 小组组长','担任 5 人设计小组组长，负责项目排期、审稿与客户对接。带领组员完成鲁山山泉、黔顶贡茶、金沙贡茶 3 个品牌的标志、VI 与包装延展，并负责出品把关；带领小组为第三届中国社会心理服务高峰论坛（中国科学院心理研究所主办）和第三届中国茶业发展大会设计会议视觉，落地参会证、座牌、就餐券等物料。在校期间获中国大学生计算机设计大赛二等奖（省赛一等奖）、圣荷西国际美术与设计艺术节选拔赛一等奖。']
   ],
-  leedsRank:'同届同专业综合成绩前 15%（正式发布前确认是最终排名还是当前阶段排名）',
+  /* [T6] 原「排名预留」一句改为学位等级 */
+  leedsRank:'Pass with Distinction（优秀通过）',
+  /* [/T6] */
   leedsCourses:[
     {cn:'课程体验实践',en:'Experiential Practices',credits:'30 credits'},
     {cn:'数字设计未来研究方法',en:'Research Methods for Digital Design Futures',credits:'15 credits'},
@@ -1822,7 +2040,10 @@ function renderAbout(d){
   /* [/T3] */
   const aboutImage = (key,alt,width,height) => '<img src="'+safeProfileUrl(encodeURI(PROFILE.aboutImages[key]))+'" alt="'+esc(alt)+'" width="'+width+'" height="'+height+'" loading="lazy" decoding="async">';
   const acvLeeds = '<p>聚焦 XR、空间交互、互动叙事与数字体验研究。</p>' +
-    '<div class="acv-rank-note">排名预留：' + esc(PROFILE.leedsRank) + '</div>' +
+    /* [T6] 学位等级 + 查看学位证明按钮 */
+    '<div class="acv-rank-note">学位等级：' + esc(PROFILE.leedsRank) + '</div>' +
+    '<button type="button" class="profile-btn acv-award-btn" data-open-award aria-haspopup="dialog">查看学位证明</button>' +
+    /* [/T6] */
     '<div class="acv-course-list">' + PROFILE.leedsCourses.map(c =>
       '<div class="acv-course-row"><div><b>' + esc(c.cn) + '</b><small>' + esc(c.en) + '</small></div><span>' + esc(c.credits) + '</span></div>').join('') + '</div>';
   const acvUndergrad = '<p>平均成绩 85.32 / 100；平均学分绩点 3.60。</p>' +
@@ -1888,7 +2109,7 @@ function renderAbout(d){
     <section class="acv-sec"><div class="acv-wrap">
       <div class="acv-tag">04 / EDUCATION</div><h2>教育背景</h2>
       <div class="acv-list">
-        ${acvRow('英国利兹大学','MA Digital Design Futures / 数字设计未来', acvLeeds)}
+        ${/* [T6] */acvRow('英国利兹大学','2025.09—2026.11 / MA Digital Design Futures / 数字设计未来硕士', acvLeeds)/* [/T6] */}
         ${acvRow('青岛农业大学','2018.09—2022.07 / 数字媒体艺术 · 艺术学学士', acvUndergrad)}
       </div>
     </div></section>
@@ -2449,6 +2670,7 @@ const PROJECTS = {
   },
   qm01:{
     parent:['ai'],
+    hero_mask:'left',
     category:'AI IN-GAME ASSISTANT · HTML / CSS / JAVASCRIPT · AI CODING / 2026',
     title_1:'QM-01', title_2:'AI 战术后勤助手',
     intro:'QM-01 是搜打撤游戏里的资源管理助手。仓库爆满、想卡着预算配装时，玩家不用再逐件查看、拖拽和比价，说一句话，助手给出方案清单，确认后才执行。意图由规则引擎解析，另留了兼容大模型的接口；计算、校验和修改库存都由代码完成。',
@@ -2541,7 +2763,7 @@ function renderProject(id){
   return '<div class="cs-wrap" data-no-amp>'+
     '<section class="cs-hero">'+
       '<div class="cs-ph cs-ph--hero"'+heroPlaceholderAttrs+'>'+heroMedia+'</div>'+
-      '<div class="cs-hero-mask'+(P.hero_mask==='deep'?' cs-hero-mask--deep':'')+'" aria-hidden="true"></div>'+
+      '<div class="cs-hero-mask'+(P.hero_mask==='deep'?' cs-hero-mask--deep':'')+(P.hero_mask==='left'?' cs-hero-mask--left':'')+'" aria-hidden="true"></div>'+
       '<div class="cs-hero-grid">'+
       '<div class="cs-hero-text">'+
         '<p class="cs-eyebrow">'+pick(P.category,'分类')+'</p>'+
@@ -3724,6 +3946,28 @@ document.getElementById('copy-wechat').addEventListener('click',async()=>{
  catch(err){const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(document.getElementById('wechat-id'));selection.removeAllRanges();selection.addRange(range);status.textContent='未能自动复制，请长按或选中文字手动复制。';}
 });
 window.addEventListener('hashchange',closeWechat);
+/* [T6] 学位证明弹层：关闭按钮、点遮罩、Esc（dialog 自带）三种关闭方式；不改 body 的 overflow */
+(function(){
+ const dlg=document.getElementById('award-dialog');
+ const img=document.getElementById('award-img');
+ if(!dlg||!img)return;
+ const SRC='assets/images/leeds-award-redacted.webp';
+ const closeAward=()=>{if(dlg.open)dlg.close();};
+ document.addEventListener('click',e=>{
+  const t=e.target.closest?e.target:null;
+  if(!t)return;
+  if(t.closest('[data-open-award]')){
+   if(dlg.open)return;
+   if(img.getAttribute('src')!==SRC)img.src=SRC;
+   dlg.showModal();
+   return;
+  }
+  if(t.closest('[data-close-award]')){closeAward();return;}
+  if(t===dlg)closeAward();
+ });
+ window.addEventListener('hashchange',closeAward);
+})();
+/* [/T6] */
 
 /* 06 联系方式：邮箱/微信点击复制，行内短暂提示 */
 function acvSelectText(node){
@@ -3802,9 +4046,28 @@ function acvAnimSchedule(){
   if(acvAnimRaf) return;
   acvAnimRaf = requestAnimationFrame(acvAnimCheck);
 }
+/* [T9] 手机断点（About 用的 900px）下，把人像连同墨镜整块移到英文标语之后、简介之前；
+   宽屏时放回 My Style 容器原位，桌面结构不变。墨镜按同一容器内的百分比对位，随人像一起缩放。 */
+function t9PlaceFigure(){
+  const fig = document.querySelector('.acv-ip-figure-wrap');
+  const hero = document.getElementById('ip-hero');
+  const head = document.querySelector('.about-cv .acv-hero');
+  if(!fig || !hero || !head) return;
+  if(window.matchMedia('(max-width:900px)').matches){
+    if(fig.previousElementSibling !== head) head.after(fig);
+  }else if(fig.parentElement !== hero){
+    hero.appendChild(fig);
+  }
+}
+(function(){
+  const mq = window.matchMedia('(max-width:900px)');
+  if(mq.addEventListener) mq.addEventListener('change',t9PlaceFigure);
+})();
+/* [/T9] */
 function setupAcvScrollAnim(){
   acvAnimDone = false;
   pageView.classList.remove('acv-anim-done');
+  t9PlaceFigure(); /* [T9] */
   const fig = document.querySelector('.acv-ip-figure-wrap');
   if(!fig) return;
   if(acvAnimSkip()){

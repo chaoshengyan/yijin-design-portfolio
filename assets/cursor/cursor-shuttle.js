@@ -180,7 +180,7 @@
     var n = 0;
     live.forEach(function(k){ if(seen.has(k)) n++; });
     var done = n >= total;
-    var txt = done ? (total + '/' + total + ' \u00b7 看起来很冷，其实很好聊。聊聊？') : (n + '/' + total);
+    var txt = done ? (total + '/' + total + ' \u00b7 看起来高冷其实是装的，＋我别逼我跪下来求你') : (n + '/' + total);
     if(line.textContent !== txt) line.textContent = txt;
     if(line.classList.contains('is-done') !== done) line.classList.toggle('is-done', done);
     if(line.disabled === done) line.disabled = !done;
