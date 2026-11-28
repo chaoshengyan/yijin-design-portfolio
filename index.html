@@ -1094,6 +1094,9 @@
 .cs-wrap .cs-hero-mask--left::before{content:'';position:absolute;inset:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(to right,#000 0%,rgba(0,0,0,.8) 48%,transparent 92%);mask-image:linear-gradient(to right,#000 0%,rgba(0,0,0,.8) 48%,transparent 92%)}
 @media(max-width:900px){.cs-wrap .cs-hero-mask--left{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(rgba(8,8,7,.86),rgba(8,8,7,.86))}
 .cs-wrap .cs-hero-mask--left::before{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);-webkit-mask-image:none;mask-image:none}}
+/* 单项目可选：hero_mask:'left-tight' —— 基于 left，但虚化在画面 60% 处归零（首屏图左侧自带文字、右侧主体从 ~60% 开始时用，主体完全不被糊到） */
+.cs-wrap .cs-hero-mask--left.cs-hero-mask--left-tight{background:linear-gradient(to top,var(--bg) 0,rgba(8,8,7,0) 120px),linear-gradient(to right,rgba(8,8,7,.93) 0%,rgba(8,8,7,.88) 57%,rgba(8,8,7,.3) 100%)}
+.cs-wrap .cs-hero-mask--left.cs-hero-mask--left-tight::before{-webkit-mask-image:linear-gradient(to right,#000 0%,#000 57%,transparent 62%);mask-image:linear-gradient(to right,#000 0%,#000 57%,transparent 62%)}
 .cs-wrap .cs-cards{padding:88px 0 0}
 .cs-wrap .cs-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px 24px}
 .cs-wrap .cs-card{grid-column:span 7;min-width:0}
@@ -1211,6 +1214,7 @@ html{color-scheme:dark}
   .wall.t8-on{overflow-anchor:none}
   .wall.t8-on .col{min-height:var(--t8-n,72px);transition:min-height .28s cubic-bezier(.2,.7,.2,1)}
   .wall.t8-on .col.is-active{min-height:var(--t8-e,480px)}
+  .wall.t8-on.t8-m .col{transition:none}
   .wall.t8-on .col.is-active .col-image{opacity:var(--wall-lit-brightness)}
 }
 @media (max-width:768px) and (prefers-reduced-motion:reduce){
@@ -1242,6 +1246,35 @@ html{color-scheme:dark}
 .cs-wrap .cs-hero .cs-stats{order:6;margin-top:0}
 }
 /* [/T10] */
+/* [T11] 手机端 About 顶部：职位行单行、城市行12px、人像放在中英文标语之间 */
+@media (max-width:900px){
+  .about-cv .acv-sub{white-space:nowrap;font-size:clamp(14px,5.2vw,22px)}
+  .about-cv .acv-city{font-size:12px;margin-top:8px}
+  .about-cv .acv-slogan{row-gap:0;grid-template-columns:minmax(0,1fr)}
+  .about-cv .acv-slogan > .acv-ip-figure-wrap{
+    position:relative;display:block;width:70vw;max-width:100%;margin:-8px auto 0;justify-self:center;pointer-events:none;
+    --glasses-left:39%;--glasses-top:26%;--glasses-width:30%;
+  }
+  .about-cv .acv-slogan > .acv-ip-figure-wrap .acv-ip-figure{display:block;width:100%;height:auto}
+  .about-cv .acv-slogan > .acv-ip-figure-wrap .acv-glasses{
+    position:absolute;left:var(--glasses-left);top:var(--glasses-top);width:var(--glasses-width);height:auto;z-index:1;pointer-events:none;
+  }
+  .about-cv .acv-slogan > .acv-slide--en{margin-top:28px}
+  .about-cv .acv-hero + .acv-sec{margin-top:0!important;padding-top:32px}
+}
+@media (max-width:359px){
+  .about-cv .acv-cn,.about-cv .acv-en{font-size:34px}
+}
+/* [/T11] */
+/* [T14] 作品卡片的文字介绍：放得下时盖在图片底部，放不下时卡片随文字变高，不出现内部滚动条 */
+.cs-wrap .cs-card .cs-media{display:grid;grid-template-columns:minmax(0,1fr)}
+.cs-wrap .cs-card .cs-media > .cs-ph{grid-area:1/1;align-self:start}
+.cs-wrap .cs-desc{max-height:none;overflow-y:visible;overflow-wrap:anywhere}
+.cs-wrap .cs-card.is-open .cs-desc{position:relative;grid-area:1/1;align-self:end}
+/* 技能标签行：保留横向滑动，隐藏滚动条外观 */
+#skills{scrollbar-width:none;-ms-overflow-style:none}
+#skills::-webkit-scrollbar{display:none}
+/* [/T14] */
 </style>
 <link rel="stylesheet" href="assets/cursor/cursor.css">
 <script src="assets/cursor/cursor-shuttle.js" defer></script>
@@ -1290,7 +1323,7 @@ html{color-scheme:dark}
 <button type="button" class="wechat-close" data-close-wechat aria-label="关闭微信联系卡">×</button>
 <p class="profile-kicker">LET’S CONNECT</p><h2 id="wechat-title">添加微信</h2>
 <img class="wechat-qr" id="wechat-qr" alt="李伊谨的微信个人二维码" hidden>
-<p class="wechat-fallback" id="wechat-qr-fallback">二维码图片尚未添加<br>可以复制下方微信号搜索添加</p>
+<p class="wechat-fallback" id="wechat-qr-fallback">二维码未显示<br>可以复制下方微信号搜索添加</p>
 <p class="wechat-id" id="wechat-id">liyijinwx</p>
 <button type="button" class="profile-btn" id="copy-wechat">复制微信号</button>
 <p class="wechat-note" id="wechat-copy-status" role="status" aria-live="polite">可长按二维码保存，或复制微信号搜索。</p>
@@ -1498,92 +1531,121 @@ wall.addEventListener("focusout",e=>{
   if(e.relatedTarget && wall.contains(e.relatedTarget)) return;
   setActiveCol(null);
 });
-/* [T8] 手机触屏：作品墙随滚动自动展开一栏（复用 .is-active / .has-active，scroll + requestAnimationFrame）
-   规则：下一栏的顶部升到屏幕 45% 以上 → 展开下一栏；当前栏顶部降到 45%+60px 以下 → 展开上一栏。
-   两条线相隔 60px 防止来回跳；切换时逐帧补偿滚动，让新展开栏的顶部在屏幕上不动。 */
+/* [T8] 手机触屏：作品墙随滚动进度自动展开一栏（复用 .is-active / .has-active，scroll + requestAnimationFrame）
+   p = (屏幕垂直中心 − 作品墙顶部) ÷ 作品墙总高度，限制在 0~1；展开序号 = floor(p × 栏数)；分界线两侧各留 0.03 防抖。
+   不做滚动位置补偿。作品墙的位置和高度只在加载、窗口尺寸变化、旋转、首页版面高度变化时测量并缓存。 */
 (function(){
   const mq = window.matchMedia("(max-width:768px) and (pointer:coarse)");
   const homeEl = wall.closest(".home");
   const cols = ()=>[...wall.querySelectorAll(".col")];
-  const NARROW = 72;
-  let on = false, idx = 0, locked = false, ticking = false, lineA = 0, lineB = 0, measured = false;
+  const NARROW = 72, GAP = 0.03, REACH = 0.84;
+  let on = false, idx = 0, ticking = false, measured = false, wallTop = 0, wallH = 0, auto = null, lastHomeH = 0;
   const setIdx = i=>{
     idx = i;
     const c = cols()[i];
     wall._t8Set = true; setActiveCol(c ? c.dataset.key : null); wall._t8Set = false;
   };
   function measure(){
-    const vh = window.innerHeight, list = cols();
+    if(!on) return;
     if(!wall.clientWidth){ measured = false; return; }  /* 首页还没显示时量不到尺寸，等显示后再量 */
-    measured = true;
-    lineA = Math.round(vh*0.45); lineB = lineA + 60;
+    const vh = window.innerHeight;
     const full = Math.round((wall.clientWidth - 28) * 1140 / 720) + 12;
+    wall.classList.add("t8-m");  /* 测量时关掉过渡，量到的是最终高度 */
     wall.style.setProperty("--t8-n", NARROW + "px");
     wall.style.setProperty("--t8-e", Math.max(200, Math.min(full, Math.round(vh*0.84))) + "px");
-    /* 最后一栏要能滚到展开线：不够时在作品墙下方补最少的留白 */
-    wall.style.marginBottom = "";
-    const last = list[list.length-1];
-    if(!last) return;
-    const doc = document.documentElement;
-    const below = doc.scrollHeight - (last.getBoundingClientRect().bottom + window.scrollY);
-    const isLastActive = idx === list.length-1;
-    const lastTopAtEnd = vh - below - (isLastActive ? last.getBoundingClientRect().height : NARROW);
-    const need = isLastActive ? (wall._t8Pad||0) : Math.max(0, Math.ceil(lastTopAtEnd - lineA + 16));
-    wall._t8Pad = need;
-    wall.style.marginBottom = need ? need + "px" : "";
-  }
-  function switchTo(j){
-    const target = cols()[j];
-    if(!target) return;
-    const top0 = target.getBoundingClientRect().top;
-    setIdx(j);
-    const fix = ()=>{
-      const d = target.getBoundingClientRect().top - top0;
-      if(Math.abs(d) > 0.5) window.scrollBy(0, d);
-    };
-    if(REDUCED){ fix(); return; }
-    locked = true;
-    const start = performance.now();
-    const step = ()=>{
-      fix();
-      if(performance.now() - start < 300){ requestAnimationFrame(step); }
-      else{ locked = false; request(); }
-    };
-    requestAnimationFrame(step);
+    /* 用版面坐标累加，不受首页进场动画位移的影响 */
+    let ot = 0; for(let el = wall; el; el = el.offsetParent) ot += el.offsetTop;
+    wallTop = ot;
+    wallH = wall.offsetHeight;
+    /* 最后一栏要能展开：滚到底时 p 达不到 REACH，就在作品墙下方补最少的留白 */
+    const pad0 = wall._t8Pad || 0;
+    /* [T13] 页面高度按首页的版面高度算，不受进场位移动画和正在退场的作品页影响 */
+    let docH = document.documentElement.scrollHeight;
+    if(homeEl && homeEl.offsetHeight){ let ht = 0; for(let el = homeEl; el; el = el.offsetParent) ht += el.offsetTop; docH = ht + homeEl.offsetHeight; }
+    /* [/T13] */
+    const maxY = docH - pad0 - vh;
+    const need = Math.max(0, Math.ceil(wallTop + REACH*wallH - vh/2 - maxY));
+    if(need !== pad0){ wall._t8Pad = need; wall.style.marginBottom = need ? need + "px" : ""; }
+    void wall.offsetHeight;
+    wall.classList.remove("t8-m");
+    if(homeEl) lastHomeH = homeEl.scrollHeight - need;
+    measured = wallH > 0;
   }
   function check(){
     ticking = false;
-    if(!on || locked || !homeEl || !homeEl.classList.contains("active")) return;
+    if(!on || !homeEl || !homeEl.classList.contains("active")) return;
     if(!measured){ measure(); if(!measured) return; }
-    const list = cols(), cur = list[idx], next = list[idx+1];
-    if(!cur) return;
-    let j = idx;
+    if(auto && (Math.abs(window.scrollY - auto.y) <= 1 || performance.now() - auto.t > 2500)) auto = null;
+    const n = cols().length;
+    if(!n) return;
+    const p = Math.max(0, Math.min(1, (window.scrollY + window.innerHeight/2 - wallTop) / wallH));
+    let j = Math.min(idx, n-1);
     if(window.scrollY <= 1) j = 0;
-    else if(next && next.getBoundingClientRect().top < lineA) j = idx + 1;
-    else if(idx > 0 && cur.getBoundingClientRect().top > lineB) j = idx - 1;
-    if(j !== idx) switchTo(j);
+    else{
+      while(j < n-1 && p >= (j+1)/n + GAP) j++;
+      while(j > 0 && p <= j/n - GAP) j--;
+    }
+    if(j !== idx) setIdx(j);
   }
   function request(){ if(!ticking){ ticking = true; requestAnimationFrame(check); } }
   function apply(){
-    /* 本功能验证未通过（切换时顶部位置跳动），已关闭；改为 true 即重新启用 */
-    const T8_ENABLED = false;
+    const T8_ENABLED = true;
     const want = T8_ENABLED && mq.matches;
     if(want && !on){
       on = true; wall._t8On = true; wall.classList.add("t8-on");
       setIdx(0); measure(); request();
     }else if(!want && on){
-      on = false; wall.classList.remove("t8-on"); wall.style.marginBottom = "";
+      on = false; measured = false; auto = null; wall.classList.remove("t8-on"); wall.style.marginBottom = ""; wall._t8Pad = 0;
       wall._t8Set = true; setActiveCol(null); wall._t8Set = false; wall._t8On = false;
     }else if(on){ measure(); request(); }
   }
+  /* 点收起的栏：不跳转，平滑滚到它的展开位置，展开仍由上面的滚动进度触发；点已展开的栏、键盘回车：照常进入 */
+  wall.addEventListener("click",e=>{
+    if(!on || e.detail === 0) return;
+    const col = e.target.closest ? e.target.closest(".col") : null;
+    if(!col) return;
+    const list = cols(), i = list.indexOf(col);
+    if(i < 0 || (i === idx && col.classList.contains("is-active"))) return;
+    e.preventDefault();
+    if(!measured){ measure(); if(!measured) return; }
+    const vh = window.innerHeight;
+    const maxY = Math.max(0, document.documentElement.scrollHeight - vh);
+    const y = Math.max(0, Math.min(maxY, Math.round(wallTop + (i + 0.5)/list.length*wallH - vh/2)));
+    auto = {y:y, t:performance.now()};
+    const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    window.scrollTo({top:y, behavior: reduce ? "instant" : "smooth"});
+  },true);
+  /* 自动滚动途中手指碰到屏幕：立即停在当前位置 */
+  window.addEventListener("touchstart",()=>{
+    if(!on || !auto) return;
+    auto = null;
+    window.scrollTo({top:window.scrollY, behavior:"instant"});
+  },{passive:true});
   window.addEventListener("scroll",request,{passive:true});
   window.addEventListener("resize",apply);
+  window.addEventListener("orientationchange",apply);
   if(mq.addEventListener) mq.addEventListener("change",apply);
+  /* 首页版面高度变化（例如技能卡展开收起）会让作品墙位置变化，这时重新测量；作品墙自身切换时总高度不变，不会触发 */
+  if(window.ResizeObserver && homeEl){
+    new ResizeObserver(()=>{
+      if(!on || !homeEl.classList.contains("active")) return;
+      const h = homeEl.scrollHeight - (wall._t8Pad || 0);
+      if(!measured || Math.abs(h - lastHomeH) > 1){ measure(); request(); }
+    }).observe(homeEl);
+  }
   /* 从作品页返回首页后，按当前滚动位置重新计算 */
-  window.addEventListener("hashchange",()=>{ if(on) setTimeout(()=>{ if(homeEl && homeEl.classList.contains("active")){ setIdx(idx); measure(); request(); } },80); });
+  const settle = ()=>{ if(on && homeEl && homeEl.classList.contains("active")){ measure(); request(); } };
+  /* [T13] */ wall._t8Settle = settle; /* [/T13] */
+  window.addEventListener("hashchange",()=>{ if(on){ setTimeout(settle,80); setTimeout(settle,900); } });
+  /* 首页进场动画结束后再量一次（动画期间页面高度会被位移撑大） */
+  if(homeEl){
+    const onEnd = e=>{ if(e.target === homeEl) settle(); };
+    homeEl.addEventListener("animationend",onEnd);
+    homeEl.addEventListener("transitionend",onEnd);
+  }
   apply();
-  window.addEventListener("load",()=>{ if(on){ measure(); request(); } });
-  setTimeout(()=>{ if(on && !measured){ measure(); request(); } },400);
+  window.addEventListener("load",()=>{ settle(); setTimeout(settle,1200); });
+  setTimeout(settle,400);
 })();
 /* [/T8] */
 
@@ -2061,7 +2123,7 @@ function renderAbout(d){
         <div>
           <div class="acv-bar"></div>
           <div class="acv-name">李伊谨<small>Yijin Li</small></div>
-          <div class="acv-sub">品牌视觉 · 交互原型 · AI 产品助理</div>
+          <div class="acv-sub">品牌视觉·交互原型·AI产品</div>
           <div class="acv-city">求职意向城市：杭州 / 上海</div>
         </div>
       </div>
@@ -2086,7 +2148,7 @@ function renderAbout(d){
       <div class="acv-tag">01 / CAPABILITIES</div><h2>我能做什么</h2>
       <div class="acv-cols">
         <div class="acv-col"><h3>需求与交互拆解</h3><div class="s">/ EXPERIENCE</div><ul><li><span class="acv-ico line"><img src="assets/Requirements%20and%20Icon%20Breakdown/场景梳理.png" alt="场景梳理" loading="lazy" decoding="async"></span><em>场景梳理</em></li><li><span class="acv-ico line"><img src="assets/Requirements%20and%20Icon%20Breakdown/用户流程.png" alt="用户流程" loading="lazy" decoding="async"></span><em>用户流程</em></li><li><span class="acv-ico line"><img src="assets/Requirements%20and%20Icon%20Breakdown/任务机制.png" alt="任务机制" loading="lazy" decoding="async"></span><em>任务机制</em></li><li><span class="acv-ico line"><img src="assets/Requirements%20and%20Icon%20Breakdown/状态反馈.png" alt="状态反馈" loading="lazy" decoding="async"></span><em>状态反馈</em></li></ul></div>
-        <div class="acv-col"><h3>原型实现与体验验证</h3><div class="s">/ PROTOTYPING</div><ul><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/Unity.png" alt="Unity" loading="lazy" decoding="async"></span><em>Unity</em></li><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/C%23.png" alt="C#" loading="lazy" decoding="async"></span><em>C#</em></li><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/visual-scrping.png" alt="Visual-Scripting" loading="lazy" decoding="async"></span><em>Visual-Scripting</em></li><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/真机测试.png" alt="真机测试" loading="lazy" decoding="async"></span><em>真机测试</em></li></ul></div>
+        <div class="acv-col"><h3>原型实现与体验验证</h3><div class="s">/ PROTOTYPING</div><ul><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/Unity.png" alt="Unity" loading="lazy" decoding="async"></span><em>Unity</em></li><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/C%23.png" alt="C#" loading="lazy" decoding="async"></span><em>C#</em></li><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/visual-scrping.png" alt="Visual Scripting" loading="lazy" decoding="async"></span><em>Visual Scripting</em></li><li><span class="acv-ico line"><img src="assets/Prototype%20Implementation%20and%20User%20Experience%20Validation%20icon/真机测试.png" alt="真机测试" loading="lazy" decoding="async"></span><em>真机测试</em></li></ul></div>
         <div class="acv-col"><h3>视觉审美与内容表达</h3><div class="s">/ VISUAL</div><ul><li><span class="acv-ico line"><img src="assets/Visual%20Aesthetics%20and%20Content%20Expression%20icon/品牌视觉.png" alt="品牌视觉" loading="lazy" decoding="async"></span><em>品牌视觉</em></li><li><span class="acv-ico line"><img src="assets/Visual%20Aesthetics%20and%20Content%20Expression%20icon/版式信息.png" alt="版式信息" loading="lazy" decoding="async"></span><em>版式信息</em></li><li><span class="acv-ico line"><img src="assets/Visual%20Aesthetics%20and%20Content%20Expression%20icon/IP延展.png" alt="IP延展" loading="lazy" decoding="async"></span><em>IP延展</em></li><li><span class="acv-ico line"><img src="assets/Visual%20Aesthetics%20and%20Content%20Expression%20icon/跨媒介表达.png" alt="跨媒介表达" loading="lazy" decoding="async"></span><em>跨媒介表达</em></li></ul></div>
         <div class="acv-col"><h3>研究整理与方案沟通</h3><div class="s">/ COMMUNICATION</div><ul><li><span class="acv-ico line"><img src="assets/Research,%20Organization,%20and%20Proposal%20Communication%20icon/研究整理.png" alt="研究整理" loading="lazy" decoding="async"></span><em>研究整理</em></li><li><span class="acv-ico line"><img src="assets/Research,%20Organization,%20and%20Proposal%20Communication%20icon/分镜表达.png" alt="分镜表达" loading="lazy" decoding="async"></span><em>分镜表达</em></li><li><span class="acv-ico line"><img src="assets/Research,%20Organization,%20and%20Proposal%20Communication%20icon/Demo展示.png" alt="Demo展示" loading="lazy" decoding="async"></span><em>Demo展示</em></li><li><span class="acv-ico line"><img src="assets/Research,%20Organization,%20and%20Proposal%20Communication%20icon/团队协作.png" alt="团队协作" loading="lazy" decoding="async"></span><em>团队协作</em></li></ul></div>
       </div>
@@ -2097,7 +2159,7 @@ function renderAbout(d){
         <div><h3>XR / 开发</h3><ul><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Unity.png" alt="Unity" loading="lazy" decoding="async"></span><em>Unity</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/C%23.png" alt="C#" loading="lazy" decoding="async"></span><em>C#</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Visual%20Studio%202022.png" alt="Visual Studio 2022" loading="lazy" decoding="async"></span><em>Visual Studio 2022</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Quest%20Pro.png" alt="Quest Pro" loading="lazy" decoding="async"></span><em>Quest Pro</em></li></ul></div>
         <div><h3>设计 / 原型</h3><ul><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Figma.png" alt="Figma" loading="lazy" decoding="async"></span><em>Figma</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Photoshop.png" alt="Photoshop" loading="lazy" decoding="async"></span><em>Photoshop</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Illustrator.png" alt="Illustrator" loading="lazy" decoding="async"></span><em>Illustrator</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/InDesign.png" alt="InDesign" loading="lazy" decoding="async"></span><em>InDesign</em></li></ul></div>
         <div><h3>影像 / 三维</h3><ul><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/After%20Effects.png" alt="After Effects" loading="lazy" decoding="async"></span><em>After Effects</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Premiere%20Pro.png" alt="Premiere Pro" loading="lazy" decoding="async"></span><em>Premiere Pro</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Cinema%204D.png" alt="Cinema 4D" loading="lazy" decoding="async"></span><em>Cinema 4D</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Blender.png" alt="Blender" loading="lazy" decoding="async"></span><em>Blender</em></li></ul></div>
-        <div class="acv-ai"><h3>AI 应用</h3><ul><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Workbuddy.png" alt="Workbuddy" loading="lazy" decoding="async"></span><em>Workbuddy</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/comfy.png" alt="comfy" loading="lazy" decoding="async"></span><em>comfy</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/AI%20Coding.png" alt="AI Coding" loading="lazy" decoding="async"></span><em>AI Coding</em></li></ul></div>
+        <div class="acv-ai"><h3>AI 应用</h3><ul><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/Workbuddy.png" alt="Workbuddy" loading="lazy" decoding="async"></span><em>Workbuddy</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/comfy.png" alt="ComfyUI" loading="lazy" decoding="async"></span><em>ComfyUI</em></li><li><span class="acv-ico"><img src="assets/tools%20and%20%20AI%20ability/AI%20Coding.png" alt="AI Coding" loading="lazy" decoding="async"></span><em>AI Coding</em></li></ul></div>
       </div>
     </div></section>
     <section class="acv-sec"><div class="acv-wrap">
@@ -2124,7 +2186,7 @@ function renderAbout(d){
       <div class="acv-list acv-ct">
         <a class="acv-row" href="assets/resume/Resume-LiYijin-Visual.pdf" download><div><h3>品牌视觉方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>
         <a class="acv-row" href="assets/resume/Resume-LiYijin-Interaction.pdf" download><div><h3>交互原型方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>
-        <a class="acv-row" href="assets/resume/Resume-LiYijin-AI-Product.pdf" download><div><h3>AI 产品助理方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a>${/MicroMessenger/i.test(navigator.userAgent) ? '<p class="acv-wx-tip">微信内无法下载时，请点右上角“…”选择在浏览器打开</p>' : ''}
+        <a class="acv-row" href="assets/resume/Resume-LiYijin-AI-Product.pdf" download><div><h3>AI 产品方向简历</h3><p>PDF</p></div><span class="acv-arrow">↗</span></a><!-- [T17] -->${/MicroMessenger/i.test(navigator.userAgent) ? '<p class="acv-wx-tip">微信内无法下载时，请点右上角“…”选择在浏览器打开</p>' : ''}
         <a class="acv-row acv-copy" href="mailto:${esc(PROFILE.email)}" data-copy="${esc(PROFILE.email)}"><div><h3>邮箱</h3><p>${esc(PROFILE.email)}</p></div><span class="acv-row-side"><span class="acv-copied">已复制</span><span class="acv-arrow">↗</span></span></a>
         <button class="acv-row acv-copy acv-wx" type="button" data-copy="${esc(PROFILE.wechat)}"><div><h3>微信</h3><p>${esc(PROFILE.wechat)}</p></div><span class="acv-row-side"><span class="acv-copied">已复制</span><span class="acv-arrow">↗</span></span></button>
       </div>
@@ -2247,7 +2309,7 @@ const PROJECTS = {
       {src:'assets/projects/zhangjiawan/zhangjiawan_card_06.webp',tag:'EXPLORATIONS',title:'Spatial Application Concepts',info:'空间应用｜概念效果模拟',desc:'把 ZDT 形态延展至围挡、入口、导视与建筑界面，测试其在远观尺度和空间环境中的识别效果；画面为概念效果模拟。',alt:'ZDT围挡入口导视与建筑空间概念效果'},
       {src:'assets/projects/zhangjiawan/zhangjiawan_card_07.webp',tag:'IP FAMILY',title:'IP Family & Character Profiles',info:'三角色系统｜本人负责提案',desc:'建立张小湾、大智、元元三角色组合，并分别整理角色档案。三个角色共享简洁五官与蓝色系，同时通过头部轮廓、身体比例和环绕结构形成区分。',alt:'张小湾大智元元三角色组合与角色档案'},
       {src:'assets/projects/zhangjiawan/zhangjiawan_card_08.webp',tag:'THREE VIEWS',title:'Three-view Designs',info:'角色三视图｜正面、侧面、背面',desc:'将三个角色各自的正面、侧面和背面重新裁切并组成矩阵，集中呈现轮廓、五官位置、体积关系及背部结构。',alt:'张小湾大智元元三角色的正面侧面背面三视图矩阵'},
-      {src:'assets/projects/zhangjiawan/zhangjiawan_card_09.webp',tag:'IP FAMILY',title:'Actions & Daily Scenes',info:'动作与场景｜角色应用探索',desc:'通过工作、出行、创作与阅读等日常情境补充角色动作和互动方式，检验三角色在不同叙事场景中的适配性。',alt:'三角色工作出行创作与阅读场景探索',size:'narrow'},
+      {src:'assets/projects/zhangjiawan/zhangjiawan_card_09.webp',tag:'IP FAMILY',title:'Actions & Daily Scenes',info:'动作与场景｜角色应用探索',desc:'通过工作、出行、创作与阅读等日常情境补充角色动作和互动方式，检验三角色在不同叙事场景中的适配性。',alt:'三角色工作出行创作与阅读场景探索'},
       {src:'assets/projects/zhangjiawan/zhangjiawan_card_10.webp',tag:'IP FAMILY',title:'3D Characters & Color Variants',info:'三维延展｜材质与配色实验',desc:'在保留角色基本轮廓和五官关系的前提下，尝试透明、金属、浅色及多色材质，并将三角色放入数字界面场景。',alt:'三角色三维材质配色与数字界面场景'},
       {src:'assets/projects/zhangjiawan/zhangjiawan_card_11.webp',tag:'EXPLORATIONS',title:'Cultural Product Explorations',info:'文创延展｜未量产提案',desc:'围绕鼠标垫、包装、贴纸与票券等载体探索角色和图形的组合方式，均为概念提案，未进行实际量产。',alt:'三角色鼠标垫包装贴纸和票券文创提案'},
       {src:'assets/projects/zhangjiawan/zhangjiawan_card_12.webp',tag:'EXPLORATIONS',title:'Digital & Outdoor Mockups',info:'数字与户外｜应用效果模拟',desc:'将三角色延展至 404 页面、手机界面、户外墙面与大型屏幕，检查小尺寸互动和远距离展示中的识别效果；均为应用模拟。',alt:'三角色404页面手机户外墙面和大型屏幕应用模拟'},
@@ -2269,7 +2331,7 @@ const PROJECTS = {
     hero_poster:'assets/projects/xcmg/xcmg_hero_poster.webp',
     hero_alt:'徐工汉文化蓝金设备纹样与Solid To Succeed品牌口号',
     filter_title:'From Han Culture Patterns to Official Products',
-    filter_intro:'以汉文化方案及官网落地单品为主体，集中呈现本人设计的主要纹样、烟灰缸、多层摆件、雨衣、水杯与U盘；方案02压缩展示并明确标注未落地。',
+    filter_intro:'以汉文化方案及官网落地单品为主体，集中呈现本人设计的主要纹样、烟灰缸、多层摆件、雨衣、水杯与U盘；方案02压缩展示并标注为提案。', /* [T14] */
     filters:['PROCESS','HAN CULTURE','PATTERN','PRODUCTS','DIRECTION 02','RELEASED'],
     cards:[
       {src:'assets/projects/xcmg/xcmg_card_01.webp',tag:'PROCESS',title:'Project Context & Brand Positioning',info:'品牌背景｜定位与核心价值',desc:'徐工品牌定位“全球信赖的工程装备解决方案服务商”，品牌精神“创新、挑战、担当、融合”，核心价值DNA为品质、创新、价值、责任。文创设计以此为出发点，承载“大国重器、中国脊梁”的品牌感受。',alt:'徐工品牌定位使命精神与核心价值DNA原稿'},
@@ -2283,7 +2345,7 @@ const PROJECTS = {
       {src:'assets/projects/xcmg/xcmg_card_09.webp',tag:'PRODUCTS',title:'Cultural Product · Thermos Cup',info:'水杯｜本人设计 · 已上线',desc:'杯身以设备纹样与品牌蓝为图案语言，把“大国重器”的工业质感压缩到高频日常媒介；原稿与官网实物同卡呈现。',alt:'本人设计的徐工保温杯原稿与官网实物'},
       {src:'assets/projects/xcmg/xcmg_card_10.webp',tag:'PRODUCTS',title:'Cultural Product · USB Drive',info:'U盘｜本人设计 · 已上线',desc:'以轻量印制把图形系统落到最小载体上，保持成本与识别的平衡；原稿不同角度与官网实物同卡对照。',alt:'本人设计的徐工U盘原稿与官网实物',size:'narrow'},
       {src:'assets/projects/xcmg/xcmg_card_11.webp',tag:'PRODUCTS',title:'More Cultural Products',info:'更多单品｜团队成果',desc:'防晒服、扑克牌、背包、雨伞、手提袋与氛围灯等单品，以同一图形系统覆盖穿戴、出行与日常物件，均为团队方案内成果。',alt:'徐工防晒服扑克牌背包雨伞手提袋与氛围灯团队方案'},
-      {src:'assets/projects/xcmg/xcmg_card_12.webp',tag:'DIRECTION 02',title:'Direction 02 · X Gene',info:'X基因与风格探索｜设计方案 · 未落地',desc:'从XCMG标志的字母X出发，解读包容、无限、未来、乘法与创新，并尝试太空机械、莫兰迪风格，延展至定制礼盒、香薰摆件与山水茶具。此方向为提案阶段探索，未落地。',alt:'徐工方案02X基因图形风格定制礼盒香薰与山水茶具未落地提案'},
+      {src:'assets/projects/xcmg/xcmg_card_12.webp',tag:'DIRECTION 02',title:'Direction 02 · X Gene',info:'X基因与风格探索｜设计方案 · 提案',desc:'从XCMG标志的字母X出发，解读包容、无限、未来、乘法与创新，并尝试太空机械、莫兰迪风格，延展至定制礼盒、香薰摆件与山水茶具。此方向为提案阶段探索。',alt:'徐工方案02X基因图形风格定制礼盒香薰与山水茶具提案'}, /* [T14] */
       {src:'assets/projects/xcmg/xcmg_card_13.webp',tag:'RELEASED',title:'Official Release · XCMG Mall',info:'徐工官网文创商城｜汉韵文创系列',desc:'官网“汉韵文创系列”以汉代画像石为创意点并沿用本方案设计公式。本人设计范围为主要纹样及烟灰缸、多层摆件、雨衣、水杯、U盘；商城其它品类不作本人贡献对照。来源：xcmg.com/aftermarket/wenchuang.htm。',alt:'徐工官网汉韵文创系列九类实物及设计公式落地对照'}
     ]
   },
@@ -2293,7 +2355,7 @@ const PROJECTS = {
     hero_alt:'小西、嫦娥与预小兔三角色中秋太空主题场景',
     category:'TEAM PROJECT / IP DESIGN / MID-AUTUMN FESTIVAL / 2022 · CONCEPT PROPOSAL',
     title_1:'贾国龙功夫菜', title_2:'中秋主题 IP 设计',
-    intro:'东道团队项目，本人参与。围绕中秋“快乐奔月”概念构建小西、嫦娥与预小兔三角色 IP，并延展至插画、空间与礼盒。本人参与部分预小兔角色设计的三维建模、包装插画、包装盒设计及冰箱贴。本项目为设计方案，未落地。',
+    intro:'东道团队项目，本人参与。围绕中秋“快乐奔月”概念构建小西、嫦娥与预小兔三角色 IP，并延展至插画、空间与礼盒。本人参与部分预小兔角色设计的三维建模、包装插画、包装盒设计及冰箱贴。本项目为设计方案。', /* [T14] */
     tags:['3D MODELING','PACKAGING','IP EXTENSION'],
     stats:[{num:'3',label:'CHARACTERS'},{num:'13',label:'CARDS'},{num:'2022',label:'CONCEPT'}],
     filter_title:'从三角色 IP 到中秋礼盒',
@@ -2308,10 +2370,10 @@ const PROJECTS = {
       {src:'assets/projects/jiaguolong/jiaguolong_card_06.webp',tag:'CHARACTER',title:'Xiaoxi · Chef Robot',info:'小西厨师机器人设定',desc:'小西以厨师机器人为设定，从品牌字形推导角色轮廓，并完善档案与三视图。',alt:'小西厨师机器人字形推导角色档案与三视图',size:'narrow'},
       {src:'assets/projects/jiaguolong/jiaguolong_card_07.webp',tag:'CHARACTER',title:'Chang’e & Yu Xiaotu',info:'嫦娥与预小兔平面设定',desc:'呈现嫦娥与预小兔的角色档案、平面造型及正侧背视图；本卡为团队平面设定。',alt:'嫦娥与预小兔角色档案平面造型及正侧背视图',size:'narrow'},
       {src:'assets/projects/jiaguolong/jiaguolong_card_08.webp',tag:'PERSONAL WORK',title:'Yu Xiaotu · 3D Modeling',info:'预小兔三维建模｜本人负责',desc:'本人负责预小兔三维建模，完成立体造型、正侧背三视图，并检验其在叙事场景中的表现。',alt:'本人负责的预小兔三维造型正侧背三视图及场景应用'},
-      {src:'assets/projects/jiaguolong/jiaguolong_card_09.webp',tag:'NARRATIVE',title:'Comics & Story Scenes',info:'漫画与三维叙事场景',desc:'以漫画和三维叙事场景扩展角色关系，让中秋故事从静态形象延伸到连续内容。',alt:'三角色漫画与中秋三维叙事场景',size:'narrow'},
+      {src:'assets/projects/jiaguolong/jiaguolong_card_09.webp',tag:'NARRATIVE',title:'Comics & Story Scenes',info:'漫画与三维叙事场景',desc:'以漫画和三维叙事场景扩展角色关系，让中秋故事从静态形象延伸到连续内容。',alt:'三角色漫画与中秋三维叙事场景'},
       {src:'assets/projects/jiaguolong/jiaguolong_card_10.webp',tag:'ILLUSTRATION',title:'Lifestyle Illustrations',info:'生活场景插画',desc:'围绕露营、下厨、月饼与聚餐等生活情境绘制插画，增强角色亲和力与内容传播性。',alt:'三角色露营下厨月饼与聚餐生活场景插画',size:'narrow'},
       {src:'assets/projects/jiaguolong/jiaguolong_card_11.webp',tag:'APPLICATION',title:'Space & Digital Touchpoints',info:'门店空间与数字触点',desc:'将三角色应用到门店、展陈、屏幕与移动端界面，验证 IP 在线下空间和数字触点中的一致性。',alt:'三角色门店展陈屏幕与移动端应用',size:'narrow'},
-      {src:'assets/projects/jiaguolong/jiaguolong_card_12.webp',tag:'PERSONAL + TEAM',title:'Fridge Magnets & Cultural Products',info:'冰箱贴与文创玩具',desc:'冰箱贴为本人设计（原稿对应页标注 BADGE）；其余徽章、贴纸、公仔与互动玩具为团队延展。',alt:'本人冰箱贴设计及团队徽章贴纸公仔与互动玩具延展'},
+      {src:'assets/projects/jiaguolong/jiaguolong_card_12.webp',tag:'PERSONAL + TEAM',title:'Fridge Magnets & Cultural Products',info:'冰箱贴与文创玩具',desc:'冰箱贴为本人设计；其余徽章、贴纸、公仔与互动玩具为团队延展。',alt:'本人冰箱贴设计及团队徽章贴纸公仔与互动玩具延展'}, /* [T14] */
       {src:'assets/projects/jiaguolong/jiaguolong_card_13.webp',tag:'PERSONAL WORK',title:'Mid-Autumn Gift Box',info:'包装插画与包装盒设计｜本人负责',desc:'本人负责包装插画与包装盒设计，以红色中秋礼盒整合角色插画、月亮转盘、抽屉结构与筷饰细节。',alt:'本人负责的红色中秋礼盒包装插画结构与筷饰细节'}
     ]
   },
@@ -2325,7 +2387,7 @@ const PROJECTS = {
     tags:['BRAND UPGRADE','2 PERSONAL SCHEMES','VISUAL EXTENSION'],
     stats:[{num:'4',label:'INITIAL DIRECTIONS'},{num:'2',label:'PERSONAL SCHEMES'},{num:'LIVE',label:'IMPLEMENTED'}],
     filter_title:'四个初次方向，两套本人方案',
-    filter_intro:'按“项目背景—团队方向—本人方案二—团队方向—本人方案四—四方案对照—最终落地”组织；重点展示方案二 p45 与方案四 p118 及其视觉延展。',
+    filter_intro:'按“项目背景—团队方向—本人方案二—团队方向—本人方案四—四方案对照—最终落地”组织；重点展示方案二与方案四及其视觉延展。', /* [T14] */
     filters:['OVERVIEW','SCHEME 01','SCHEME 02 · MINE','SCHEME 03','SCHEME 04 · MINE','IMPLEMENTATION'],
     cards:[
       {src:'assets/projects/magipark/magipark_card_01.webp',tag:'OVERVIEW',title:'Brand Upgrade Context',info:'品牌升级背景｜团队项目',desc:'从既有品牌识别与乐园体验出发，呈现团队初次提案的升级背景，为后续四个视觉方向建立共同起点。',alt:'麦咭乐园品牌升级团队项目背景与既有品牌识别'},
@@ -2336,16 +2398,17 @@ const PROJECTS = {
       {src:'assets/projects/magipark/magipark_card_06.webp',tag:'SCHEME 02 · MINE',title:'Cultural Products & Park Space',info:'方案二文创与空间｜本人延展 · 未获选',desc:'把方案二识别应用到票券、包装、文创周边与乐园门头，观察同一视觉语言在小尺寸物料和空间中的连续性。',alt:'本人方案二票券包装文创周边与乐园门头空间延展',size:'narrow'},
       {src:'assets/projects/magipark/magipark_card_07.webp',tag:'SCHEME 03 · TEAM',title:'Scheme 03 · Team Direction',info:'方案三｜团队成果 · 初次提案未获选',desc:'团队方向三以另一套标志气质与图形语言展开，并覆盖海报、物料和乐园应用；本卡仅作团队方向对照。',alt:'麦咭乐园团队方案三标志海报物料与乐园应用，初次提案未获选',size:'narrow'},
       {src:'assets/projects/magipark/magipark_card_08.webp',tag:'SCHEME 04 · MINE',title:'Circular Antennae & Wordmark',info:'方案四标志与标准色｜本人设计 · 未获选',desc:'本人方案四以圆环触角、上扬曲线与弧形底线构成核心符号，配合字标及洋红、蓝色等变体形成更有律动的识别。',alt:'本人设计的麦咭乐园方案四圆环触角上扬曲线字标与洋红蓝色变体'},
-      {src:'assets/projects/magipark/magipark_card_09.webp',tag:'SCHEME 04 · MINE',title:'Rhythm, Orbits & Graphic Language',info:'方案四概念与图形｜本人延展 · 未获选',desc:'从“律动”与“星轨”概念出发，将圆环触角和上扬曲线转化为线性图标、辅助图形与儿童视觉内容。',alt:'本人方案四律动星轨概念线性图标辅助图形与儿童视觉内容',size:'narrow'},
+      {src:'assets/projects/magipark/magipark_card_09.webp',tag:'SCHEME 04 · MINE',title:'Rhythm, Orbits & Graphic Language',info:'方案四概念与图形｜本人延展 · 未获选',desc:'从“律动”与“星轨”概念出发，将圆环触角和上扬曲线转化为线性图标、辅助图形与儿童视觉内容。',alt:'本人方案四律动星轨概念线性图标辅助图形与儿童视觉内容'},
       {src:'assets/projects/magipark/magipark_card_10.webp',tag:'SCHEME 04 · MINE',title:'Posters, Events & Photography',info:'方案四海报与活动｜本人延展 · 未获选',desc:'将方案四符号和图形机制应用到儿童摄影、活动海报与传播画面，保持品牌识别同时支持不同主题内容。',alt:'本人方案四儿童摄影活动海报与主题传播画面',size:'narrow'},
       {src:'assets/projects/magipark/magipark_card_11.webp',tag:'SCHEME 04 · MINE',title:'Materials & Spatial Touchpoints',info:'方案四物料与空间｜本人延展 · 未获选',desc:'延展至票券、包装、服饰、文创物料与空间触点，验证方案四在平面、立体和乐园环境中的统一性。',alt:'本人方案四票券包装服饰文创物料与乐园空间触点',size:'narrow'},
       {src:'assets/projects/magipark/magipark_card_12.webp',tag:'COMPARISON',title:'Four Initial Directions',info:'四方案对照｜初次提案均未获选',desc:'集中对照四个初次提案的标志方向。此次团队提案的所有方向均未获选，页面重点保留本人方案二与方案四的设计过程。',alt:'麦咭乐园四个初次提案标志方向对照，所有方向均未获选'},
-      {src:'assets/projects/magipark/magipark_card_13.webp',tag:'IMPLEMENTED',title:'Final Store Implementation',info:'团队后续落地｜非本人最终造型',desc:'初次提案未直接成为最终门店方案。项目后续经团队调整已完成落地；照片为用户提供的大众点评截图，仅用于说明团队项目最终状态。',alt:'麦咭乐园团队后续落地门店照片，含发光字黄色角色雕塑与大众点评来源标识'}
+      {src:'assets/projects/magipark/magipark_card_13.webp',tag:'IMPLEMENTED',title:'Final Store Implementation',info:'团队后续落地｜非本人最终造型',desc:'初次提案未直接成为最终门店方案。项目后续经团队调整已完成落地；照片为大众点评截图，仅用于说明团队项目最终状态。',alt:'麦咭乐园团队后续落地门店照片，含发光字黄色角色雕塑与大众点评来源标识'} /* [T14] */
     ]
   },
   shuyi:{
     parent:['brand'],
     hero_poster:'assets/projects/shuyi/shuyi_hero_poster.webp',
+    hero_mask:'left-tight',
     hero_alt:'本人设计的书亦烧仙草IP仙蒂红色兔子三维形象',
     category:'TEAM PROJECT / BRAND IP / 2021–2022 · IMPLEMENTED',
     title_1:'书亦烧仙草', title_2:'品牌IP塑造',
@@ -2359,12 +2422,12 @@ const PROJECTS = {
       {src:'assets/projects/shuyi/shuyi_card_01.webp',tag:'IP ORIGIN',title:'Yearn For The Moon',info:'概念缘起｜本人负责',desc:'从“渴望月亮”到中国仙兔，由“玉兔捣药”的典故引申出“仙兔制草”，确立 IP 的东方仙兔底色。',alt:'书亦仙蒂月亮兔与中国仙兔概念画面',size:'half'},
       {src:'assets/projects/shuyi/shuyi_card_02.webp',tag:'CHARACTER',title:'Cindy · Profile & Logo',info:'角色档案与组合标｜本人负责',desc:'仙蒂是书亦烧仙草店长兼厨师长，可仙可魔，脑门红点为“修仙毕业证明”；下方为提案版 CINDY 仙蒂组合标。',alt:'仙蒂角色档案与提案版CINDY仙蒂组合标',size:'half'},
       {src:'assets/projects/shuyi/shuyi_card_03.webp',tag:'CHARACTER',title:'Three Views & Expressions',info:'三视图与表情｜本人负责',desc:'正、背、侧三视图锁定长耳、圆身与红点特征，再以喜欢、含羞傻乐、生气三种表情测试角色的情绪表现。',alt:'仙蒂正背侧三视图与喜欢含羞生气三种表情'},
-      {src:'assets/projects/shuyi/shuyi_card_04.webp',tag:'EXTENSION',title:'Action Extension',info:'动作延展｜本人负责',desc:'制茶、作法、变、打招呼，把“炼仙草”的设定转成一套可用于传播的动作语言。',alt:'仙蒂制茶作法变与打招呼动作延展',size:'narrow'},
-      {src:'assets/projects/shuyi/shuyi_card_05.webp',tag:'EXTENSION',title:'Costumes & Theme Variants',info:'服装与主题变装｜本人负责',desc:'售卖、魔、圣诞与艺术主题四套变装，在不改变角色轮廓的前提下适配节日与话题场景。',alt:'仙蒂售卖魔圣诞与艺术主题四套服装变装',size:'narrow'},
+      {src:'assets/projects/shuyi/shuyi_card_04.webp',tag:'EXTENSION',title:'Action Extension',info:'动作延展｜本人负责',desc:'制茶、作法、变、打招呼，把“炼仙草”的设定转成一套可用于传播的动作语言。',alt:'仙蒂制茶作法变与打招呼动作延展'},
+      {src:'assets/projects/shuyi/shuyi_card_05.webp',tag:'EXTENSION',title:'Costumes & Theme Variants',info:'服装与主题变装｜本人负责',desc:'售卖、魔、圣诞与艺术主题四套变装，在不改变角色轮廓的前提下适配节日与话题场景。',alt:'仙蒂售卖魔圣诞与艺术主题四套服装变装'},
       {src:'assets/projects/shuyi/shuyi_card_06.webp',tag:'EXTENSION',title:'Shuyi Family',info:'配料家族｜本人负责',desc:'把仙草冻、柠檬、红豆、芋圆等配料做成角色家族，让产品原料直接进入 IP 叙事。',alt:'书亦配料角色家族与杯中家族插画'},
       {src:'assets/projects/shuyi/shuyi_card_07.webp',tag:'POSTER',title:'Theme Posters',info:'主题海报｜本人负责',desc:'红底捣茶海报与水墨中国仙兔，一浓一淡，检验同一角色在潮流与东方两种气质中的适配。',alt:'仙蒂红底捣茶海报与水墨中国仙兔',size:'narrow'},
       {src:'assets/projects/shuyi/shuyi_card_08.webp',tag:'3D SCENES',title:'3D Theme Scenes',info:'三维主题场景｜本人负责',desc:'夜森林、草地与圣诞雪罩三个三维场景，把平面角色推进到有光影和空间感的叙事画面。',alt:'仙蒂夜森林草地与圣诞雪罩三维场景'},
-      {src:'assets/projects/shuyi/shuyi_card_09.webp',tag:'APPLICATION',title:'Digital Touchpoints',info:'数字触点｜本人负责',desc:'手机锁屏、贴纸包与微信表情，让仙蒂进入日常聊天与屏幕使用场景。',alt:'仙蒂手机锁屏贴纸包与微信表情',size:'narrow'},
+      {src:'assets/projects/shuyi/shuyi_card_09.webp',tag:'APPLICATION',title:'Digital Touchpoints',info:'数字触点｜本人负责',desc:'手机锁屏、贴纸包与微信表情，让仙蒂进入日常聊天与屏幕使用场景。',alt:'仙蒂手机锁屏贴纸包与微信表情'},
       {src:'assets/projects/shuyi/shuyi_card_10.webp',tag:'APPLICATION',title:'Rabbit-ear Cup Lid',info:'兔耳杯盖提案｜本人负责',desc:'把兔耳转译为杯盖结构，提出白色与半透明杯盖及盖面红色兔头塞的方案；最终落地的红色杯盖见第 14 卡。',alt:'仙蒂兔耳杯盖提案白色半透明杯盖与红色兔头塞',size:'narrow'},
       {src:'assets/projects/shuyi/shuyi_card_11.webp',tag:'APPLICATION',title:'Packaging & Materials',info:'包装与物料｜本人负责',desc:'四款果茶杯、红包与封口袋，把角色和家族图形压到高频使用的包装媒介上。',alt:'仙蒂果茶杯红包与封口袋包装物料',size:'narrow'},
       {src:'assets/projects/shuyi/shuyi_card_12.webp',tag:'SPACE · TEAM',title:'Space Proposal',info:'空间提案｜东道团队',desc:'东道团队将仙蒂放入门店立面、围挡与商场灯箱的提案画面，属团队空间方向，与最终绿色门店不同。',alt:'东道团队仙蒂门店立面围挡与商场灯箱空间提案'},
@@ -2380,21 +2443,21 @@ const PROJECTS = {
     hero_mask:'deep',
     category:'INTERNAL PITCH / BRAND IP / 2021',
     title_1:'茶百道', title_2:'品牌IP塑造',
-    intro:'2021 年 9 月，本人在工作期间参加茶百道品牌 IP 的组内比稿，组内每人独立出一套方案，本页为本人方案。蓝色熊猫「丁丁猫」被设定为一只爱喝甜食、爱看电影的熊猫，从角色档案、三视图、表情与变装，延展到主题海报、插画主视觉、三维形象、周边与一段动态演示。',
+    intro:'2021 年 9 月，本人在工作期间参加茶百道品牌 IP 的组内比稿，组内每人独立出一套方案，本页为本人方案。蓝色熊猫「丁丁猫」被设定为一只爱吃甜食、爱看电影的熊猫，从角色档案、三视图、表情与变装，延展到主题海报、插画主视觉、三维形象、周边与一段动态演示。', /* [T14] */
     tags:['IP CHARACTER','VISUAL EXTENSION','MOTION','IMPLEMENTED'],
     stats:[{num:'1',label:'IP CHARACTER'},{num:'10',label:'EXPRESSIONS'},{num:'6',label:'COSTUMES'}],
-    filter_title:'一只爱喝甜食的熊猫，从设定到周边',
+    filter_title:'一只爱吃甜食的熊猫，从设定到周边', /* [T14] */
     filter_intro:'按“角色档案—三视图—表情—变装—海报—插画主视觉—三维形象与口号—周边—品牌IP升级落地”组织。前 8 卡为本人 2021 年工作期间的比稿方案，最后一卡为旧版形象与门店落地的对比。',
     filters:['CHARACTER','EXPRESSION','EXTENSION','POSTER','3D','IMPLEMENTED'],
     cards:[
       {src:'assets/projects/chabaidao/chabaidao_card_01.webp',size:'wide',tag:'CHARACTER',title:'丁丁猫 · Profile',info:'角色档案｜本人方案',desc:'标签：喜欢甜食、呆萌、积极向上、年轻活力、身体柔软、幽默；爱好：看电影、运动、旅行。',alt:'茶百道蓝色熊猫丁丁猫平面形象与角色标签爱好'},
       {src:'assets/projects/chabaidao/chabaidao_card_02.webp',size:'narrow',tag:'CHARACTER',title:'Three Views',info:'平面与三维三视图｜本人方案',desc:'正面、侧面、背面三个角度锁定圆耳、蓝眼圈、短腿和肚子上的小叉，并给出对应的三维版本。',alt:'丁丁猫平面与三维正侧背三视图'},
-      {src:'assets/projects/chabaidao/chabaidao_card_03.webp',size:'wide',tag:'EXPRESSION',title:'Expressions',info:'动态表情｜本人方案',desc:'10 个动态表情，配不同底色，测试角色在大笑、流泪、生气、打招呼、骑滑板车、掀桌等状态下的辨识度。',alt:'丁丁猫十个彩色圆形底上的动态表情'},
-      {src:'assets/projects/chabaidao/chabaidao_card_04.webp',tag:'EXTENSION',title:'Costumes',info:'六套变装｜本人方案',desc:'运动外套、墨镜夹克、椰子壳、西瓜、蛋壳、草莓六套变装，角色轮廓不变，只换服装与道具；下方为用变装线稿铺成的底纹。',alt:'丁丁猫六套服装变装与线稿底纹',size:'narrow'},
+      {src:'assets/projects/chabaidao/chabaidao_card_03.webp',size:'narrow',tag:'EXPRESSION',title:'Expressions',info:'动态表情｜本人方案',desc:'10 个动态表情，配不同底色，测试角色在大笑、流泪、生气、打招呼、骑滑板车、掀桌等状态下的辨识度。',alt:'丁丁猫十个彩色圆形底上的动态表情'},
+      {src:'assets/projects/chabaidao/chabaidao_card_04.webp',tag:'EXTENSION',title:'Costumes',info:'六套变装｜本人方案',desc:'运动外套、墨镜夹克、椰子壳、西瓜、蛋壳、草莓六套变装，角色轮廓不变，只换服装与道具；下方为用变装线稿铺成的底纹。',alt:'丁丁猫六套服装变装与线稿底纹'},
       {src:'assets/projects/chabaidao/chabaidao_card_05.webp',size:'wide',tag:'POSTER',title:'Theme Posters',info:'主题海报｜本人方案',desc:'「健康好喝」「选择多样」「款款好喝」三张竖版海报，分别用黄、红、紫三种底色。',alt:'丁丁猫健康好喝选择多样款款好喝三张主题海报'},
       {src:'assets/projects/chabaidao/chabaidao_card_06.webp',tag:'ILLUSTRATION',title:'Key Visuals & Out-of-home',info:'插画主视觉与户外效果｜本人方案',desc:'黄色乐队主题与红色手机主题两张插画主视觉，并放入灯箱和公交站牌检验远距离的识别效果。',alt:'丁丁猫黄色乐队与红色手机主题插画及灯箱公交站效果图'},
-      {src:'assets/projects/chabaidao/chabaidao_card_07.webp',size:'wide',tag:'3D',title:'3D & Slogan',info:'三维形象与口号｜本人方案',desc:'三维丁丁猫搭配「惊喜不止这一杯」，延展到电脑与手机屏保、文字海报和户外灯箱。',alt:'丁丁猫三维形象与惊喜不止这一杯口号及屏保灯箱应用'},
-      {src:'assets/projects/chabaidao/chabaidao_card_08.webp',size:'narrow',tag:'EXTENSION',title:'Merchandise',info:'周边物料｜本人方案',desc:'工牌、手机壳、围裙与帆布袋，用单色线稿底纹和大面积角色插画两种方式承载 IP。',alt:'丁丁猫工牌手机壳围裙与帆布袋周边'},
+      {src:'assets/projects/chabaidao/chabaidao_card_07.webp',size:'narrow',tag:'3D',title:'3D & Slogan',info:'三维形象与口号｜本人方案',desc:'三维丁丁猫搭配「惊喜不止这一杯」，延展到电脑与手机屏保、文字海报和户外灯箱。',alt:'丁丁猫三维形象与惊喜不止这一杯口号及屏保灯箱应用'},
+      {src:'assets/projects/chabaidao/chabaidao_card_08.webp',tag:'EXTENSION',title:'Merchandise',info:'周边物料｜本人方案',desc:'工牌、手机壳、围裙与帆布袋，用单色线稿底纹和大面积角色插画两种方式承载 IP。',alt:'丁丁猫工牌手机壳围裙与帆布袋周边'},
       {src:'assets/projects/chabaidao/chabaidao_card_09.webp',size:'wide',tag:'IMPLEMENTED',title:'Brand IP Upgrade · Landed',info:'品牌IP升级落地｜旧版形象与门店落地对比',desc:'左：升级前的立体形象，亮面材质，手里抱着印有旧标志的杯子，肚子上的小叉被挡住。右：落地到门店的形象，哑光平面色，耳朵、眼圈和四肢用品牌蓝，肚子上的小叉完整露出，与平面设定一致。两张均为现场实拍。',alt:'茶百道立体熊猫升级前后对比：旧版亮面形象抱着印旧标志的杯子，对比门店落地版哑光形象露出肚子上的小叉'}
     ]
   },
@@ -2413,7 +2476,7 @@ const PROJECTS = {
     filters:['ORIGIN','RESEARCH','MECHANISM','SENSOR & CODE','STOP-MOTION','EXHIBITION'],
     cards:[
       {src:'assets/projects/pushaway/pushaway_card_01.webp',tag:'ORIGIN',title:'Inspiration',info:'缘起｜个人项目',desc:'2024 年 4 月，我在社交平台结识了一位跨性别朋友。她在袒露自己之前先反复确认：“你会不会有偏见？”这个瞬间的谨慎成了装置的起点：让不熟悉这个群体的人，通过一个身体动作，体会外界的接纳与否如何影响一个人的内心。',alt:'Push Away and Dance 标题、项目类型与装置介绍'},
-      {src:'assets/projects/pushaway/pushaway_card_02.webp',tag:'RESEARCH',title:'Research',info:'研究｜从定义到处境',desc:'调研从定义开始：跨性别者指性别身份（对自身性别的内在感知）与出生时被指定的性别不一致的人。装置不讨论“是什么”，而是关注“被怎样对待”。',alt:'跨性别定义文字与已打码的受访者照片',size:'narrow'},
+      {src:'assets/projects/pushaway/pushaway_card_02.webp',tag:'RESEARCH',title:'Research',info:'研究｜从定义到处境',desc:'调研从定义开始：跨性别者指性别身份（对自身性别的内在感知）与出生时被指定的性别不一致的人。装置不讨论“是什么”，而是关注“被怎样对待”。',alt:'跨性别定义文字与已打码的受访者照片'},
       {src:'assets/projects/pushaway/pushaway_card_03.webp',tag:'RESEARCH',title:'Interview',info:'访谈｜基于传记的虚构访谈',desc:'以作家、电视主持人和跨性别权益活动家 Janet Mock 的自传《Redefining Realness》为底，写了一份虚构访谈，谈性别认同的探索和社会态度的变化。原稿已注明“基于个人传记的虚构访谈”。',alt:'Janet Mock 访谈问答与原稿打码说明',size:'narrow'},
       {src:'assets/projects/pushaway/pushaway_card_04.webp',tag:'RESEARCH',title:'Field Study',info:'现状调研｜心理健康与法律保障',desc:'三组现状放在一起看：跨性别者比顺性别者更易出现心理健康问题，被拒斥会让人否定自己，并形成压力的反馈循环；此外还有各国的人口比例，以及性别身份承认、手术、反歧视、就业与医疗的法律保障差异。数据为原稿整理，页面不引用具体数值。',alt:'心理健康说明、人口比例地图与法律保障对照表'},
       {src:'assets/projects/pushaway/pushaway_card_05.webp',tag:'MECHANISM',title:'Inherent Image',info:'固有印象｜被物件定义的性别',desc:'社会习惯用物件定义性别：领带、手表、权力西装对应“男性”，手袋、高跟鞋、首饰对应“女性”。装置把这些物件做成空间的两个断面，观众推开的就是这些固有印象。',alt:'性别固有印象词云与服饰拼贴及对应的两个装置断面'},
@@ -2505,7 +2568,7 @@ const PROJECTS = {
       {src:'assets/projects/selection/selection_card_07.webp',tag:'SPECULATION',title:'Future Wheel',info:'未来轮｜推演后果',desc:'以“如果我们开始在体外生产基因编辑婴儿？”为中心，向外推演一阶、二阶后果，按正面、负面、中性着色，用来筛选和收敛最终概念。原稿注明此图由队友 Songzhu Zhao 与 Xiwen Ye 绘制。',alt:'以体外生产基因编辑婴儿为中心的未来轮推演图',size:'narrow'},
       {src:'assets/projects/selection/selection_card_08.webp',tag:'STORYBOARD',title:'Scenario & Storyboard',info:'情境与分镜｜六个情境',desc:'六个情境：医院实验室接到新筛选单、进入灰色产业实验室、从液氮罐取回胚胎、终端筛选（发育 / 存档 / 终止）、14 天规则触发警报、忽视法规继续观察。原稿注明分镜以 AI 生成结果为基础，由小组手绘修改完成。',alt:'医院实验室、终端筛选、14 天规则警报与忽视法规四个情境的分镜'},
       {src:'assets/projects/selection/selection_card_09.webp',tag:'PROTOTYPE',title:'VR Prototype · Scenes',info:'VR 原型｜场景与曲面屏',desc:'第一部分改为 VR 环境中带曲面屏播放动画的场景，用 HDR 环境贴图增强沉浸感；下方为 Input Action 配置与曲面屏的 UV 贴合调整。部分非交互 3D 资产由 Tripo AI 生成。',alt:'Unity 中的 HDR 实验室场景、Input Action 配置与曲面屏 UV 映射'},
-      {src:'assets/projects/selection/selection_card_10.webp',tag:'PROTOTYPE',title:'Rough Prototyping',info:'粗原型｜纸板头显',desc:'正式开发前，小组用纸板、纸黏土和塑料薄膜做了头显，并与 Game Screener 交互，测试哪些部分最能传达“控制、观察与失衡”。',alt:'纸板纸黏土头显与 Game Screener 中的 VR 画面',size:'narrow'},
+      {src:'assets/projects/selection/selection_card_10.webp',tag:'PROTOTYPE',title:'Rough Prototyping',info:'粗原型｜纸板头显',desc:'正式开发前，小组用纸板、纸黏土和塑料薄膜做了手工粗糙原型，并与 Game Screener 交互，测试哪些部分最能传达“控制、观察与失衡”。',alt:'纸板纸黏土头显与 Game Screener 中的 VR 画面',size:'narrow'}, /* [T14] */
       {src:'assets/projects/selection/selection_card_11.webp',tag:'PROTOTYPE',title:'Bug Fixes & Interaction',info:'迭代修复｜本人负责',desc:'迭代中修复的问题包括空引用报错、UI 遮挡导致射线无法命中（拆成图像层与交互层）、点击区域过小、面板透明度与玻璃质感，以及环境等级滑杆等交互细节。',alt:'注视交互脚本、面板透明度与玻璃质感修复前后对比、环境等级滑杆',size:'narrow'},
       {src:'assets/projects/selection/selection_card_12.webp',tag:'DELIVERY',title:'Final Build & Team',info:'最终体验与团队｜5 人',desc:'最终体验里，AI 提示丢弃不合格的胚胎，但必须由玩家按下实体按钮执行；两个按钮看似代表谨慎与负责，实际把伦理负担交给了人。片尾 Project Team：Yu Fang、Yijin Li、Yingbo Qin、Xiwen Ye、Songzhu Zhao。',alt:'VR 原型中终止状态与丢弃、延长观察按钮的实机画面，以及片尾项目团队名单'}
     ]
@@ -2525,9 +2588,9 @@ const PROJECTS = {
     filters:['RESEARCH','DESIGN','PROTOTYPE','DEVELOPMENT'],
     cards:[
       {src:'assets/projects/windvane/windvane_card_01.webp',tag:'RESEARCH',title:'Background',info:'背景｜舆论议题的由来',desc:'灵感来自 2023 年 5 月朋友发来的一段求助视频：一位单亲妈妈称三岁女儿遭人性骚扰、警方不予立案。我持续跟进，事件出现反转：起初网友批评蛋糕店老板和无锡警方，随着事情发展，舆论转向，矛头被引向这位母亲。由此出发看舆论议题怎么产生。从众心理：话题、事件或个人突然获得大量关注时，很多网民顺着多数意见表达，并没有完全了解事实。片面信息：网上传播极快，很多人只读标题或摘要，匿名让人可以不负责任地发言，带主观偏见的评论带动更多人跟风，最后盖住事件原本的真相。',alt:'Background 页：WIND VANE 蓝色印章封面，以及事件起点、从众心理、片面信息三栏图文'},
-      {src:'assets/projects/windvane/windvane_card_02.webp',tag:'RESEARCH',title:'Academic Research',info:'调研｜回音室与网络暴力',desc:'人为什么会被舆论左右：回音室效应指人们主要接触和自己信念一致的信息，很少看到对立观点。它带来四件事：意见强化，持续接触相似观点会加固原有信念；多样性缺失，接触不同意见有限，人会变狭隘；极化，缺少不同观点造成社会分裂和极端主义；信息过滤，社交媒体和搜索引擎的算法可能在无意中强化这个效应。网络暴力研究的数据：71.5% 的施暴者是男性；49.4% 是青少年、25.1% 是 20 多岁，学生占一半；受害者集中在十几岁和 30 多岁，64.9% 是女性；类型上言语暴力 46.2%、诽谤 23.8%、性暴力和跟踪 15.8%。另一项分析里，50.0% 是侮辱，22.3% 与自杀相关，7.4% 是伤害和谋杀，4.3% 是威胁。',alt:'Academic Research 页：回音室效应说明与四条要点、网络暴力研究文字、三个环形图和图注',size:'narrow'},
+      {src:'assets/projects/windvane/windvane_card_02.webp',tag:'RESEARCH',title:'Academic Research',info:'调研｜回音室与网络暴力',desc:'人为什么会被舆论左右：回音室效应指人们主要接触与自己信念一致的信息，带来意见强化、多样性缺失、极化和算法过滤四个结果。网络暴力研究的数据：49.4% 的施暴者是青少年，学生占一半；64.9% 的受害者是女性；类型上言语暴力占 46.2%、诽谤占 23.8%。',alt:'Academic Research 页：回音室效应说明与四条要点、网络暴力研究文字、三个环形图和图注',size:'narrow'}, /* [T15] */
       {src:'assets/projects/windvane/windvane_card_03.webp',tag:'RESEARCH',title:'Cases of Escalation',info:'调研｜四个舆论升级案例',desc:'四个舆论升级的案例。2018 年，YouTuber Logan Paul 在日本“自杀森林”拍下打码的自杀者并发布，引发众怒，他下架视频并道歉，YouTube 对他作出处罚。2007 年 7 月，网帖指控 Chen Caishi 严重殴打继女，引发大面积声讨；警方随后证实孩子的伤来自血友病而非虐待，指控被推翻。Tyler Clementi 2010 年因室友偷拍并在网上直播他的私事而自杀，引发关于同性恋青少年霸凌的全国讨论。2006 年 Duke Lacrosse 案，Crystal Mangum 指控三名白人球员强奸，案件牵动种族、性别与阶级，迅速引来媒体关注。',alt:'Examples of Escalating Public Opinion 页：四张案例照片与各自的说明文字',size:'narrow'},
-      {src:'assets/projects/windvane/windvane_card_04.webp',tag:'DESIGN',title:'Design Concept & Gameplay',info:'概念｜设计概念与玩法',desc:'设计概念：WIND VANE 取材无锡三岁女童事件，让玩家意识到自己会在不知不觉中盲目跟着舆论走；它既是游戏，也是照见数字时代社会行为与心理的一面镜子，希望玩家玩过以后，评论之前先批判性地想一想。游戏沿事件时间线设六关，每关对应事件的一个阶段。玩家扮演受舆论影响的网民，选中的评论会变成印章盖在画面上，要根据局势变化选评论、完成关卡目标，体会观点的剧烈转变。美术用复古印刷：风向标和船象征评论之海对舆论的引导，做旧印刷带来时间流逝感，印章让玩家清楚自己是在给事件“盖章”，也传达信息的不完整与偏见。玩法说明表：类型是文字互动游戏，提醒玩家不要盲从趋势评论；目标人群 10–35 岁；角色是受舆论趋势影响的网民；目标是选对方向、达到指定数量的评论；任务上按真实事件的舆论导向设置不同立场的评论印章，选同向评论达到指定数量过关，选错的会累积在屏幕上，屏幕堆满还没达标就失败，达标进入下一关。',alt:'Design Concept 页两栏文字，以及 Gameplay Description 表：类型、目标人群、角色设定、游戏目标、任务设计、游戏指南'},
+      {src:'assets/projects/windvane/windvane_card_04.webp',tag:'DESIGN',title:'Design Concept & Gameplay',info:'概念｜设计概念与玩法',desc:'WIND VANE 取材无锡三岁女童事件，想让玩家意识到自己会不知不觉跟着舆论走，评论之前先想一想。游戏沿事件时间线设六关，玩家扮演受舆论影响的网民，选中的评论变成印章盖在画面上：选同向评论达到指定数量过关，选错的会累积在屏幕上，堆满仍未达标则失败。美术用复古印刷，风向标和船象征舆论的引导，印章让玩家清楚自己是在给事件“盖章”。目标人群 10–35 岁。',alt:'Design Concept 页两栏文字，以及 Gameplay Description 表：类型、目标人群、角色设定、游戏目标、任务设计、游戏指南'}, /* [T15] */
       {src:'assets/projects/windvane/windvane_card_05.webp',tag:'PROTOTYPE',title:'Game Flow & Wireframe',info:'原型｜游戏流程与界面线框',desc:'游戏流程：start 进入 menu，分出 resume、how、rule；resume 接着继续游戏，可进入任意一关，从 level1 开始，分出 win 和 lost；win 可以 play again 或 back，lost 回到 back；play again 进入下一关，直到 end。界面线框画出主菜单、规则页、第 1–6 关、失败界面、关卡回顾和事件真相页，用箭头标出页面之间怎么跳转；底部接评论筛选、功能界面和关卡界面三组设计。',alt:'Game Flow 流程图与 Prototyping 界面线框：菜单、规则、六关、失败界面、关卡回顾和真相页'},
       {src:'assets/projects/windvane/windvane_card_06.webp',tag:'DESIGN',title:'Interface Design',info:'设计｜界面设计过程',desc:'三张过程图。Select Comments：从社交平台按五类立场收集真实评论，转成印章样式；Function UI Design：在 Unity 里排布功能界面，把评论印章落到画面上；Levels UI Design：逐关摆放评论和颜色，检查每关的目标方向与密度是否清楚。',alt:'Interface Design Process 三张截图：Select Comments、Function UI Design、Levels UI Design',size:'narrow'},
       {src:'assets/projects/windvane/windvane_card_07.webp',tag:'DEVELOPMENT',title:'Making Process',info:'开发｜评论库与 Unity 制作',desc:'评论库按五类立场、五种颜色整理：紫色是关于儿童编谎的评论，绿色是网络暴力指控，红色是针对蛋糕店老板的质疑，蓝色是恶意引导儿童骗钱的女性，橙色是中立言论；每条印章旁写明它的立场和用途。制作在 Unity 里完成，按关卡逐屏搭界面。Game Controller 脚本负责评论变色、随机出现和判定结果；Controller Manage 脚本在点击评论时加分，用射线检测点到的对象，按关卡切换场景，并随关卡更新评论数值。',alt:'Comments in Game 五色评论库、Unity 制作过程截图，以及 Game Controller 与 Controller Manage 两段代码',size:'narrow'},
@@ -2549,9 +2612,9 @@ const PROJECTS = {
     filters:['RESEARCH','INSIGHT','DESIGN','PROTOTYPE','DEVELOPMENT','TEST'],
     cards:[
       {src:'assets/projects/syncsight/syncsight_card_01.webp',tag:'RESEARCH',title:'Introduction',info:'项目｜VR 双眼节律训练',desc:'SyncSight 是一个面向外斜视相关双眼协调训练的研究型 VR 原型，运行在 Meta Quest Pro 上，通过音乐、语音与手柄震动反馈，把眼动追踪训练做成有节奏的互动体验。图中对比了内斜视（Esotropia）与外斜视（Exotropia）的眼位，流程为：头显采集眼动输入 → 注视稳定性检测 → 目标保持确认 → 实时音频与触觉反馈；双眼视野在“overlap”区融合，滑条用来调整视觉分离程度。定位是探索性训练模型，不是医疗器械，不做诊断、处方或临床结局承诺；目标是把单眼与双眼任务、音乐、语音反馈和互动整合进一个 VR 体验，为以后居家自训的设计准则打基础。',alt:'Introduction 页：项目描述、内斜视与外斜视眼位对比图、眼动追踪输入与实时反馈流程图、双眼视野重叠示意图'},
-      {src:'assets/projects/syncsight/syncsight_card_02.webp',tag:'RESEARCH',title:'Market Survey',info:'调研｜两款参照',desc:'两款参照。AmblyoPlay 是定制的双眼训练程序：日常训练、游戏化练习、视频进度报告，双眼对比练习给每只眼不同的刺激，但需要连续数月每天坚持，评估依赖头戴式显示器，绿红滤光体验有限。Beat Saber 节奏结构清晰，方块按节拍从特定方向出现，配合音乐和震动能带来很强的“在节奏里”的沉浸感；但它是娱乐产品，画面与得分压力大，不含视觉追踪或校准。对 SyncSight 的启发：借 Beat Saber 的节奏感，用眼动和节律提示让玩家在反应前先保持注视稳定；做短时训练、个性化设置，用 Quest Pro 做单眼呈现与眼动追踪；同时控制音乐音量与触觉强度，避免训练过头。风险是如果为了紧凑而提高游戏节奏、画面密度和得分压力，会削弱训练效果。',alt:'AmblyoPlay 的三步使用说明与雷达图、Beat Saber 官网横幅与游戏画面，以及两款产品各自的 SWOT 分析',size:'narrow'},
+      {src:'assets/projects/syncsight/syncsight_card_02.webp',tag:'RESEARCH',title:'Market Survey',info:'调研｜两款参照',desc:'两款参照。AmblyoPlay 是双眼训练程序，有日常训练和进度报告，给每只眼不同的刺激，但需要连续数月每天坚持，红绿滤光体验有限。Beat Saber 节奏结构清晰，音乐加震动带来很强的沉浸感，但它是娱乐产品，得分压力大，不含视觉追踪或校准。对 SyncSight 的启发：借用节奏感，用眼动和节律提示让玩家先保持注视稳定；做短时、个性化训练，并控制音量与触觉强度，避免节奏和画面密度削弱训练效果。',alt:'AmblyoPlay 的三步使用说明与雷达图、Beat Saber 官网横幅与游戏画面，以及两款产品各自的 SWOT 分析',size:'narrow'}, /* [T15] */
       {src:'assets/projects/syncsight/syncsight_card_03.webp',tag:'RESEARCH',title:'Pre-test Duration Test',info:'调研｜训练时长预测试',desc:'早期用户反映眼动追踪交互时眼睛容易疲劳，所以在开发原型前先做了一次时长预测试：参与者盯着一个静止球，程序持续监测任务是否完成，疲劳可以自行停止，视线不稳时任务自动终止。Visual Scripting 里设定了初始值、每次打开重置、阈值判断和 10 秒后失稳上报。5 位成人参与者（均知情同意）全部完成 5 分钟测试，实际坚持时长从 326.851 秒到 634.461 秒（约 5 分 27 秒到 10 分 34 秒），个体差异明显；这些数据用来初步评估 VR 节律训练原型的可行性，并定位后续要优化的体验环节。',alt:'Pre-test Duration Test 页：进入判断与结束条件的两张场景截图、五位参与者时长折线图、预测试 Visual Scripting 流程图',size:'narrow'},
-      {src:'assets/projects/syncsight/syncsight_card_04.webp',tag:'RESEARCH',title:'Research',info:'研究｜机制与音乐游戏化',desc:'两条研究依据。机制上，反抑制训练能改善小角度外斜的双眼单视与近距离立体视，但证据来自不同的斜视类型、样本也小，不能直接当作疗效；间歇性外斜的研究把红绿反抑制活动融入遮盖加肢体治疗后，远距与近距控制分数有提升。所以本游戏不声称治疗外斜视，而是把“任务依赖的双眼参与”转成受控的 VR 训练原型：先完成单眼信息输入，每只眼再分别接收双眼整合信息。转化上，传统红绿训练的四个要素对应音乐游戏的四个设计：单眼输入 → 左右眼互补的节奏与音轨；需要融合的任务 → 双眼完全融合后才记为命中；渐进难度 → 由易到难的音乐关卡（近处大而慢的目标，逐渐变小、变快、视差加大）；不适即停止 → 暂停键、舒适度评分、自动降难和专业复查。音乐游戏化的价值在持续注意、清晰目标、即时听觉与触觉反馈、可见进度，证据来自弱视研究，不能当作临床疗效。',alt:'Research 页：外斜视支撑机制文字、传统双色训练到 Quest Pro 音乐游戏的转化对照图、音乐游戏化文字与五条训练设计原则'},
+      {src:'assets/projects/syncsight/syncsight_card_04.webp',tag:'RESEARCH',title:'Research',info:'研究｜机制与音乐游戏化',desc:'两条研究依据。机制上，反抑制训练对小角度外斜的双眼单视有改善，但样本小、斜视类型不同，不能直接当作疗效，所以本游戏不声称治疗，而是把“任务依赖的双眼参与”做成受控的 VR 训练原型。转化上，传统红绿训练的四个要素对应四个设计：单眼输入对应左右眼互补的节奏与音轨；融合任务对应双眼融合后才记命中；渐进难度对应由易到难的关卡；不适即停对应暂停键、舒适度评分和自动降难。',alt:'Research 页：外斜视支撑机制文字、传统双色训练到 Quest Pro 音乐游戏的转化对照图、音乐游戏化文字与五条训练设计原则'}, /* [T15] */
       {src:'assets/projects/syncsight/syncsight_card_05.webp',tag:'INSIGHT',title:'Mind Mapping',info:'洞察｜思维导图',desc:'思维导图以“VR MUSIC GAME FOR EXOTROPIA”为中心。平台层是 Quest Pro 的眼动追踪、音频与触觉校准；它定义了双眼机制（双色提示、融合与反抑制参与）；要求训练精准度优先于画面真实感；通过音乐游戏化来激励（节奏提示、评分、反馈、渐进挑战）；用评估来衡量（可用性、参与度、注意力和训练流程清晰度）。约束是用户舒适与安全伦理：不适即暂停、记录症状、不做临床声明。底部是设计研究系统的三角：双眼训练、VR 技术、用户。',alt:'Mind Mapping 页整图：中心节点、Quest Pro 平台、双眼机制、音乐游戏化、评估、安全与伦理及底部三角'},
       {src:'assets/projects/syncsight/syncsight_card_06.webp',tag:'INSIGHT',title:'Personas',info:'人物｜两类相关者',desc:'两个暂定画像，由文献、市场回顾和原型范围推出，不代表临床用户或任何机构的员工。Dr. Leo Wang，28 岁，双眼视觉与 XR 研究者，标签：证据驱动、XR 熟练、原型导向、安全意识；需要可用于可用性测试的早期原型、识别用户负担与交互设计风险、产出可与临床合作的透明研究记录。Elena Novak，34 岁，数字视觉训练平台的产品开发者，标签：产品策略、游戏化意识、数据导向、可扩展；需要评估 VR 节律训练能否在不增加负担的前提下提升参与度、把眼动追踪变成可理解的反馈、定义安全的短期任务。两人都要求可配置的任务逻辑、节律速度、训练时长和可导出的表现记录。',alt:'Personas 页：Leo Wang 与 Elena Novak 的人物照片、标签、Behaviours、Goals 与 Basic Profile',size:'narrow'},
       {src:'assets/projects/syncsight/syncsight_card_07.webp',tag:'DESIGN',title:'Wireframe',info:'设计｜低保真线框',desc:'四个线框界面。Profile Setup 填写用户名与年龄；Calibration 用滑条把分离的双球拉回到重合，前后移动找两个切点，确定检测范围；Training 调节节律速度和左右目标位置，并说明训练背景与双眼视野特征；Session Archive 显示得分（280）、完成率 74% 与 92%，可查看记录、导出数据或再次训练。',alt:'Wireframe 页四个界面：Profile Setup、Calibration、Training、Session Archive',size:'narrow'},
@@ -2560,9 +2623,9 @@ const PROJECTS = {
       {src:'assets/projects/syncsight/syncsight_card_10.webp',tag:'DESIGN',title:'Use Case Diagram',info:'设计｜用例图',desc:'三个参与者：User（训练者）、Quest Pro Eye Tracking（眼动输入）、Session Data Record（训练记录）。主流程：开始训练 → 检查舒适与安全（包含退出选项）→ 校准注视、设定参数 → 选择练习模式或标准节奏 → 完成节律任务（注视目标并判断重叠）→ 接收反馈（热/色/分数/触觉）→ 暂停或结束（不适时）→ 回看训练小结 → 保存记录。设计边界：研究原型，不诊断、不开处方、不声称临床结局。',alt:'Use Case Diagram 页：VR Rhythm Vision Training System 用例图与三个参与者',size:'narrow'},
       {src:'assets/projects/syncsight/syncsight_card_11.webp',tag:'DESIGN',title:'Storyboard',info:'设计｜六格分镜',desc:'六格分镜：① 传统训练重复枯燥；② 反馈与进度不清晰；③ Leo 介绍 VR 原型，欢迎页说明安全信息；④ 舒适度检查与基线校准；⑤ 节律视觉训练，左右眼各看不同目标；⑥ 训练小结决定下一步——重测、换难度或结束。主角 Lin Chen，24 岁，眼位不正，正在寻求专业建议。',alt:'Storyboard 六格手绘分镜：传统训练、不清晰的反馈、Leo 介绍原型、舒适度检查与校准、节律训练、训练小结',size:'narrow'},
       {src:'assets/projects/syncsight/syncsight_card_12.webp',tag:'PROTOTYPE',title:'Hi-fi Prototype',info:'原型｜高保真界面',desc:'Welcome 页点“Understand”进入安全声明；Who is training 显示难度随完成场次增加；校准页确认双眼视野的切点完全重合，可重置滑条；Build your session 自定义训练时长，按左手柄菜单键随时打开主菜单；训练界面实时显示完成率与稳定性，左右节律按钮可交替点击，命中时手柄震动；Baseline Check 建立本次训练的基线，不适会被引导回“Build Your Session”；Session Complete、Your Progress 统计、Pause or Exit；日期、时长、节律速度、目标完成率、最高连击与稳定性写入本地 JSON 供回看。',alt:'Hi-fi Prototype 页带黄色流程标注的界面：Welcome、Who is training、校准、Build your session、训练界面、Baseline Check、Session Complete、Your Progress、Pause or Exit'},
-      {src:'assets/projects/syncsight/syncsight_card_13.webp',tag:'TEST',title:'Use Case Test',info:'测试｜用例测试',desc:'用例测试检查“UI 页面之间的逻辑流程是否顺畅”，在 Unity 编辑器场景中运行：点击 start 进入欢迎页、点击 understand 进入用户资料页、点击 continue 进入基线校准并在三秒后进入校准阶段，实际结果与预期一致。另一张表逐步记录校准滑条、开始训练、结束训练、关闭等 9 步：8 步通过，进入难度选择这一步记为 FAIL——音乐、训练界面与双眼圆没有同步出现，记在备注里待修。',alt:'Use Case Test 页两张测试表：测试信息、依赖、条件与控制，以及各步骤的预期结果、实际结果与 PASS / FAIL'},
+      {src:'assets/projects/syncsight/syncsight_card_13.webp',tag:'TEST',title:'Use Case Test',info:'测试｜用例测试',desc:'用例测试检查“UI 页面之间的逻辑流程是否顺畅”，在 Unity 编辑器场景中运行：点击 start 进入欢迎页、点击 understand 进入用户资料页、点击 continue 进入基线校准并在三秒后进入校准阶段，实际结果与预期一致。另一张表逐步记录校准滑条、开始训练、结束训练、关闭等 9 步：8 步通过，进入难度选择这一步记为 FAIL——音乐、训练界面与双眼圆没有同步出现，已记在备注里。',alt:'Use Case Test 页两张测试表：测试信息、依赖、条件与控制，以及各步骤的预期结果、实际结果与 PASS / FAIL'}, /* [T14] */
       {src:'assets/projects/syncsight/syncsight_card_14.webp',tag:'DEVELOPMENT',title:'Development',info:'开发｜架构与脚本',desc:'开发分三段：校准、音乐训练、结果记录。先用 Visual Scripting 和 C# 搭好稳定输入与安全协议，再加音乐互动。对象层级里标出各模块：左右眼 OVREyeGaze、UI、摇杆、用于双眼稳定的虚拟平面检测、左右眼分离贴图、生成前移目标、音乐控制器（按节拍生成目标并控制速度）、左右眼分屏设置、初始状态设置、摇杆呼出菜单栏、数据记录。校准脚本负责状态检查、滑条输入、位置映射，并按不同难度系数得到校准间隔；音乐训练脚本负责命中检测、命中计数、手柄震动反馈、按帧监控训练状态和按节律刷新目标。',alt:'Development 页：带模块标注的 Unity 对象层级截图、校准与参数调整 Visual Scripting 图、音乐训练的命中检测与节律目标脚本图',size:'narrow'},
-      {src:'assets/projects/syncsight/syncsight_card_15.webp',tag:'DEVELOPMENT',title:'Rendering',info:'开发｜双眼显示与视觉',desc:'双眼显示用 OVROverlay：给 Quest Pro 的左右眼各提供一张专用 RenderTexture，在 VR 合成层里作为前景叠加，背景仍在 Unity 3D 场景里；RenderTexture 先渲染到纹理而不是直接显示，作为左右眼互补内容的中间画布。首版用 512×512 或 1024×1024、低复杂度几何、无后处理，保证训练目标清晰并降低渲染开销。表里记录了挑战、设计决策与当前应对：3D 目标不会自然遮挡 → 把 Overlay 放在训练层最前；左右眼 RenderTexture 有性能负担 → 低分辨率 RT、低多边形；Game 视图无法预览真实双眼效果 → 只在 Quest Pro 上实测；Overlay 表达能力有限 → 核心融合符号、目标和提示放 Overlay，其余留在 3D 场景；遮挡不正确 → 调整物体重叠顺序和 Underlay 设置。视觉上用蓝到白的渐变背景和磨砂玻璃立方体，蓝色 #0D44FC 定呈现风格，荧光绿做反馈；HDR 贴图和 URP Shader 用于材质。',alt:'URP Shader 节点图、HDR 环境图、双眼显示方案文字，以及挑战 / 设计决策 / 当前应对对照表',size:'narrow'},
+      {src:'assets/projects/syncsight/syncsight_card_15.webp',tag:'DEVELOPMENT',title:'Rendering',info:'开发｜双眼显示与视觉',desc:'双眼显示用 OVROverlay：给 Quest Pro 左右眼各提供一张 RenderTexture，在 VR 合成层里作为前景叠加，背景留在 Unity 3D 场景。首版用 512×512 或 1024×1024、低多边形、无后处理，保证目标清晰并降低开销。Game 视图无法预览真实双眼效果，因此只在 Quest Pro 上实测；遮挡问题通过调整重叠顺序和 Underlay 设置处理。视觉上用蓝白渐变背景和磨砂玻璃立方体，蓝色 #0D44FC 定风格，荧光绿做反馈。',alt:'URP Shader 节点图、HDR 环境图、双眼显示方案文字，以及挑战 / 设计决策 / 当前应对对照表',size:'narrow'}, /* [T15] */
       {src:'assets/projects/syncsight/syncsight_card_16.webp',tag:'DESIGN',title:'Logo & UI Design',info:'设计｜Logo 与图标',desc:'Logo 由折射透镜的图形演化而来，配清理过圆角的无衬线字体，强调视觉平衡。图形演示光线穿过镜片偏折、视线在中心点汇聚、再逐步分开的过程，对应双眼协调训练。主色蓝 #0D44FC，代表信任与科技；荧光绿代表互动与音乐训练。字体用粗圆无衬线，亲和、可信、易读，内容在头显里也清楚。右侧是图标集：Home、Back、Help、Profile、Eye Tracking、Warning、Pause、Exit、Eye、Stability、Music、Progress、Results、Completion。',alt:'Logo & UI Design 页：透镜与重叠的 Logo 推导、色板、两组 SYNCSIGHT 标志、14 个 UI 图标与两段说明'},
     ]
   },
@@ -2577,7 +2640,7 @@ const PROJECTS = {
     hero_poster:'assets/projects/falsetraces/falsetraces_hero_poster.webp',
     hero_alt:'FALSE TRACES 实机画面：手机对准地面上的水果刀，AR 中标出刀上的指纹',
     filter_title:'让证据自己开口',
-    filter_intro:'个人项目，按“调研—洞察—叙事—原型—开发—修复”组织：01–04 市场调研、SWOT、问题定义与文献综述，05–08 脑暴、问卷、访谈与故事内核，09–12 人物、旅程、流程与分镜，13–16 高保真原型、3D 与 UI、Unity 原型、Shader 与动画，17–18 点击逻辑与测试修复、AI 搭档的局限。',
+    filter_intro:'个人项目，按“调研—洞察—叙事—原型—开发—修复”组织：01–04 市场调研、SWOT、问题定义与文献综述，05–08 脑暴、问卷、访谈与故事内核，09–12 人物、旅程、流程与分镜，13–16 高保真原型、3D 与 UI、Unity 原型、Shader 与动画，17–18 点击逻辑与测试修复、AI 搭档设计。', /* [T16] */
     filters:['RESEARCH','INSIGHT','NARRATIVE','PROTOTYPE','DEVELOPMENT','TEST & FIX'],
     cards:[
       {src:'assets/projects/falsetraces/falsetraces_card_01.webp',tag:'RESEARCH',title:'Market Survey',info:'调研｜三款参照游戏',desc:'调研三款参照：You Sleuth 用真实地图与手机做调查，玩家随时听证词、收情报，不挑地点、随时能玩，适合参考“闭环推理”；Manor House Murder Mystery 靠 ID 卡、地图与 AR 数据揭示线索，是限时的小组线下体验，适合参考线索组织与“房间制”调查结构；Eastern Market Murder 把街区历史与真实环境融进 AR 叙事，是地方文化体验而非细致查案，适合参考“真实场景 + AR 叙事”的融合。结论：本项目要做的是“走动、对话、搜索”兼备的单场景完整调查，而不只是点按线索。',alt:'You Sleuth 文字与截图、Manor House Murder Mystery 截图、Eastern Market Murder 文字与现场照片'},
@@ -2589,15 +2652,15 @@ const PROJECTS = {
       {src:'assets/projects/falsetraces/falsetraces_card_07.webp',tag:'RESEARCH',title:'Interview',info:'调研｜五位玩家',desc:'通过电话或文字访谈五位有相关经验的玩家。共同点是看重故事、搜索与揭开证据的过程，并希望“简单交互、自由探索、系统引导”三者平衡；顾虑是技术不稳、界面复杂、手机使用会打断调查。P1–P5 的关键词表显示：偏好真实场景触发，担心手机负担与 AR 眼镜负担；喜欢的元素是氛围与新鲜的证据形式；要避免的是硬操作、误导信息、按钮过多和线索太难。',alt:'Interview Overall 文字与 P1–P5 五位受访者的关键词回答表',size:'narrow'},
       {src:'assets/projects/falsetraces/falsetraces_card_08.webp',tag:'NARRATIVE',title:'Storytelling',info:'叙事｜故事内核',desc:'案情主线：案发当晚 A 进入 B 的房间，穿着 C 的鞋走出误导性的脚印，把 D 的药瓶放在旁边，从屋内反锁房门，在自己身上制造表浅的刺伤来模仿搏斗，随后服毒，死在 B 的房间。调查先指向 B，再指向 C 与 D；但把血迹、放错的物证和指纹单独来看，最终揭示真相——整个现场是 A 自导自演。人物为受害者 A 与嫌疑人 B、C、D，图中标出 Ringleader、Humiliation、Victim / scene planner 等动机线索；验尸报告助理给出真正死因，指向“Poison → self-staged”。',alt:'Storytelling 页面：Core reading 文字、A–D 人物拍立得、指纹、药瓶、脚印、反锁房间与验尸报告的连线图'},
       {src:'assets/projects/falsetraces/falsetraces_card_09.webp',tag:'INSIGHT',title:'Personas',info:'人物｜两类玩家',desc:'两类目标玩家。Lin，22 岁，设计专业本科生，谋杀悬疑爱好者、重玩型：想要不只是拼图的沉浸体验，享受拼线索，期待反转结局和用自己的演绎去解释；常去密室，使用智能手机和 AR 应用，习惯扫描码、拍照与 AR 交互；需要的是“可信的犯罪现场”——血迹方向、轨迹、指纹和其他痕迹能讲故事，同一房间能承载不同案件组合。Mei，32 岁，谋杀悬疑 / 密室场馆老板兼设计师，探索新玩法：希望把 AR 与 AI 作为新卖点引进场馆，降低翻新成本，需要操作面板让员工快速重置案件与切换结局。',alt:'Personas 页面：Lin 与 Mei 的立绘、标签、Basic Profile / Goals / Behaviours 与 User Needs'},
-      {src:'assets/projects/falsetraces/falsetraces_card_10.webp',tag:'NARRATIVE',title:'Journey Map',info:'流程｜游戏旅程与情绪',desc:'游戏旅程六步：Enter the scene（快速理解案情，好奇、专注）→ Scan the room（扫描血迹、脚印、物件，线索显得“更真实”，警觉、投入）→ Talk with AI partner（不直接给答案，而是引导思考，被支持、有信心）→ Match evidence（线索连成叙事，满足、沉浸）→ Build a theory（单间场景信息略多，需要记时间线与比较嫌疑人，是痛点；案件面板与 AI 回顾是机会）→ Reveal + Replay（对比推理与结局，想立刻再玩，奖励感、好奇）。情绪曲线：Curious → Engaged → Supported → Satisfied → Tense → Rewarded。关键机会：把实体证据转化为故事驱动的 AR 交互。',alt:'Gameplay Journey 六张阶段卡（目标、行动、想法、情绪）与 Emotional Arc 情绪曲线',size:'narrow'},
-      {src:'assets/projects/falsetraces/falsetraces_card_11.webp',tag:'NARRATIVE',title:'Workflow',info:'流程｜游戏流程',desc:'完整流程：Start → Main Menu（Play / Exit）→ Case Briefing → Enter Crime Scene → Scan Evidence → View Clue Details → Talk to AI Partner → Match Evidence → Build Theory → Submit Deduction → Case Outcome → Replay / New Case → End。红色为玩家主路径，蓝色虚线是回查线索的循环：扫描后可回到线索详情、找 AI 搭档，或在提交前回头重建理论；结局后可换一套证据重开。另绘制用例图，三个参与者为 Player、AI Partner 与 Evidence Database。',alt:'Workflow 流程图三行节点、主路径与回查虚线、图例',size:'narrow'},
+      {src:'assets/projects/falsetraces/falsetraces_card_10.webp',tag:'NARRATIVE',title:'Journey Map',info:'流程｜游戏旅程与情绪',desc:'游戏旅程六步：进入现场快速理解案情 → 扫描血迹、脚印与物件 → 与 AI 搭档对话，它引导思考而不直接给答案 → 匹配证据，线索连成叙事 → 建立推理 → 揭晓结局并重玩。痛点在建立推理一步：单间场景信息偏多，要记时间线并比较嫌疑人，对应的机会是案件面板与 AI 回顾。情绪曲线：Curious → Engaged → Supported → Satisfied → Tense → Rewarded。',alt:'Gameplay Journey 六张阶段卡（目标、行动、想法、情绪）与 Emotional Arc 情绪曲线',size:'narrow'}, /* [T15] */
+      {src:'assets/projects/falsetraces/falsetraces_card_11.webp',tag:'NARRATIVE',title:'Workflow',info:'流程｜游戏流程',desc:'完整流程：Main Menu → Case Briefing → Enter Crime Scene → Scan Evidence → Talk to AI Partner → Match Evidence → Build Theory → Submit Deduction → Case Outcome → Replay。红色是玩家主路径，蓝色虚线是回查线索的循环：提交前可回到线索详情或找 AI 搭档，结局后可换一套证据重开。另绘制了用例图，参与者为 Player、AI Partner 与 Evidence Database。',alt:'Workflow 流程图三行节点、主路径与回查虚线、图例',size:'narrow'}, /* [T15] */
       {src:'assets/projects/falsetraces/falsetraces_card_12.webp',tag:'NARRATIVE',title:'Storyboard',info:'分镜｜六格',desc:'六格分镜：① 开场台词“我们最近引入了 AR 技术，可以直接用手机调查犯罪现场”；② Jim 拿起手机对准房间里布好的现场；③ 镜头俯视死者轮廓与散落的证据——药瓶标签 ID #14、刀（EVIDENCE ID #03）；④ 点开手机上的证据卡；⑤ 屏幕呈现案情信息与嫌疑人名单；⑥ 情节反转后打出五星评价。分镜确定了“手机对准实物 → 弹出证据卡 → 证据指向嫌疑人”的核心画面。',alt:'Storyboard 手绘六格分镜：两人对话、手机对准现场、死者轮廓与药瓶刀、证据卡、案情信息与五星评价'},
       {src:'assets/projects/falsetraces/falsetraces_card_13.webp',tag:'PROTOTYPE',title:'Hi-fi Prototype',info:'原型｜高保真界面',desc:'竖屏界面流程：标题页 Play / Exit（Exit 直接退出游戏）；点击对讲机呼叫警员，引入语音识别功能；返回搜索页重新拍照；用取景框扫描后进入 Evidence details，查看脚印、血迹等细节；把证据拖给相关人物即可发送并连线——拖错会得到提示，拖对则解锁推动剧情的新证据；底部固定人物卡与证据卡卡槽，可对比指纹、回看线索。',alt:'五张竖屏界面：标题页、案情简报与警员、对讲机、证据详情、把证据连到嫌疑人，以及下方交互标注'},
       {src:'assets/projects/falsetraces/falsetraces_card_14.webp',tag:'PROTOTYPE',title:'3D Model & UI',info:'原型｜3D 模型与 UI',desc:'3D 部分：扫描得到的人偶模型先在 C4D 里清理，再导入 Unity，加上血迹贴图；下方为同一模型从扫描、清理到带血迹的三步对比。UI 沿用“手账 + 证物袋”的视觉：手写便签里写着“保持 HUD 极简、减少文字”，返回、扫描、取消等图标做成墨线贴纸，对讲机与相机是主要入口；人物卡与证据卡（Footprint、Clothes with blood、Fingerprint 等）做成拍立得与封口袋，用红色标签标类别。',alt:'3D model 人偶与 C4D、Unity 三步对比，以及 UI 图标、便签、人物卡与证据卡',size:'narrow'},
       {src:'assets/projects/falsetraces/falsetraces_card_15.webp',tag:'DEVELOPMENT',title:'Unity Prototype',info:'开发｜Unity AR 原型',desc:'AR 框架由四部分组成：AR Plane Detection 检测地面与桌面、AR RaycastManager 把点击落到真实平面上、AR Tracked Image Manager 识别带图案的证据图卡，并用截图功能捕捉证据细节。GameManager 集中管理音效与角色立绘的播放，在 AI 说完后开始校准并生成犯罪现场；PhotoCaptureManager 负责拍照区域、画布与 RawImage，把拍到的画面存成证据。',alt:'Unity Inspector：AR Plane / Raycast / Tracked Image 组件、GameManager 与 PhotoCaptureManager 面板，以及红笔标注',size:'narrow'},
       {src:'assets/projects/falsetraces/falsetraces_card_16.webp',tag:'DEVELOPMENT',title:'Shader & Animation',info:'开发｜Shader 与动画',desc:'用 URP 的 Shader Graph 生成可计算的网格（FinalGrid = GridX·WeightX + GridY·WeightY + GridZ·WeightZ），网格大小、线宽、边缘柔度、滚动与发光都可调，做出接近科幻扫描仪的效果，作为“扫描成功”的反馈与高光。笔记本翻页用逐帧序列（带透明通道的 PNG 帧）制作翻页动画，在 Timeline 里编排，动画结束后才显示笔记本里的内容；控制脚本在动画结束时切换内容。',alt:'Shader Graph 网格计算节点图、材质 Inspector、笔记本翻页帧序列、Unity Timeline、动画控制代码与 Animator'},
       {src:'assets/projects/falsetraces/falsetraces_card_17.webp',tag:'TEST & FIX',title:'Click Logic & Test Fix',info:'开发与修复｜点击逻辑与测试',desc:'点击逻辑优化做了四件事：把被点中的证据移到最上层，避免被其他证据挡住；统一管理证据实例；拖拽证据时生成红色连线，把人与证据连起来；管理连线的显隐，最终在结局卡上呈现人物、脚印、指纹与衣物的连线。测试在 Samsung A12 上进行，共五张测试用例表（应用整体、AR 功能、对讲机、场景交互、拍照）。Overview 记录的问题：点击转语音识别不稳定、按钮位置不当导致多次误触、锁屏时弹出 UI、元素在相机画面上重叠、白底文字可读性差、AI 警员立绘掉出画面，以及页内翻页动画与人物对话字幕出现太早。',alt:'Unity 代码截图与红笔标注（上移证据、管理实例、生成红线、连线）、Final result 连线卡，以及 Samsung A12 的五张测试用例表与 Overview'},
-      {src:'assets/projects/falsetraces/falsetraces_card_18.webp',tag:'TEST & FIX',title:'AI Partner & Limitation',info:'局限｜AI 搭档未接入 API',desc:'AI 搭档按 ConvAI 的角色面板设计：State of Mind、Embodied Actions、Narrative Design、External API 与 Publish，背景故事写到 A–D 四人各自的秘密与关系；Sample Dialogues 里预写了“椅子被打翻了，什么意思？”“这是对的吗？”“现在序列更清楚了”等对话，AI 不直接给答案，而是让玩家回到现场找证据。局限照实写：原计划把 ConvAI 接入 Unity，角色也已建好，但官方不再支持 Narrative Design，最终没能把 API 接进 Unity，许多关键的证据与叙事驱动反馈是缺失的。',alt:'ConvAI 角色面板（State of Mind 等菜单）、角色背景故事、未接入 API 的说明文字与示例对话',size:'narrow'}
+      {src:'assets/projects/falsetraces/falsetraces_card_18.webp',tag:'TEST & FIX',title:'AI Partner',info:'AI 搭档｜角色与对话设计',desc:'AI 搭档按 ConvAI 的角色面板设计：State of Mind、Embodied Actions、Narrative Design、External API 与 Publish，背景故事写到 A–D 四人各自的秘密与关系；Sample Dialogues 里预写了“椅子被打翻了，什么意思？”“这是对的吗？”“现在序列更清楚了”等对话，AI 不直接给答案，而是让玩家回到现场找证据。',alt:'ConvAI 角色面板（State of Mind 等菜单）、角色背景故事、对话样本',size:'narrow'} /* [T14] */ /* [T15] */ /* [T16] */
     ]
   },
   journal:{
@@ -2655,14 +2718,14 @@ const PROJECTS = {
     hero_poster:'assets/projects/elf/elf_hero_poster.webp',
     hero_alt:'Where\'s the Elf 实机画面：躺在卧室里的第一视角，白色光球作为训练目标出现在前方',
     filter_title:'只能用眼睛找它，它负责把训练聊下去',
-    filter_intro:'按“概念—角色—对话设计—开发—实录”组织：01 概念与分镜，02 NPC Jin 的人设与说话方式，03 知识库与示例对话，04 连击触发对话的系统，05 注视交互对话流程，06 关键脚本，07 语音输入，08 眼动场景与实机录屏。',
+    filter_intro:'按“概念—角色—对话设计—开发—实录”组织：01 概念与分镜，02 NPC Jin 的人设与说话方式，03 知识库与对话样本，04 连击触发对话的系统，05 注视交互对话流程，06 关键脚本，07 语音输入，08 眼动场景与实机录屏。', /* [T14] */
     filters:['CONCEPT','CHARACTER','DIALOGUE','DEVELOPMENT','DEMO'],
     cards:[
       {src:'assets/projects/elf/elf_card_01.webp',tag:'CONCEPT',title:'Concept & Scenario',info:'概念｜只有眼睛能动的梦',desc:'灵感来自一次睡眠麻痹：午睡醒来身体动不了，眼睛能看见四周、意识也清楚，像是只能靠眼动和听觉去感知世界。由此定下「一个只有眼睛能动的场景」，把眼动训练、游戏化、叙事、对话 AI 和巴洛克风格的 Chill Dance 放在一起，目标人群 13–24 岁，每次时间短、能放松。分镜：15 岁的小明写作业到深夜，长时间近距离用眼后眼睛不适，爸爸拿出 VR 头显让他放松；进入梦境后，先注视远处的方形望远镜 3 秒，确认眼动追踪正常；随后巴洛克音乐响起，高光按节拍顺时针、逆时针循环出现，同时 ConvAI 和玩家互动反馈，讲解用眼知识。',alt:'Idea generation 思维导图：睡眠麻痹的故事引出「一个只有眼睛能动的场景」，连到 VR 眼动训练、对话 AI、游戏化、巴洛克音乐和沉浸体验；下方是分镜 5 和 6 的游戏内画面：墙上的方形望远镜，以及躺在床上看到的房间'},
       {src:'assets/projects/elf/elf_card_02.webp',tag:'CHARACTER',title:'NPC Jin',info:'角色｜精灵的人设与说话方式',desc:'精灵 NPC 叫 Jin，性格调皮、爱吐槽、话多，用夸张的比喻鼓励玩家练习「用眼睛找到你」。不说教，把护眼习惯包成轻松的小彩蛋。边界写进了人设：玩家说「闭嘴 / 安静 / 别说了 / 我没在听」时，最多再回一句俏皮话，然后静音 30 秒；被拒绝三次后停止科普和长篇独白，用不超过一句话的失望语气回应，等玩家下一步。安全规则：只给一般性的低风险护眼建议，不做诊断；玩家提到眼痛、视力突然变化或剧烈头痛时，建议停止并寻求专业帮助。说话风格：轻松爱玩，表扬要具体说出玩家哪里做得好；提醒要温和并给选择，比如「休息一下？」，不直接下命令。下方雷达图是它的五维性格设定。',alt:'ConvAI 角色页截图：Jin 的核心描述和边界规则、说话风格，以及一张五维性格雷达图和金色线描的小精灵',size:'narrow'},
-      {src:'assets/projects/elf/elf_card_03.webp',tag:'DIALOGUE',title:'Knowledge Bank',info:'对话｜知识库与示例台词',desc:'知识库里只放了一个 advice.txt（941 字节），分四组：屏幕与休息、近视与户外、饮食、安全。内容都是短句，比如「如果看屏幕有一会儿了，抬头看看远处休息一下」「户外时间有助于预防或推迟儿童近视」「均衡饮食、多吃彩色蔬果对眼睛好，胡萝卜是经典例子但不是魔法」；安全那组写的是眼痛、视力突变或剧烈头痛时要停下并咨询专业人士。示例对话：Jin：「嘘，别用头找我，用眼睛。让视线像探照灯一样扫一圈，我会在你最没想到的时候冒出来。」玩家：「你在哪？」Jin：「猜猜看，我就在你刚才差一点看到我的地方。」Jin：「眨眼，被你抓到了！刚才那次很准，这双眼睛是专业的。」Jin：「三连！你的眼睛现在像磁铁。」',alt:'ConvAI 知识库截图：advice.txt 文件；下方是屏幕与休息、近视与户外、饮食、安全四组护眼提示，以及 Jin 和玩家的四段示例对话',size:'narrow'},
-      {src:'assets/projects/elf/elf_card_04.webp',tag:'DIALOGUE',title:'Hit Streak Triggers',info:'对话设计｜连击触发对话',desc:'游戏里大部分交互是「眼动注视 → AI 对话反馈」，所以原型阶段直接用 XR 注视交互对话流程代替了界面线框。逻辑：RegisterHit() 时连击数和总命中数各加一；RegisterMiss() 把连击清零；连击到 3 切到 S2，到 5 切到 S3。NPC 响应由 ConvAI 按上下文生成：到里程碑时表扬，失败时鼓励，叙事设计触发器负责切换段落。玩家输入：注视目标并停留，约 0.15 秒算一次命中；移开视线 1 秒以上算中断；1 秒没有新命中判定未命中，可配置。ConvAI 一侧，Jin 身上挂了 3 个 Narrative Design Trigger，各自对应一段剧情；GameManager 里的 HitStreakManager 调用 InvokeSelectedTrigger()。右上是 TRG_STREAK1、3、5 三个触发器连到不同剧情段落的示意，右下是 Unity 检视器里挂在 Jin 上的这三个触发器。',alt:'Prototype 页：左侧说明文字，右上 ConvAI 叙事设计触发器示意图（三个蓝色触发器连到五个黑色段落），下方是用户输入、系统逻辑、NPC 响应和关键配置值四栏，右侧是 Unity 检视器里 Jin 上的三个叙事设计触发器'},
-      {src:'assets/projects/elf/elf_card_05.webp',tag:'DIALOGUE',title:'Conversation Flow',info:'对话设计｜注视交互对话流程',desc:'六个状态加一个重试分支。S0 进入场景 / 空闲：玩家环顾，系统等待注视，NPC 欢迎或待机。S1 首次命中：连击 1，注视目标 0.15 秒，系统调用 RegisterHit，NPC 说「好的开始，继续」。S2 连击 3：完成三次连续命中，触发 Streak3 触发器，NPC 说「不错！试着到 5」。S3 连击 5：保持五次命中，触发 Streak5，「出色！任务完成」。S5 任务完成：最后的鼓励，或引出下一个挑战。S4 连击中断：超过 1 秒没有命中，触发 Broken，「专注，保持稳定」，再走 A1 重试：连击归零，回到 S1。',alt:'XR Gaze Interaction Conversation Flow 流程图：S0 到 S5 六个状态和 A1 重试分支，每个状态写明玩家行为、系统动作和 NPC 台词',size:'narrow'},
+      {src:'assets/projects/elf/elf_card_03.webp',tag:'DIALOGUE',title:'Knowledge Bank',info:'对话｜知识库与台词样本',desc:'知识库里只放了一个 advice.txt（941 字节），分四组：屏幕与休息、近视与户外、饮食、安全。内容都是短句，比如「如果看屏幕有一会儿了，抬头看看远处休息一下」「户外时间有助于预防或推迟儿童近视」「均衡饮食、多吃彩色蔬果对眼睛好，胡萝卜是经典例子但不是魔法」；安全那组写的是眼痛、视力突变或剧烈头痛时要停下并咨询专业人士。对话样本：Jin：「嘘，别用头找我，用眼睛。让视线像探照灯一样扫一圈，我会在你最没想到的时候冒出来。」玩家：「你在哪？」Jin：「猜猜看，我就在你刚才差一点看到我的地方。」Jin：「眨眼，被你抓到了！刚才那次很准，这双眼睛是专业的。」Jin：「三连！你的眼睛现在像磁铁。」',alt:'ConvAI 知识库截图：advice.txt 文件；下方是屏幕与休息、近视与户外、饮食、安全四组护眼提示，以及 Jin 和玩家的四段对话样本',size:'narrow'}, /* [T14] */
+      {src:'assets/projects/elf/elf_card_04.webp',tag:'DIALOGUE',title:'Hit Streak Triggers',info:'对话设计｜连击触发对话',desc:'游戏的主要交互是「眼动注视 → AI 对话反馈」，原型阶段直接用注视交互对话流程代替界面线框。注视目标约 0.15 秒算一次命中，移开视线 1 秒以上算中断。连击到 3 和 5 时，HitStreakManager 调用挂在 Jin 身上的 Narrative Design Trigger 切换剧情段落；ConvAI 按上下文生成回应，到里程碑时表扬，失败时鼓励。图中是三个触发器的连接示意和 Unity 检视器里的配置。',alt:'Prototype 页：左侧说明文字，右上 ConvAI 叙事设计触发器示意图（三个蓝色触发器连到五个黑色段落），下方是用户输入、系统逻辑、NPC 响应和关键配置值四栏，右侧是 Unity 检视器里 Jin 上的三个叙事设计触发器'}, /* [T15] */
+      {src:'assets/projects/elf/elf_card_05.webp',tag:'DIALOGUE',title:'Conversation Flow',info:'对话设计｜注视交互对话流程',desc:'六个状态加一个重试分支。S0 进入场景 / 空闲：玩家环顾，系统等待注视，NPC 欢迎或待机。S1 首次命中：连击 1，注视目标 0.15 秒，系统调用 RegisterHit，NPC 说「好的开始，继续」。S2 连击 3：完成三次连续命中，触发 Streak3 触发器，NPC 说「不错！试着到 5」。S3 连击 5：保持五次命中，触发 Streak5，「出色！任务完成」。S5 任务完成：最后的鼓励，或引出下一个挑战。S4 连击中断：超过 1 秒没有命中，触发 Broken，「专注，保持稳定」，再走 A1 重试：连击归零，回到 S1。',alt:'XR Gaze Interaction Conversation Flow 流程图：S0 到 S5 六个状态和 A1 重试分支，每个状态写明玩家行为、系统动作和 NPC 台词'},
       {src:'assets/projects/elf/elf_card_06.webp',tag:'DEVELOPMENT',title:'Key Scripts',info:'开发｜HitStreakManager 关键行',desc:'连击管理器的三段关键代码。RegisterHit 里：连击等于 3 且挂了 Streak3 触发器，就打印日志并调用 InvokeSelectedTrigger()；连击等于 5 同理走 Streak5。RegisterMiss 带一个原因参数：连击大于 0 且挂了 Broken 触发器时，先记下重置前的连击数，再触发 Broken；最后连击归零，标记已发送。Update 里判断：已经发送过中断、连击大于 0、且距离上次命中超过 missTimeout，就以 gaze_timeout 为原因调用 RegisterMiss。',alt:'HitStreakManager 的关键代码：RegisterHit、RegisterMiss 和 Update 三段，白底黑字',size:'narrow'},
       {src:'assets/projects/elf/elf_card_07.webp',tag:'DEVELOPMENT',title:'Voice Input',info:'开发｜让玩家直接开口说话',desc:'为了让玩家不用按键也能和 Jin 对话，做了两处改动。一是麦克风权限：Android 下启动时检查，没有授权就申请麦克风权限。二是把按键说话改掉：Actions 列表里 Talk 绑定到键盘 T、左右手柄的 triggerPressed 和 Oculus Touch Controller，并让 ConvAI 进入对话模式。这样玩家在训练过程中随时能开口，Jin 按人设里的规则回应。',alt:'麦克风权限脚本 MicPermissionRequester，以及 Actions 列表里 Talk 的按键绑定',size:'narrow'},
       {src:'assets/projects/elf/elf_card_08.webp',tag:'DEMO',title:'Eye Tracking Scene & Build Demo',info:'开发与实录｜眼动场景与实机画面',desc:'上面是 Unity 里的眼动场景 EyeTracking_MinimalScene：把左右眼注视合成一个 CyclopsGazePose，由 EyeGazeRayOriginDriver 发出注视射线，另配注视稳定化、可视化和舒适度管理组件。下面是实机录屏的三帧：第一视角躺在床上，房间墙面画着彩色的树和太阳纹样，远处有一扇拱门；白色光球是训练目标，按节拍在不同位置出现，玩家用注视去追。',alt:'Unity 编辑器里的眼动场景层级列表和场景视图，下方是实机录屏三帧：卧室场景的第一视角，白色光球出现在画面不同位置'}
@@ -2685,12 +2748,12 @@ const PROJECTS = {
     filters:['CONCEPT','DIALOGUE','AI CODING','DEMO'],
     cards:[
       {src:'assets/projects/qm01/qm01_card_01.webp',tag:'CONCEPT',title:'Two Pains',info:'概念｜仓库爆满与低成本配装',desc:'两个场景各三格分镜。场景一，仓库爆满、队友催促：小 A 满载而归却放不下，「好不容易带出来的，怎么没地方放了」；队友语音催他快准备下一把；他只能逐个处理，「这个要不要留？算了，先卖几个腾地方」，看、犹豫、出售、确认反复循环，迟迟开不了局。场景二，想省钱、快速出发：他找值钱的卖掉换装备，边比价边配，既怕误卖又担心着急卖错；时间不够，只看总值不看细节，最后胡乱抓几件，想带的不一定带得上。痛点分别是：收纳被空间限制打断、时间压力叠加去留决策、重复操作打断组队节奏；以及钱不够用、缺资源、配装取舍费时、低预算易配错。',alt:'六格痛点分镜：上排是仓库爆满、队友催促的三格（放不下、被催、逐个查看出售），下排是想省钱快速出发的三格（卖值钱的换装备、边比价边配、胡乱抓几件），每格下方有说明和痛点标注'},
-      {src:'assets/projects/qm01/qm01_card_02.webp',tag:'DIALOGUE',title:'Goal to Execution',info:'对话｜从一句话到执行',desc:'完整链路是：表达目标 → 解析 → 规则校验 → 方案预览 → 确认 → 执行。左上是助手入口，输入框旁放着三条快捷指令；右上是出售清单，标着「SELL BLUE · 不可撤销」，每件物品列出本身价、交易行价、手续费和每堆净收益，并注明挂行还是直接出售；底部汇总直接出售 2 堆 6,400、挂交易行 9 堆 69,065，总预计收益 75,465，红字提醒确认后不可撤销、挂单未成交不代表已到账，不点「确认出售」就不会动库存；左下是配装结果，方案已一键穿戴，单击可拖拽替换，点右下角可撤销；右下是模型接入设置，可以填 Base URL、API Key 和模型 ID。规则是：出售不可撤销，必须玩家确认；配装可撤销。原型截图录制时接入了模型，所以回复开头带有「LLM 理解」字样，未接入模型时这一步由本地规则引擎完成。',alt:'四张原型截图：带三条快捷指令的助手入口、列出价格和预计收入的出售清单、带撤销按钮的配装结果、模型接入设置面板',size:'narrow'},
-      {src:'assets/projects/qm01/qm01_card_03.webp',tag:'DIALOGUE',title:'Three Core Commands',info:'对话｜三条核心指令',desc:'三条指令对应出售、起装和转移三类目标。指令一，「帮我卖掉所有蓝色物品」：仓库内蓝色物品共 11 件，9 件挂交易行（预计净收益 72,675，扣手续费后仍更划算），2 件直接出售（即时到账 6,400），已跳过 1 件带入局物资。规划过程分三步：只筛仓库内精确蓝色，不含白绿，也不含装备栏与其他容器；逐堆比价，挂行净价高于本身价则挂行，否则直接出售；挂行只模拟挂单、收益不到账，直接卖即时到账，本操作不可撤销。指令二，「帮我起一套十万左右的装备」：按预算 100,000 取达标方案里最接近目标的一套，战术头盔、三级防弹甲、D3 胸挂、Lk 战术背包、AKMN 突击步枪、AKM 突击步枪，合计战备价值 100,600，仅高出 600，可一键穿戴或换一套；穿戴后单击可拖拽替换，点右下角可撤销。指令三，「带入对局的高级子弹和甲修放保险」：高级子弹 1 排（.44 马格南弹）加甲修（高级护甲维修包），共 2 件、新增占用 3 格，剩余 3/6 格；死亡也不掉落，可一键撤销。',alt:'三张原型截图：卖蓝色物品的对话与三步规划过程、十万左右配装的装备清单与一键穿戴结果、高级子弹和甲修放进安全箱的对话及左侧安全箱',size:'narrow'},
-      {src:'assets/projects/qm01/qm01_card_04.webp',tag:'DIALOGUE',title:'Exception & Fault Tolerance',info:'对话｜九类异常与容错',desc:'九类异常各写了触发、处理和保护：01 意图或参数不明确，追问必要字段；02 已理解但功能不支持，直接说暂不支持，不混同于没听懂；03 模型连接或请求失败，提示失败，本地规则可继续用，不伪造回复；04 空间不足无法放回；05 非法拖放与旋转，松手后回到原位；06 配装目标无法满足，不给假达标方案；07 出售范围与物资保护；08 预览后状态发生变化，提交前重新校验；09 重复提交与不可撤销。下面两条是原型里两种保护的实际回复。一条是玩家说「带入对局的高级子弹和甲修放保险」，身上没有符合条件的物品，助手说明「身上没有符合条件的高级子弹（紫/金弹药）和护甲维修包」，并交代取物只限随身的口袋、已装备背包和胸挂，不会去仓库拿。另一条是「帮我卖掉所有绿色物品」，助手按「该品质及以下」理解，分类出 18 件，6 件挂交易行、12 件直接出售，AKMN 突击步枪、MP5 冲锋枪、三级防弹甲、金狮子雕像等高品质物资自动排除；界面标出「不可逆操作确认」，执行后 6 秒内可撤销。原则是：听不清就追问，做不了就说明，条件不满足不强行执行；出售由玩家确认，失败不留半截修改。',alt:'九类异常状态的 3×3 说明网格与底部的容错原则，下方两张对话截图：没有符合条件物品时的说明，出售绿色物品时的不可逆操作确认'},
-      {src:'assets/projects/qm01/qm01_card_05.webp',tag:'AI CODING',title:'Coding with an Agent',info:'AI Coding｜与编码 Agent 协作',desc:'原型分四个阶段演进。阶段 01 建立演示闭环：先用本地规则和标准脚本跑通装箱、配装、清包与确认交互，优先解决白屏、加载和状态初始化。阶段 02 补齐真实约束：加入多格占用、武器口径、品质语义和三幕流程，纠正「看起来能操作，但规则不贴合场景」。阶段 03 升级视觉与手动交互：形成角色装备、战前容器与仓库的主界面，加入拖拽、装备槽、全屏背景、人物立绘和独立武器层。阶段 04 收敛联动与局部调整范围：处理空槽遮挡、武器方向与换装显示，把图标和位置调整限定到具体选择器，避免共享样式连带影响其他区域。开发阶段的做法是用规则、数据边界、异常态和验收用例约束编码 Agent：小步修改、回归测试、人工验收，交付可运行的网页原型；物品图标和场景素材按需用图像生成辅助，文字、按钮和状态由真实界面承载。结构分三层。意图层：标准表达由本地规则覆盖，联网模型只扩展口语理解，输出 intent、params 等结构化信息，语音是输入入口，不替代文字入口。约束层：结合原型状态核对库存、占格、口径、预算与余额，模型给的方案仍要经过规则检查，不直接修改库存。表现层：渲染装备、容器与仓库，appearance.js 处理人物与手持素材，character.css 控制角色面板视觉，conversation.css 控制对话样式。',alt:'四个演进阶段：建立演示闭环、补齐真实约束、升级视觉与手动交互、收敛联动与局部调整范围；开发阶段 AI Coding + Prompt 工程与视觉素材辅助两个说明框；意图层、约束层、表现层的三层结构'},
+      {src:'assets/projects/qm01/qm01_card_02.webp',tag:'DIALOGUE',title:'Goal to Execution',info:'对话｜从一句话到执行',desc:'完整链路：表达目标 → 解析 → 规则校验 → 方案预览 → 确认 → 执行。图中四块分别是助手入口与三条快捷指令、出售清单、配装结果、模型接入设置。出售清单逐件列出本身价、交易行价、手续费和净收益，汇总直接出售 2 堆 6,400、挂交易行 9 堆 69,065，并提醒挂单未成交不代表到账。规则是：出售不可撤销，必须玩家确认，不点「确认出售」不动库存；配装可撤销。',alt:'四张原型截图：带三条快捷指令的助手入口、列出价格和预计收入的出售清单、带撤销按钮的配装结果、模型接入设置面板',size:'narrow'}, /* [T15] */
+      {src:'assets/projects/qm01/qm01_card_03.webp',tag:'DIALOGUE',title:'Three Core Commands',info:'对话｜三条核心指令',desc:'三条指令对应出售、起装和转移。「帮我卖掉所有蓝色物品」：仓库内 11 件，逐堆比价后 9 件挂交易行、2 件直接出售，跳过 1 件带入局物资，操作不可撤销。「帮我起一套十万左右的装备」：按预算 100,000 取最接近的达标方案，合计 100,600，可一键穿戴或换一套，可撤销。「带入对局的高级子弹和甲修放保险」：共 2 件、新增占用 3 格，剩余 3/6 格，可一键撤销。',alt:'三张原型截图：卖蓝色物品的对话与三步规划过程、十万左右配装的装备清单与一键穿戴结果、高级子弹和甲修放进安全箱的对话及左侧安全箱',size:'narrow'}, /* [T15] */
+      {src:'assets/projects/qm01/qm01_card_04.webp',tag:'DIALOGUE',title:'Exception & Fault Tolerance',info:'对话｜九类异常与容错',desc:'九类异常各写了触发、处理和保护，包括意图不明确时追问、功能不支持时直接说明、模型请求失败时改用本地规则且不伪造回复、空间不足、非法拖放回到原位、配装目标无法满足、出售保护、提交前重新校验、重复提交。例如「帮我卖掉所有绿色物品」：助手分类出 18 件，6 件挂交易行、12 件直接出售，高品质物资自动排除，执行后 6 秒内可撤销。原则是听不清就追问，做不了就说明，条件不满足不强行执行。',alt:'九类异常状态的 3×3 说明网格与底部的容错原则，下方两张对话截图：没有符合条件物品时的说明，出售绿色物品时的不可逆操作确认'}, /* [T15] */
+      {src:'assets/projects/qm01/qm01_card_05.webp',tag:'AI CODING',title:'Coding with an Agent',info:'AI Coding｜与编码 Agent 协作',desc:'原型分四个阶段演进：先用本地规则跑通装箱、配装、清包与确认的演示闭环；再补齐多格占用、武器口径、品质语义等真实约束；随后升级主界面，加入拖拽、装备槽与人物立绘；最后收敛联动问题，把样式调整限定到具体选择器。开发中用规则、数据边界、异常态和验收用例约束编码 Agent，小步修改、回归测试、人工验收。结构分三层：意图层输出结构化参数，约束层按库存、占格、口径、预算做规则检查，表现层渲染装备、容器与仓库。',alt:'四个演进阶段：建立演示闭环、补齐真实约束、升级视觉与手动交互、收敛联动与局部调整范围；开发阶段 AI Coding + Prompt 工程与视觉素材辅助两个说明框；意图层、约束层、表现层的三层结构'}, /* [T15] */
       {src:'assets/projects/qm01/qm01_card_06.webp',tag:'AI CODING',title:'Debug: Language',info:'AI Coding｜Debug：语言',desc:'两条关于说法的记录，每条按问题表现、定位与判断、处理记录来写。记录 04，「紫色」与「紫色以上」混淆：指定紫色物品时，筛选结果混入金色物品；原因是精确品质与最低品质被当作同一个筛选条件；处理是拆成 exactQuality 与 minQuality，裸说颜色按精确匹配，「以上」按下限匹配。记录 06，按武器装弹却选中全部弹药：「把 AKM 的子弹装进安全箱」没能排除其他口径；原因是筛选只有弹药类别，没有武器与口径的映射约束；处理是增加武器与口径的映射，AKM 按 7.62×39 精确筛选，再校验容器容量。',alt:'两张 Debug 记录卡：「紫色」与「紫色以上」混淆、按武器装弹却选中全部弹药',size:'narrow'},
-      {src:'assets/projects/qm01/qm01_card_07.webp',tag:'AI CODING',title:'Debug: Rules & Layout',info:'AI Coding｜Debug：规则与布局',desc:'记录 05：所有物品按单格计算。问题是步枪、护甲与杂物占同样空间，整理结果缺少资源约束；初版数据没有表达多格尺寸和放置规则。处理是补充物品宽高与装箱算法，把容量判断从「件数」改为「空间占用」。记录 07：仓库物品挤成一条线。问题是仓库内容集中在顶部，无法表达跨格占用；历史上把原因归于绝对定位与百分比高度的循环依赖。处理是改用 CSS Grid 跨格布局，让物品占位与网格结构一致。',alt:'两张 Debug 记录卡：物品按占格而非件数计算、仓库改用 CSS Grid 布局',size:'narrow'},
+      {src:'assets/projects/qm01/qm01_card_07.webp',tag:'AI CODING',title:'Debug: Rules & Layout',info:'AI Coding｜Debug：规则与布局',desc:'记录 05：所有物品按单格计算。问题是步枪、护甲与杂物占同样空间，整理结果缺少资源约束；初版数据没有表达多格尺寸和放置规则。处理是补充物品宽高与装箱算法，把容量判断从「件数」改为「空间占用」。记录 07：仓库物品挤成一条线。问题是仓库内容集中在顶部，无法表达跨格占用；历史上把原因归于绝对定位与百分比高度的循环依赖。处理是改用 CSS Grid 跨格布局，让物品占格与网格结构一致。',alt:'两张 Debug 记录卡：物品按占格而非件数计算、仓库改用 CSS Grid 布局',size:'narrow'}, /* [T14] */
       {src:'assets/projects/qm01/qm01_card_08.webp',tag:'DEMO',title:'Running Prototype',info:'演示｜运行中的网页原型',desc:'网页原型可以直接操作：六个容器之间拖拽和旋转物品，双击装备穿上，交易行可以挂售，首次进入有新手引导。上面是主界面：左侧干员与装备栏，中间携带容器和安全箱，右侧仓库网格，上方显示当前估值。下面是交易行和一帧演示录屏。页面右上角是助手入口，点开就能输入目标。',alt:'原型主界面全图（干员、装备、容器、仓库），下方是交易行截图和演示录屏的一帧'}
     ]
   },
@@ -2715,8 +2778,8 @@ function renderProject(id){
     ? '<video class="cs-hero-video" muted autoplay loop playsinline preload="metadata" poster="'+pick(P.hero_poster,'')+'" aria-label="'+pick(P.hero_alt,'项目视频')+'"><source src="'+pick(P.hero,'')+'" type="video/mp4"></video>'
     : (P.hero_poster
       ? '<img class="cs-hero-video" src="'+pick(P.hero_poster,'')+'" alt="'+pick(P.hero_alt,'项目概念主视觉')+'" loading="eager" decoding="async" fetchpriority="high">'
-      : '视频占位');
-  const heroPlaceholderAttrs = (P.hero || P.hero_poster) ? '' : ' role="img" aria-label="'+pick(P.hero_alt,'视频占位')+'"';
+      : '项目视频');
+  const heroPlaceholderAttrs = (P.hero || P.hero_poster) ? '' : ' role="img" aria-label="'+pick(P.hero_alt,'项目视频')+'"';
   const renderCards = (cardList, start)=>{
     return cardList.map((c,k)=>{
       c = c || {};
@@ -2728,12 +2791,12 @@ function renderProject(id){
     const cardMedia = c.src
       ? '<img class="cs-card-img" src="'+pick(c.src,'')+'" alt="'+pick(c.alt,'项目图片')+'" loading="lazy" decoding="async">'
       : ratio;
-    const placeholderAttrs = c.src ? '' : ' role="img" aria-label="'+pick(c.alt,'图片占位')+'"';
+    const placeholderAttrs = c.src ? '' : ' role="img" aria-label="'+pick(c.alt,'项目图片')+'"';
     return '<article class="'+cls+'">'+
       '<div class="cs-media">'+
       '<div class="cs-ph"'+placeholderAttrs+'>'+cardMedia+'</div>'+
       '<span class="cs-pill cs-pill--tag">'+pick(c.tag,'分类')+'</span>'+
-      '<div class="cs-desc" id="cs-desc-'+i+'" aria-hidden="true"><p>'+pick(c.desc,'文字介绍待补充')+'</p></div>'+
+      '<div class="cs-desc" id="cs-desc-'+i+'" aria-hidden="true"><p>'+pick(c.desc,'项目介绍')+'</p></div>'+
       '<button class="cs-arrow" type="button" aria-expanded="false" aria-controls="cs-desc-'+i+'" aria-label="展开文字介绍"><span class="cs-plus" aria-hidden="true">+</span></button>'+
       '</div>'+
       '<div class="cs-card-meta"><div><h3>'+pick(c.title,'项目名称')+'</h3><p>'+pick(c.info,'项目信息')+'</p></div><span class="cs-num">NO. '+String(i).padStart(2,'0')+'</span></div>'+
@@ -2763,11 +2826,11 @@ function renderProject(id){
   return '<div class="cs-wrap" data-no-amp>'+
     '<section class="cs-hero">'+
       '<div class="cs-ph cs-ph--hero"'+heroPlaceholderAttrs+'>'+heroMedia+'</div>'+
-      '<div class="cs-hero-mask'+(P.hero_mask==='deep'?' cs-hero-mask--deep':'')+(P.hero_mask==='left'?' cs-hero-mask--left':'')+'" aria-hidden="true"></div>'+
+      '<div class="cs-hero-mask'+(P.hero_mask==='deep'?' cs-hero-mask--deep':'')+(P.hero_mask==='left'?' cs-hero-mask--left':'')+(P.hero_mask==='left-tight'?' cs-hero-mask--left cs-hero-mask--left-tight':'')+'" aria-hidden="true"></div>'+
       '<div class="cs-hero-grid">'+
       '<div class="cs-hero-text">'+
         '<p class="cs-eyebrow">'+pick(P.category,'分类')+'</p>'+
-        '<h1 class="cs-title">'+pick(P.title_1, csProjectListName(id) || '项目名称')+'<br><span class="cs-accent">'+pick(P.title_2,'副标题待补充')+'</span></h1>'+
+        '<h1 class="cs-title">'+pick(P.title_1, csProjectListName(id) || '项目名称')+'<br><span class="cs-accent">'+pick(P.title_2,'项目副标题')+'</span></h1>'+
         '<p class="cs-lede">'+pick(P.intro,'项目介绍')+'</p>'+
         '<div class="cs-pills">'+pills+link+'</div>'+
         '<div class="cs-stats">'+stats+'</div>'+
@@ -3715,9 +3778,31 @@ function destroyPersonaBubbles(){
   if(layer) layer.replaceChildren();
 }
 
+/* [T13] 离开首页时记下滚动位置；返回首页时等作品墙高度和底部留白就位后瞬时恢复，再重新计算展开栏。刷新、首次打开不记录，仍从顶部开始 */
+let t13HomeY = null, t13Timers = [];
+function t13Restore(y){
+  t13Timers.forEach(clearTimeout); t13Timers = [];
+  let live = true;
+  const stop = ()=>{ live = false; };
+  ["touchstart","wheel","keydown","pointerdown"].forEach(n=>window.addEventListener(n,stop,{passive:true,once:true}));
+  const go = ()=>{
+    if(!live || !homeView.classList.contains("active")) return;
+    if(wall._t8Settle) wall._t8Settle();
+    const max = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    const t = Math.min(y, max);
+    if(Math.abs(window.scrollY - t) > 1) window.scrollTo({top:t, left:0, behavior:"instant"});
+    if(wall._t8Settle) wall._t8Settle();
+  };
+  go();
+  requestAnimationFrame(go);
+  [120,400,950].forEach(ms=>t13Timers.push(setTimeout(go,ms)));
+  t13Timers.push(setTimeout(stop,1000));
+}
+/* [/T13] */
 function route(){
   const detailRoute = ProjectDetails.match(location.hash);
   const key = location.hash.replace("#","") || "home";
+  /* [T13] */ if(homeView.classList.contains("active") && key !== "home") t13HomeY = window.scrollY; /* [/T13] */
   ProjectDetails.leave();
   projectPreview.destroy();
   pageView.classList.toggle('is-project-detail',Boolean(detailRoute));
@@ -3747,7 +3832,10 @@ function route(){
     destroyPersonaBubbles();
     homeView.classList.add("active");
     pageView.classList.remove("active");
-    window.scrollTo(0,0);
+    /* [T13] */
+    if(t13HomeY !== null){ const y = t13HomeY; t13HomeY = null; t13Restore(y); }
+    else window.scrollTo(0,0);
+    /* [/T13] */
     return;
   }
   destroyPersonaBubbles();
@@ -3903,9 +3991,9 @@ document.addEventListener("click",e=>{
     location.hash = prow.getAttribute('href');
     return;
   }
-  if(prow){ toast("《"+prow.dataset.p+"》案例详情页待补充"); return; }
+  if(prow){ toast("《"+prow.dataset.p+"》无单独详情页"); return; }
   const c = e.target.closest(".contact a[data-c]");
-  if(c){ e.preventDefault(); toast(c.dataset.c+" 联系方式待填入"); }
+  if(c){ e.preventDefault(); toast(c.dataset.c+" 请通过邮箱或微信联系"); }
 });
 
 
@@ -4054,7 +4142,11 @@ function t9PlaceFigure(){
   const head = document.querySelector('.about-cv .acv-hero');
   if(!fig || !hero || !head) return;
   if(window.matchMedia('(max-width:900px)').matches){
-    if(fig.previousElementSibling !== head) head.after(fig);
+    /* [T11] 改为放在中文标语之后、英文标语之前 */
+    const cnSlide = head.querySelector('.acv-slide--cn');
+    if(cnSlide){ if(fig.previousElementSibling !== cnSlide) cnSlide.after(fig); }
+    else if(fig.previousElementSibling !== head) head.after(fig);
+    /* [/T11] */
   }else if(fig.parentElement !== hero){
     hero.appendChild(fig);
   }
